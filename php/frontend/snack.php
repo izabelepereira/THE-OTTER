@@ -1,17 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snack bar</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 
-</head>
+<?php
+$pageTitle = 'Snack Bar';
+include_once('../head.php');
+?>
 <style>
         .col-md-3 {
             display: none; /* Oculta todos os produtos inicialmente */
@@ -34,7 +27,7 @@
     <div class="container-fluid">
         <!-- Logo -->
         <a class="navbar-brand" href="#" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-weight: bold;">
-            <img src="images/theotter1.png" alt="Logo" width="180" height="25" class="d-inline-block align-middle">
+            <img src="../../images/theotter1.png" alt="Logo" width="180" height="25" class="d-inline-block align-middle">
         </a>
 
         <!-- Botão para colapsar o navbar apenas -->
@@ -122,23 +115,23 @@
 </div>
 
 <div class="container" style="border-radius: 5%; overflow: hidden;">
-    <img id="snackImage" src="images/snackbar.png" alt="Imagem" style="width: 100%; height: auto; display: block; border-radius: 30px;">
+    <img id="snackImage" src="../../images/snackbar.png" alt="Imagem" style="width: 100%; height: auto; display: block; border-radius: 30px;">
 </div>
 
 <!-- Seção para Filtros -->
 <div class="container mb-4 text-center" style="padding: 5%;">
     <div class="d-flex justify-content-center" style="gap: 3%; width: 100%">
         <button class="filter-button" data-category="guloseimas" style="border: none; background-color: transparent; cursor: pointer;">
-            <img src="images/balas.png" alt="Guloseimas" style="width: 95%; height: auto; border: 2px solid transparent; border-radius: 10px;  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);">
+            <img src="../../images/balas.png" alt="Guloseimas" style="width: 95%; height: auto; border: 2px solid transparent; border-radius: 10px;  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);">
         </button>
         <button class="filter-button" data-category="snacks" style="border: none; background-color: transparent; cursor: pointer;">
-            <img src="images/salgados.png" alt="Salgados" style="width: 95%; height: auto; border: 2px solid transparent; border-radius: 10px; box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);">
+            <img src="../../images/salgados.png" alt="Salgados" style="width: 95%; height: auto; border: 2px solid transparent; border-radius: 10px; box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);">
         </button>
         <button class="filter-button" data-category="bebidas" style="border: none; background-color: transparent; cursor: pointer;">
-            <img src="images/bebidas.png" alt="Bebidas" style="width: 95%; height: auto; border: 2px solid transparent; border-radius: 10px; box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);">
+            <img src="../../images/bebidas.png" alt="Bebidas" style="width: 95%; height: auto; border: 2px solid transparent; border-radius: 10px; box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);">
         </button>
         <button class="filter-button" data-category="combos" style="border: none; background-color: transparent; cursor: pointer;">
-            <img src="images/combos.png" alt="Combos" style="width: 95%; height: auto; border: 2px solid transparent; border-radius: 10px; box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);">
+            <img src="../../images/combos.png" alt="Combos" style="width: 95%; height: auto; border: 2px solid transparent; border-radius: 10px; box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);">
         </button>
     </div>
 </div>
@@ -165,7 +158,7 @@
     <div class="row" id="product-list">
     <?php
 // Conecte-se ao banco de dados
-include('conexao.php');
+include('../backend/conexao.php');
 
 // Verifique a conexão
 if ($conn->connect_error) {
@@ -262,10 +255,10 @@ $conn->close();
 </div>
 <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 5%; border-radius: 20px;">
     <!-- Primeira imagem (comer5.png) associada a uma categoria -->
-    <img id="multi-category-button" src="images/comer5.png" alt="Imagem Esquerda" style="width: 35%; height: auto; border-radius: 5%; margin-left: 15%; cursor: pointer;">
+    <img id="multi-category-button" src="../../images/comer5.png" alt="Imagem Esquerda" style="width: 35%; height: auto; border-radius: 5%; margin-left: 15%; cursor: pointer;">
     
     <!-- Segunda imagem (beber5.png) associada a outra categoria -->
-    <img id="beverages-button" class="filter-button" data-category="bebidas" src="images/beber5.png" alt="Imagem Direita" style="width: 35%; height: auto; border-radius: 5%; margin-right: 13%; cursor: pointer;">
+    <img id="beverages-button" class="filter-button" data-category="bebidas" src="../../images/beber5.png" alt="Imagem Direita" style="width: 35%; height: auto; border-radius: 5%; margin-right: 13%; cursor: pointer;">
 </div>
 <div class="container" style="text-align: center; color: #e3cbbc; padding: 5%; font-family: 'League Spartan'; font-size: 1.8vw;">
     <h2 style="font-family: 'Heavitas', sans-serif; margin: 0;">COMBOS</h2>
@@ -273,17 +266,17 @@ $conn->close();
         <div class="container" style="margin-top: 0%;">
             <div class="row text-center">
                 <div class="col">
-                    <img src="images/comboz.png" alt="Imagem Esquerda" style="width: 95%; height: auto; border-radius: 5%;">
+                    <img src="../../images/comboz.png" alt="Imagem Esquerda" style="width: 95%; height: auto; border-radius: 5%;">
                     <p style="margin: 1% 0; color: #e3cbbc; text-align: justify; font-size: 1.2vw;">
                     O refil de pipoca é válido uma única vez, na embalagem original com o picote não violado, no dia da compra e durante o funcionamento do Snack Bar, com apresentação do cupom fiscal.                    </p>
                 </div>
                 <div class="col">
-                    <img src="images/comboz.png" alt="Imagem do Meio" style="width: 95%; height: auto; border-radius: 5%;">
+                    <img src="../../images/comboz.png" alt="Imagem do Meio" style="width: 95%; height: auto; border-radius: 5%;">
                     <p style="margin: 1% 0; color: #e3cbbc; text-align: justify; font-size: 1.2vw;"> Combo promocional da semana do cinema: 1 pipoca média + 1 bebida pequena e 1 choco biscuit, e leve um brinde colecionador!
                     </p>
                 </div>
                 <div class="col">
-                    <img src="images/comboz.png" alt="Imagem Direita" style="width: 95%; height: auto; border-radius: 5%;">
+                    <img src="../../images/comboz.png" alt="Imagem Direita" style="width: 95%; height: auto; border-radius: 5%;">
                     <p style="margin: 1% 0; color: #e3cbbc; text-align: justify; font-size: 1.2vw;">Combo especial da semana do cinema: 1 Doritos, 1 bebida grande e 1 chocolate, e ganhe um brinde exclusivo!
                     </p>
                 </div>
@@ -427,8 +420,5 @@ $conn->close();
   });
 </script>
 
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

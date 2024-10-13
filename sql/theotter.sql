@@ -20,13 +20,14 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `theotter`
 --
-
+CREATE DATABASE theotter;
+USE theotter;
 -- --------------------------------------------------------
 
 --
 -- Estrutura para tabela `carrinho`
 --
-
+carrinho
 CREATE TABLE `carrinho` (
   `id` int(11) NOT NULL,
   `usuario_id` int(11) NOT NULL,
