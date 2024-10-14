@@ -13,21 +13,30 @@ include_once('../head.php');
 
 @font-face {
     font-family: 'Heavitas'; /* Nome que você deseja usar para a fonte */
-    src: url('fonts/Heavitas.ttf') format('truetype'); /* Caminho para a fonte */
+    src: url('../../fonts/Heavitas.ttf') format('truetype'); /* Caminho para a fonte */
     font-weight: normal; /* Ajuste o peso se necessário */
     font-style: normal; /* Ajuste o estilo se necessário */
 }
+
+        /* Estilizando o placeholder */
+        #searchInput::placeholder {
+            color: #e3cbbc; /* Cor do placeholder */
+            opacity: 1; /* Para garantir que a cor seja totalmente opaca */
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 1.1em;
+        }
 
 
 
     </style>
 <body style="background-color: #001d2f;" class="text-light">
 
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #001d2f; padding: 1rem 2rem;">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #001d2f; padding: 0rem 2rem;">
     <div class="container-fluid">
         <!-- Logo -->
-        <a class="navbar-brand" href="#" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-weight: bold;">
-            <img src="../../images/theotter1.png" alt="Logo" width="180" height="25" class="d-inline-block align-middle">
+        <a class="navbar-brand" href="home.php" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-weight: bold;">
+            <img src="../../images/theotter1.png" alt="Logo" width="140" height="20" class="d-inline-block align-middle">
         </a>
 
         <!-- Botão para colapsar o navbar apenas -->
@@ -37,25 +46,30 @@ include_once('../head.php');
 
         <!-- Conteúdo do navbar -->
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav me-auto" style="gap: 40px;">
-                <a class="nav-link" href="programacao.html" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-weight: bold; font-size: 20px;">PROGRAMAÇÃO</a>
-                <a class="nav-link" href="snackbar.html" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-weight: bold; font-size: 20px;">SNACKBAR</a>
-                <a class="nav-link" href="sua_sessao.html" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-weight: bold; font-size: 20px;">SUA SESSÃO</a>
+            <div class="navbar-nav me-auto align-items-center" style="display: flex; gap: 5%; margin-left: 5%;">
+                <a class="nav-link" href="home.php" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-weight: bold; font-size: 1.2em;">PROGRAMAÇÃO</a>
+                <a class="nav-link" href="snack.php" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-weight: bold; font-size: 1.2em;">SNACKBAR</a>
+                <a class="nav-link" href="ver_carrinho.php" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-weight: bold; font-size: 1.2em;">SEU CARRINHO</a>
             </div>
+            
             <div class="d-flex align-items-center">
                 <!-- Botão de pesquisa -->
-                <button class="btn btn-light" type="button" style="border: none; color: #e3cbbc; background-color: transparent; box-shadow: none;">
-                    <i class="bi bi-search" style="font-size: 20px"></i>
+                <button class="btn btn-light" type="button" onclick="document.getElementById('searchInput').focus();" style="border: none; color: #e3cbbc; background-color: transparent; box-shadow: none; padding: 0; margin-right: 1%;">
+                    <i class="bi bi-search" style="font-size: 1rem;"></i>
                 </button>
 
+                <!-- Campo de pesquisa -->
+                <input type="text" id="searchInput" placeholder="Encontre um filme" style="border: none; padding: 5px; border-radius: 4px; background-color: #001d2f; color: #e3cbbc; font-family:'League Spartan', sans-serif; outline: none;">
+
                 <!-- Botão para abrir o modal lateral -->
-                <button class="btn btn-light" type="button" style="border: none; color: #e3cbbc; background-color: transparent; box-shadow: none;" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <i class="bi bi-list" style="font-size: 1.5rem;"></i>
+                <button class="btn btn-light" type="button" style="border: none; color: #e3cbbc; background-color: transparent; box-shadow: none; padding: 0; margin-left: 1%;" data-bs-toggle="modal" data-bs-target="#myModal">
+                    <i class="bi bi-person" style="font-size: 1.3rem;"></i>
                 </button>
             </div>
         </div>
     </div>
 </nav>
+
 
 <div style="padding-top: 80px;">
     <!-- Seu conteúdo aqui -->
@@ -418,6 +432,7 @@ $conn->close();
     var modalDialog = modalElement.querySelector('.modal-dialog');
     modalDialog.style.transform = 'translateX(100%)';  // Move o modal para fora da tela
   });
+  
 </script>
 
 </body>
