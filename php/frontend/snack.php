@@ -32,16 +32,22 @@ include_once('../head.php');
     </style>
 <body style="background-color: #001d2f;" class="text-light">
 
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #001d2f; padding: 0rem 2rem;">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #001d2f; padding: 1rem 2rem;">
     <div class="container-fluid">
         <!-- Logo -->
         <a class="navbar-brand" href="home.php" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-weight: bold;">
-            <img src="../../images/theotter1.png" alt="Logo" width="140" height="20" class="d-inline-block align-middle">
+            <img src="../../images/theotter1.png" alt="Logo" width="145" height="22" class="d-inline-block align-middle" style="margin-left: 40%; margin-bottom: 1%;">
         </a>
 
-        <!-- Botão para colapsar o navbar apenas -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+      
+        <!-- Botão para abrir o modal com o bi-list (visível apenas em telas pequenas) -->
+        <button class="btn btn-light d-lg-none" type="button" style="border: none; color: #e3cbbc; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background-color: transparent; " data-bs-toggle="modal" data-bs-target="#myModal">
+            <i class="bi bi-list" style="font-size: 1.5rem;"></i>
+        </button>
+
+        <!-- Botão para abrir o modal do navbar (visível em telas pequenas) -->
+        <button class="btn btn-light d-lg-none" type="button" style="border: none; color: #e3cbbc; background-color: transparent; box-shadow: none; padding: 0; margin-right: 1%; transform: translateY(-10%);" data-bs-toggle="modal" data-bs-target="#navbarModal">
+            <i class="bi bi-person" style="font-size: 1.3rem;"></i>
         </button>
 
         <!-- Conteúdo do navbar -->
@@ -49,20 +55,20 @@ include_once('../head.php');
             <div class="navbar-nav me-auto align-items-center" style="display: flex; gap: 5%; margin-left: 5%;">
                 <a class="nav-link" href="home.php" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-weight: bold; font-size: 1.2em;">PROGRAMAÇÃO</a>
                 <a class="nav-link" href="snack.php" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-weight: bold; font-size: 1.2em;">SNACKBAR</a>
-                <a class="nav-link" href="ver_carrinho.php" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-weight: bold; font-size: 1.2em;">SEU CARRINHO</a>
+                <a class="nav-link" href="ver_carrinho.php" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-weight: bold; font-size: 1.2em; white-space: nowrap;">SEU CARRINHO</a>
             </div>
-            
-            <div class="d-flex align-items-center">
+
+            <div class="d-flex align-items-center" style="margin-right: 6%;"> 
                 <!-- Botão de pesquisa -->
-                <button class="btn btn-light" type="button" onclick="document.getElementById('searchInput').focus();" style="border: none; color: #e3cbbc; background-color: transparent; box-shadow: none; padding: 0; margin-right: 1%;">
+                <button class="btn btn-light" type="button" onclick="document.getElementById('searchInput').focus();" style="border: none; color: #e3cbbc; background-color: transparent; box-shadow: none; padding: 0; margin-right: 1%; transform: translateY(-10%);">
                     <i class="bi bi-search" style="font-size: 1rem;"></i>
                 </button>
 
                 <!-- Campo de pesquisa -->
-                <input type="text" id="searchInput" placeholder="Encontre um filme" style="border: none; padding: 5px; border-radius: 4px; background-color: #001d2f; color: #e3cbbc; font-family:'League Spartan', sans-serif; outline: none;">
+                <input type="text" id="searchInput" placeholder="Encontre um filme" style="border: none; padding: 5px; border-radius: 4px; background-color: #001d2f; color: #e3cbbc; font-family:'League Spartan', sans-serif; outline: none; ">
 
-                <!-- Botão para abrir o modal lateral -->
-                <button class="btn btn-light" type="button" style="border: none; color: #e3cbbc; background-color: transparent; box-shadow: none; padding: 0; margin-left: 1%;" data-bs-toggle="modal" data-bs-target="#myModal">
+                <!-- Botão para abrir o modal lateral (visível em telas maiores) -->
+                <button class="btn btn-light d-none d-lg-block" type="button" style="border: none; color: #e3cbbc; background-color: transparent; box-shadow: none; padding: 0; margin-right: 1%; transform: translateY(-10%);" data-bs-toggle="modal" data-bs-target="#myModal">
                     <i class="bi bi-person" style="font-size: 1.3rem;"></i>
                 </button>
             </div>
@@ -70,25 +76,43 @@ include_once('../head.php');
     </div>
 </nav>
 
+<!-- Modal -->
+<div class="modal fade" id="navbarModal" tabindex="-1" aria-labelledby="navbarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color: #001d2f; color: #e3cbbc;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="navbarModalLabel">Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <a class="nav-link" href="home.php" style="color: #e3cbbc;">PROGRAMAÇÃO</a>
+                <a class="nav-link" href="snack.php" style="color: #e3cbbc;">SNACKBAR</a>
+                <a class="nav-link" href="ver_carrinho.php" style="color: #e3cbbc;">SEU CARRINHO</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 
 <div style="padding-top: 80px;">
     <!-- Seu conteúdo aqui -->
 </div>
 
-
-
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="position: fixed; top: 0; right: 0; margin: 0; height: 100%; width: 35%; transform: translateX(100%); transition: transform 0.3s ease-in-out;">
-    <div class="modal-content" style="height: 100%; border-radius: 15px 0 0 15px; background-color: #001d2f;"> <!-- Bordas arredondadas somente do lado esquerdo -->
+  <div class="modal-dialog" style="position: fixed; top: 0; right: 0; margin: 0; height: 100%; width: 35%; transform: translateX(100%); transition: transform 0.3s ease;">
+    <div class="modal-content" style="height: 100%; border-radius: 3% 0 0 3%; background-color: #001d2f;"> <!-- Bordas arredondadas somente do lado esquerdo -->
       <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center;">
-        <h6 style="margin: 0; font-size: 1.5rem; color: #007bff;">Menu</h6>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar" style="border: none; background-color: transparent;"></button>
+        <h6 style="margin: 0; color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-size: 1.2em; font-weight: bold;">PERFIL</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar" style="border: none; background-color: transparent !important; color: #e3cbbc !important;"></button>
       </div>
       <div class="modal-body" style="overflow-y: auto; display: flex; flex-wrap: wrap; justify-content: space-between;">
 
         <!-- Mensagem de boas-vindas ou convite para login -->
-        <h6 style="color: #007bff;">
+        <h6 style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-size: 1.2em;">
             <?php 
             if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                 echo "Bem-vindo, " . htmlspecialchars($_SESSION['nome']) . "!"; // Nome do usuário logado
@@ -107,17 +131,17 @@ include_once('../head.php');
                 <a href="carrinho.php" style="text-decoration: none; color: #007bff; display: block; height: 100%;">Seu Carrinho</a>
             </button>
             <button type="button" style="width: 48%; height: 30%; background-color: #0c344b; text-align: center; border-radius: 5%; margin-bottom: 5%; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6); border: none; font-size: 3%; line-height: 1; margin-bottom: 40%;">
-                <a href="sessao.php" style="text-decoration: none; color: #007bff; display: block; height: 100%;">Sua Sessão</a>
+                <a href="ver_carrinho.php" style="text-decoration: none; color: #007bff; display: block; height: 100%;">Sua Sessão</a>
             </button>
             <button type="button" style="width: 48%; height: 30%; background-color: #0c344b; text-align: center; border-radius: 5%; margin-bottom: 5%; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6); border: none; font-size: 3%; line-height: 1; margin-bottom: 40%;">
                 <a href="logout.php" style="text-decoration: none; color: #007bff; display: block; height: 100%;">Sair</a>
             </button>
         <?php else: ?>
             <button type="button" style="width: 48%; height: 30%; background-color: #0c344b; text-align: center; border-radius: 5%; margin-bottom: 5%; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6); border: none; font-size: 3%; line-height: 1;">
-                <a href="login.php" style="text-decoration: none; color: #007bff; display: block; height: 100%;">Faça seu Login</a>
+                <a href="login.html" style="text-decoration: none; color: #007bff; display: block; height: 100%;">Faça seu Login</a>
             </button>
             <button type="button" style="width: 48%; height: 30%; background-color: #0c344b; text-align: center; border-radius: 5%; margin-bottom: 5%; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6); border: none; font-size: 3%; line-height: 1;">
-                <a href="cadastro.php" style="text-decoration: none; color: #007bff; display: block; height: 100%;">Cadastre-se</a>
+                <a href="front.php" style="text-decoration: none; color: #007bff; display: block; height: 100%;">Cadastre-se</a>
             </button>
         <?php endif; ?>
       </div>
@@ -432,6 +456,8 @@ $conn->close();
     var modalDialog = modalElement.querySelector('.modal-dialog');
     modalDialog.style.transform = 'translateX(100%)';  // Move o modal para fora da tela
   });
+
+  
   
 </script>
 
