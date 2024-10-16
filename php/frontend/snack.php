@@ -41,12 +41,12 @@ include_once('../head.php');
 
       
         <!-- Botão para abrir o modal com o bi-list (visível apenas em telas pequenas) -->
-        <button class="btn btn-light d-lg-none" type="button" style="border: none; color: #e3cbbc; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background-color: transparent; " data-bs-toggle="modal" data-bs-target="#myModal">
+        <button class="btn btn-light d-lg-none" type="button" style="border: none; color: #e3cbbc; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background-color: transparent; " data-bs-toggle="modal" data-bs-target="#navbarModal">
             <i class="bi bi-list" style="font-size: 1.5rem;"></i>
         </button>
 
         <!-- Botão para abrir o modal do navbar (visível em telas pequenas) -->
-        <button class="btn btn-light d-lg-none" type="button" style="border: none; color: #e3cbbc; background-color: transparent; box-shadow: none; padding: 0; margin-right: 1%; transform: translateY(-10%);" data-bs-toggle="modal" data-bs-target="#navbarModal">
+        <button class="btn btn-light d-lg-none" type="button" style="border: none; color: #e3cbbc; background-color: transparent; box-shadow: none; padding: 0; margin-right: 1%; transform: translateY(-10%);" data-bs-toggle="modal" data-bs-target="#myModal">
             <i class="bi bi-person" style="font-size: 1.3rem;"></i>
         </button>
 
@@ -76,22 +76,50 @@ include_once('../head.php');
     </div>
 </nav>
 
-<!-- Modal -->
+<!-- Modal para icon colapsado-->
 <div class="modal fade" id="navbarModal" tabindex="-1" aria-labelledby="navbarModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" style="background-color: #001d2f; color: #e3cbbc;">
-            <div class="modal-header">
-                <h5 class="modal-title" id="navbarModalLabel">Menu</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal-dialog modal-lg modal-side" style="width: 100%; margin: 0; position: fixed; top: 0; left: 0; height: 100%; transform: translateX(-100%); transition: transform 0.5s ease-in-out;">
+        <div class="modal-content" style="background-color: #001d2f; color: #e3cbbc; height: 100%; border-radius: 0;">
+            <div class="modal-header d-flex justify-content-between" style="display: flex; justify-content: space-between; border: none;">
+                <!-- Ícone de Pesquisa à esquerda -->
+                <i class="bi bi-search" onclick="document.getElementById('searchInput').focus();" style="color: #e3cbbc; font-size: 1rem; cursor: pointer;  margin-left: 2%;"></i>
+                <input type="text" id="searchInput" placeholder="Encontre um filme" style="border: none; padding: 5px; border-radius: 4px; background-color: #001d2f; color: #e3cbbc; font-family:'League Spartan', sans-serif; outline: none; ">
+
+                <!-- Ícone de Fechar (X) à direita -->
+                <i class="bi bi-x" style="color: #e3cbbc; font-size: 1.8rem; cursor: pointer;" 
+                   data-bs-dismiss="modal" aria-label="Close"></i>
             </div>
-            <div class="modal-body">
-                <a class="nav-link" href="home.php" style="color: #e3cbbc;">PROGRAMAÇÃO</a>
-                <a class="nav-link" href="snack.php" style="color: #e3cbbc;">SNACKBAR</a>
-                <a class="nav-link" href="ver_carrinho.php" style="color: #e3cbbc;">SEU CARRINHO</a>
+
+            <div class="modal-body" style="display: flex; flex-direction: column; height: calc(100% - 60px); margin-left: 2%;">
+                <a class="nav-link" href="home.php" style="color: #e3cbbc;font-weight: bold; font-family: 'League Spartan', sans-serif; margin-bottom: 10%; margin-top: 5%; font-size: 1.3em;">PROGRAMAÇÃO</a>
+                <a class="nav-link" href="snack.php" style="color: #e3cbbc;font-weight: bold; font-family: 'League Spartan', sans-serif; margin-bottom: 10%; font-size: 1.3em;">SNACKBAR</a>
+                <a class="nav-link" href="ver_carrinho.php" style="color: #e3cbbc; font-weight: bold; font-family: 'League Spartan', sans-serif; margin-bottom: 10%; font-size: 1.3em; ">SEU CARRINHO</a>
+                <a class="nav-link" href="../../login.html" style="color: #e3cbbc; font-weight: bold; font-family: 'League Spartan', sans-serif; margin-bottom: 10%; font-size: 1.3em;">FAZER LOGIN</a>
+                
+                <!-- Link Sair no canto inferior esquerdo -->
+                <div style="margin-top: auto; margin-bottom: 5%; margin-left: 2%;">
+                    <a class="nav-link" href="front.php" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; margin: 0;">Criar uma conta</a>
+                    <a class="nav-link" href="logout.php" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; margin: 0;">Sair</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+
+<script>
+    // Anima a entrada do modal ao aparecer
+    document.getElementById('navbarModal').addEventListener('show.bs.modal', function () {
+        document.querySelector('.modal-dialog').style.transform = 'translateX(0)';
+    });
+
+    // Anima a saída do modal ao fechar
+    document.getElementById('navbarModal').addEventListener('hide.bs.modal', function () {
+        document.querySelector('.modal-dialog').style.transform = 'translateX(-100%)';
+    });
+</script>
+
+
 
 
 
