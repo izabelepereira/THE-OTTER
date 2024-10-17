@@ -27,7 +27,15 @@ include_once('../head.php');
             font-size: 1.1em;
         }
 
-
+        @media (max-width: 576px) {
+    #myModal .modal-dialog {
+      width: 100% !important;
+      transform: none !important; /* Remover translação para ocupar a tela toda */
+    }
+    #myModal .modal-content {
+      border-radius: 0 !important; /* Remover as bordas arredondadas em telas menores */
+    }
+  }
 
     </style>
 <body style="background-color: #001d2f;" class="text-light">
@@ -47,7 +55,7 @@ include_once('../head.php');
 
         <!-- Botão para abrir o modal do navbar (visível em telas pequenas) -->
         <button class="btn btn-light d-lg-none" type="button" style="border: none; color: #e3cbbc; background-color: transparent; box-shadow: none; padding: 0; margin-right: 1%; transform: translateY(-10%);" data-bs-toggle="modal" data-bs-target="#myModal">
-            <i class="bi bi-person" style="font-size: 1.3rem;"></i>
+            <i class="bi bi-person-fill" style="font-size: 1.3rem;"></i>
         </button>
 
         <!-- Conteúdo do navbar -->
@@ -69,7 +77,7 @@ include_once('../head.php');
 
                 <!-- Botão para abrir o modal lateral (visível em telas maiores) -->
                 <button class="btn btn-light d-none d-lg-block" type="button" style="border: none; color: #e3cbbc; background-color: transparent; box-shadow: none; padding: 0; margin-right: 1%; transform: translateY(-10%);" data-bs-toggle="modal" data-bs-target="#myModal">
-                    <i class="bi bi-person" style="font-size: 1.3rem;"></i>
+                    <i class="bi bi-person-fill" style="font-size: 1.3rem;"></i>
                 </button>
             </div>
         </div>
@@ -119,66 +127,58 @@ include_once('../head.php');
     });
 </script>
 
-
-
-
-
-
-
 <div style="padding-top: 80px;">
     <!-- Seu conteúdo aqui -->
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="position: fixed; top: 0; right: 0; margin: 0; height: 100%; width: 35%; transform: translateX(100%); transition: transform 0.3s ease;">
-    <div class="modal-content" style="height: 100%; border-radius: 3% 0 0 3%; background-color: #001d2f;"> <!-- Bordas arredondadas somente do lado esquerdo -->
-      <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center;">
-        <h6 style="margin: 0; color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-size: 1.2em; font-weight: bold;">PERFIL</h6>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar" style="border: none; background-color: transparent !important; color: #e3cbbc !important;"></button>
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true"> 
+  <div class="modal-dialog modal-fullscreen-sm-down" style="position: fixed; top: 0; right: 0; margin: 0; height: 100%; width: 90%; transform: translateX(100%); transition: transform 0.3s ease;">
+    <div class="modal-content" style="height: 100%; border-radius: 3% 0 0 3%; background-color: #001d2f; color: #e3cbbc; padding-left: 5%; padding-right: 5%;"> 
+      <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; border: none;">
+        <h6 style="margin: 0; color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-size: 1.3em; font-weight: bold; margin-top: 3%;">PERFIL</h6>
+        <i class="bi bi-x" style="color: #e3cbbc; font-size: 2rem; cursor: pointer;" data-bs-dismiss="modal" aria-label="Close"></i>
       </div>
-      <div class="modal-body" style="overflow-y: auto; display: flex; flex-wrap: wrap; justify-content: space-between;">
+      <div class="modal-body" style="overflow-y: auto; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; height: calc(100% - 60px); padding-top: 20px;"> 
+        <!-- Ícone de perfil centralizado -->
+        <i class="bi bi-person-circle" style="font-size: 5rem; color: #e3cbbc; margin-bottom: 10px;"></i>
 
-        <!-- Mensagem de boas-vindas ou convite para login -->
-        <h6 style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-size: 1.2em;">
-            <?php 
-            if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-                echo "Bem-vindo, " . htmlspecialchars($_SESSION['nome']) . "!"; // Nome do usuário logado
-            } else {
-                echo "Faça seu cadastro ou login."; // Mensagem padrão
-            }
-            ?>
+        <!-- Mensagem de boas-vindas -->
+        <h6 style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-size: 1.2em; margin-bottom: 20px;">
+            Olá, cliente!
         </h6>
 
-        <!-- Botões no modal -->
-        <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
-            <button type="button" style="width: 48%; height: 30%; background-color: #0c344b; text-align: center; border-radius: 5%; margin-bottom: 5%; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6); border: none; font-size: 3%; line-height: 1;">
-                <a href="sua_conta.php" style="text-decoration: none; color: #007bff; display: block; height: 100%;">Sua Conta</a>
-            </button>
-            <button type="button" style="width: 48%; height: 30%; background-color: #0c344b; text-align: center; border-radius: 5%; margin-bottom: 5%; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6); border: none; font-size: 3%; line-height: 1;">
-                <a href="carrinho.php" style="text-decoration: none; color: #007bff; display: block; height: 100%;">Seu Carrinho</a>
-            </button>
-            <button type="button" style="width: 48%; height: 30%; background-color: #0c344b; text-align: center; border-radius: 5%; margin-bottom: 5%; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6); border: none; font-size: 3%; line-height: 1; margin-bottom: 40%;">
-                <a href="ver_carrinho.php" style="text-decoration: none; color: #007bff; display: block; height: 100%;">Sua Sessão</a>
-            </button>
-            <button type="button" style="width: 48%; height: 30%; background-color: #0c344b; text-align: center; border-radius: 5%; margin-bottom: 5%; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6); border: none; font-size: 3%; line-height: 1; margin-bottom: 40%;">
-                <a href="logout.php" style="text-decoration: none; color: #007bff; display: block; height: 100%;">Sair</a>
-            </button>
-        <?php else: ?>
-            <button type="button" style="width: 48%; height: 30%; background-color: #0c344b; text-align: center; border-radius: 5%; margin-bottom: 5%; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6); border: none; font-size: 3%; line-height: 1;">
-                <a href="login.html" style="text-decoration: none; color: #007bff; display: block; height: 100%;">Faça seu Login</a>
-            </button>
-            <button type="button" style="width: 48%; height: 30%; background-color: #0c344b; text-align: center; border-radius: 5%; margin-bottom: 5%; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6); border: none; font-size: 3%; line-height: 1;">
-                <a href="front.php" style="text-decoration: none; color: #007bff; display: block; height: 100%;">Cadastre-se</a>
-            </button>
-        <?php endif; ?>
+        <!-- Botões lado a lado -->
+        <div style="display: flex; justify-content: space-between; width: 100%; margin-top: 5%;">
+          <button type="button" style="width: 48%; padding: 20%; background-color: #0c344b; border-radius: 10%; margin-bottom: 5%; border: none; font-size: 1.2rem; position: relative;">
+            <i class="bi bi-emoji-smile-fill" style="font-size: 1.5rem; color: #e3cbbc; position: absolute; left: 10px; top: 10px;"></i>
+            <span style="color: #e3cbbc; font-size: 1rem; position: absolute; bottom: 10px; left: 10px; font-weight: bold; font-family: 'League Spartan', sans-serif; text-transform: uppercase;">Sua Conta</span>
+          </button>
+          <button type="button" style="width: 48%; padding: 20%; background-color: #0c344b; border-radius: 10%; margin-bottom: 5%; border: none; font-size: 1.2rem; position: relative;">
+            <i class="bi bi-ticket-perforated" style="font-size: 1.5rem; color: #e3cbbc; position: absolute; left: 10px; top: 10px;"></i>
+            <span style="color: #e3cbbc; font-size: 1rem; position: absolute; bottom: 10px; left: 10px; font-weight: bold; font-family: 'League Spartan', sans-serif; text-transform: uppercase;">Meus Pedidos</span>
+          </button>
+        </div>
+        <div style="display: flex; justify-content: space-between; width: 100%; margin-top: 10px;"> 
+          <button type="button" style="width: 48%; padding: 20%; background-color: #0c344b; border-radius: 10%; margin-bottom: 5%; border: none; font-size: 1.2rem; position: relative;">
+            <i class="bi bi-calendar-date" style="font-size: 1.5rem; color: #e3cbbc; position: absolute; left: 10px; top: 10px;"></i>
+            <span style="color: #e3cbbc; font-size: 1rem; position: absolute; bottom: 10px; left: 10px; font-weight: bold; font-family: 'League Spartan', sans-serif; text-transform: uppercase;">Programação</span>
+          </button>
+          <button type="button" style="width: 48%; padding: 20%; background-color: #0c344b; border-radius: 10%; margin-bottom: 5%; border: none; font-size: 1.2rem; position: relative;">
+            <i class="bi bi-box-arrow-right" style="font-size: 1.5rem; color: #e3cbbc; position: absolute; left: 10px; top: 10px;"></i>
+            <span style="color: #e3cbbc; font-size: 1rem; position: absolute; bottom: 10px; left: 10px; font-weight: bold; font-family: 'League Spartan', sans-serif; text-transform: uppercase;">Sair</span>
+          </button>
+        </div>
       </div>
-      <div class="modal-footer" style="display: flex; justify-content: flex-end;">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #6c757d; color: white; border: none;">Fechar</button>
+      <!-- Links à esquerda -->
+      <div style="position: absolute; bottom: 1%; left: 10%; display: flex; flex-direction: column; align-items: flex-start;">
+        <a href="home.php" style="color: #e3cbbc; text-decoration: none; margin-bottom: 5px; font-family: 'League Spartan', sans-serif;">Início</a>
+        <a href="#" style="color: #e3cbbc; text-decoration: none; font-family: 'League Spartan', sans-serif;" onclick="alert('Você pode entrar em contato pelo e-mail: theotter@gmail.com');">Fale conosco!</a>
       </div>
     </div>
   </div>
 </div>
+
 
 <div class="container" style="border-radius: 5%; overflow: hidden;">
     <img id="snackImage" src="../../images/snackbar.png" alt="Imagem" style="width: 100%; height: auto; display: block; border-radius: 30px;">
