@@ -1,0 +1,218 @@
+h2 {
+    font-family: 'Heavitas';
+    font-size: 2rem;
+    color:#e3cbbc;
+    
+} 
+
+p{
+    font-family: 'League Spartan';
+    color:#e3cbbc;
+    font-size: 1.5rem;
+    margin-top: -1%;
+}
+
+.col-md-3 {
+    display: none; /* Oculta todos os produtos inicialmente */
+}
+
+@font-face {
+    font-family: 'Heavitas';
+    src: url('../../fonts/Heavitas.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #001d2f;
+    color: #e3cbbc;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.snack-image {
+    width: 100%;
+    height: auto;
+    display: flex;
+    border-radius: 20px;
+}
+
+.filter-section {
+    padding: 5%;
+    background-color: transparent;
+}
+
+.filter-button {
+    flex-shrink: 0;
+    width: 25%; /* Define o tamanho dos botões como 22% da largura */
+    min-width: 20%; /* Define um tamanho mínimo para os botões */
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+    border-radius: 10%;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 4%; /* Espaço de 2% entre os botões */
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    flex-wrap: nowrap; /* Permite que os botões quebrem em múltiplas linhas em telas pequenas */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .filter-button {
+        width: 28%; /* Botões ocupam 28% da largura em tablets */
+        max-width: 28%; /* Limita o tamanho máximo dos botões */
+    }
+}
+
+@media (max-width: 576px) {
+    .filter-button {
+        width: 45%; /* Botões ocupam 45% da largura em celulares */
+        max-width: 22%; /* Limita o tamanho máximo dos botões em telas pequenas */
+    }
+}
+
+.filter-img {
+    width: 100%; /* Garante que as imagens preencham totalmente os botões */
+    height: auto;
+    border-radius: 5%;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);
+}
+
+.category-header {
+    display: none;
+    text-align: center;
+    color: #e3cbbc;
+    padding: 10px;
+    border-top: 2px solid #e3cbbc ;
+    border-bottom: 2px solid #e3cbbc;
+    font-family: 'Heavitas', sans-serif;
+    font-size: 1.2em;
+}
+
+.product-card {
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-top: 50px;
+    background-color: #001d2f;
+    flex-direction: row; /* Certifica que a imagem está à esquerda e o texto à direita */
+}
+
+.product-image {
+    border-radius: 15px;
+    width: 50%;
+    height: auto;
+    margin-right: 15px; /* Deixa o espaçamento à direita da imagem */
+    margin-left: 0; /* Remove o espaçamento à esquerda */
+}
+
+.card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title, .card-text {
+    color: #e3cbbc;
+    font-family: 'League Spartan';
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.bi-cart-plus {
+    align-items: center;
+    color: #001d2f;
+    font-size: 1.5em;
+    background-color: #e3cbbc;
+    border-radius: 10px;
+}
+
+.btn-light{
+    background-color: #e3cbbc;
+    border-radius: 25px;
+    padding: 2% 5%
+    
+}
+.no-products {
+    color: #e3cbbc;
+    text-align: center;
+    font-size: 20px;
+}
+
+.footer {
+    padding: 0;
+    text-align: center;
+}
+
+.images-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5%;
+    border-radius: 20px;
+    position: relative;
+    top: -50px; /* Move o container 50px para cima */
+}
+
+.image-left,
+.image-right {
+    width: 35%; /* Define a largura como 35% */
+    height: auto;
+    border-radius: 5%;
+    cursor: pointer;
+}
+
+.image-left {
+    margin-left: 15%; /* Margem específica para a imagem da esquerda */
+}
+
+.image-right {
+    margin-right: 13%; /* Margem específica para a imagem da direita */
+}
+
+.promo-container {
+    margin-top: 0;
+}
+
+.combo-image {
+    width: 70%;
+    height: auto;
+    border-radius: 5%;
+    margin-bottom: 0; /* Remover a margem inferior da imagem */
+}
+
+.combo-description {
+    margin: 0.5% 0; /* Mantém a margem vertical do parágrafo */
+    color: #e3cbbc;
+    text-align: justify;
+    font-size: 1.2vw;
+}
+
+.combo-button {
+    background-color: #e3cbbc;
+    color: #001d2f;
+    border: none;
+    border-radius: 10%;
+    font-size: 'League Spartan', 'Sans Serif';
+}
+
+/* Para reduzir o espaçamento entre as colunas */
+.row {
+    display: flex; /* Certifica-se de que é um contêiner flexível */
+    gap: -10px; /* Ajuste o valor conforme necessário */
+}
+
+.col {
+    padding: 5px; /* Ajuste o padding conforme necessário */
+}
