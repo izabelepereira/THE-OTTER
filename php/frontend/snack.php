@@ -154,43 +154,50 @@ include_once '../navbar.php';
     }
 </script>
 
-<div class="container footer">
+<div class="fila-container">
     <h2>FURE A FILA!</h2>
     <p class="leaguespartan-text">compre seus snacks!</p>
 </div>
 
+
 <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 5%; border-radius: 20px;">
     <!-- Primeira imagem (comer5.png) associada a uma categoria -->
-    <img id="multi-category-button" src="../../images/comer5.png" alt="Imagem Esquerda" style="width: 35%; height: auto; border-radius: 5%; margin-left: 15%; cursor: pointer;">
+    <img id="multi-category-button" class="filter-button" src="../../images/comer5.png" alt="Imagem Esquerda" style="width: 35%; height: auto; border-radius: 5%; margin-left: 15%; cursor: pointer;">
     
     <!-- Segunda imagem (beber5.png) associada a outra categoria -->
     <img id="beverages-button" class="filter-button" data-category="bebidas" src="../../images/beber5.png" alt="Imagem Direita" style="width: 35%; height: auto; border-radius: 5%; margin-right: 13%; cursor: pointer;">
 </div>
 
+
+<div class="combo-container">
+    <h4>combos</h4>
+</div>
+
 <div class="promo-container" style="margin-top: 0%;">
     <div class="row text-center">
         <div class="col">
-            <img src="../../images/comboz.png" alt="Imagem Esquerda" class="combo-image">
-            <p class="combo-description">
-                O refil de pipoca é válido uma única vez, na embalagem original com o picote não violado, no dia da compra e durante o funcionamento do Snack Bar, com apresentação do cupom fiscal.
+            <img src="../../images/combo1.png" alt="Imagem Esquerda" class="combo-image left-image">
+            <p class="combo-description left-description">
+                Combo da casa: 1 pipoca grande + 1 Coca-Cola 350ml + 1 Doritos 120g + batata frita média + 1 donut.
             </p>
         </div>
         <div class="col">
-            <img src="../../images/comboz.png" alt="Imagem do Meio" class="combo-image">
-            <p class="combo-description">
-                Combo promocional da semana do cinema: 1 pipoca média + 1 bebida pequena e 1 choco biscuit, e leve um brinde colecionador!
+            <img src="../../images/combo2.png" alt="Imagem do Meio" class="combo-image middle-image">
+            <p class="combo-description middle-description">
+                Combo Gourmet: 1 pipoca grande + 1 pipoca pequena + 1 barra de chocolate 40g + 1 H2O.
             </p>
         </div>
         <div class="col">
-            <img src="../../images/comboz.png" alt="Imagem Direita" class="combo-image">
-            <p class="combo-description">
-                Combo especial da semana do cinema: 1 Doritos, 1 bebida grande e 1 chocolate, e ganhe um brinde exclusivo!
+            <img src="../../images/combo3.png" alt="Imagem Direita" class="combo-image right-image">
+            <p class="combo-description right-description">
+                Combo Individual: 1 pipoca grande + 1 Coca-Cola refil 500ml + 1 barra de chocolate 40g.
             </p>
         </div>
     </div>
 </div>
-<div class="container text-center">
-    <button class="btn btn-light combo-button" onclick="filtrarCombos()">
+
+<div class="container text-center" style="padding-bottom: 5%;">
+    <button class="btn-custom" onclick="filtrarCombos()">
         Ver Combos
     </button>
 </div>

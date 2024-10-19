@@ -15,19 +15,10 @@ include_once('../head.php');
 ?>
 
 <body style="background-color: #001d2f;" class="text-light">
-    <nav class="navbar fixed-top navbar-dark" style="background-color: #001d2f;">
-        <div class="container d-flex justify-content-between align-items-center">
-            <a href="javascript:history.back();" class="navbar-brand" style="color: #e3cbbc; margin-left: 180px;">
-                <i class="fas fa-arrow-left"></i>
-            </a>
-            <span class="navbar-brand mx-auto" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-size: 18px;">
-                seu carrinho
-            </span>
-            <a href="#" class="navbar-brand" style="color: #e3cbbc; margin-right: 200px;">
-                <i class="fas fa-times"></i>
-            </a>
-        </div>
-    </nav>
+<?php
+$pageLabel = "seu carrinho"; 
+include '../navbar1.php';
+?>
 
     <!-- Carrinho -->
     <div class="container" style="margin-top: 80px;">

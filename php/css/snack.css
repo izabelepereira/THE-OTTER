@@ -1,14 +1,22 @@
 h2 {
     font-family: 'Heavitas';
-    font-size: 2rem;
+    font-size: 1.8rem;
     color:#e3cbbc;
-    
+    align-items: center;
+    padding-top: 1%;
+} 
+h4 {
+    font-family: 'Heavitas';
+    font-size: 1.8rem;
+    color:#e3cbbc;
+    align-items: center;
+    padding-top: 1%;
 } 
 
-p{
+p {
     font-family: 'League Spartan';
     color:#e3cbbc;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-top: -1%;
 }
 
@@ -42,6 +50,7 @@ body {
     background-color: transparent;
 }
 
+
 .filter-button {
     flex-shrink: 0;
     width: 25%; /* Define o tamanho dos botões como 22% da largura */
@@ -51,7 +60,16 @@ body {
     background-color: transparent;
     border: none;
     border-radius: 10%;
+    transition: all 0.3s ease; /* Suaviza as transições de transformação e sombra */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Sombra inicial */
 }
+
+.filter-button:hover {
+    transform: scale(1.1); /* Aumenta o botão em 10% */
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6); /* Aumenta a sombra ao passar o mouse */
+}
+
+
 
 .filter-buttons {
     display: flex;
@@ -81,7 +99,7 @@ body {
 .filter-img {
     width: 100%; /* Garante que as imagens preencham totalmente os botões */
     height: auto;
-    border-radius: 5%;
+    border-radius: 15px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);
 }
 
@@ -94,6 +112,8 @@ body {
     border-bottom: 2px solid #e3cbbc;
     font-family: 'Heavitas', sans-serif;
     font-size: 1.2em;
+    z-index: 1; /* Mais alto que a fila-container */
+    position: relative; /* Necessário para o z-index */
 }
 
 .product-card {
@@ -111,23 +131,34 @@ body {
 
 .product-image {
     border-radius: 15px;
-    width: 50%;
-    height: auto;
-    margin-right: 15px; /* Deixa o espaçamento à direita da imagem */
-    margin-left: 0; /* Remove o espaçamento à esquerda */
+    width: 150px;  /* Tamanho fixo para largura */
+    height: 150px; /* Tamanho fixo para altura */
+    object-fit: contain; /* Mantém a proporção da imagem, ajustando-a ao container */
+    margin-right: 15px; /* Espaçamento entre imagem e texto */
+    display: block;
+    flex-shrink: 0; /* Evita que a imagem seja redimensionada */
 }
 
 .card-body {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    justify-content: center; /* Centraliza o texto verticalmente */
 }
 
-.card-title, .card-text {
+.card-title{
     color: #e3cbbc;
     font-family: 'League Spartan';
     font-size: 1.2em;
     margin: 0;
+
+} 
+.card-text {
+    color: #e3cbbc;
+    font-family: 'League Spartan';
+    font-size: 1.3em;
+    margin: 0;
+    font-weight: bold;
 }
 
 .bi-cart-plus {
@@ -150,9 +181,15 @@ body {
     font-size: 20px;
 }
 
-.footer {
-    padding: 0;
+
+.fila-container {
+    padding-top: 4%;
     text-align: center;
+    width: 100%;
+    margin-top: -5%;
+    margin-bottom: -3%;
+    z-index: 0; /* Mantenha isso baixo */
+    position: relative; /* Necessário para o z-index */
 }
 
 .images-container {
@@ -162,7 +199,7 @@ body {
     padding: 5%;
     border-radius: 20px;
     position: relative;
-    top: -50px; /* Move o container 50px para cima */
+    margin-top: -5%;
 }
 
 .image-left,
@@ -182,37 +219,91 @@ body {
 }
 
 .promo-container {
-    margin-top: 0;
+    margin-top: 0%;
 }
 
-.combo-image {
-    width: 70%;
-    height: auto;
-    border-radius: 5%;
-    margin-bottom: 0; /* Remover a margem inferior da imagem */
-}
-
-.combo-description {
-    margin: 0.5% 0; /* Mantém a margem vertical do parágrafo */
-    color: #e3cbbc;
-    text-align: justify;
-    font-size: 1.2vw;
-}
-
-.combo-button {
-    background-color: #e3cbbc;
-    color: #001d2f;
-    border: none;
-    border-radius: 10%;
-    font-size: 'League Spartan', 'Sans Serif';
-}
-
-/* Para reduzir o espaçamento entre as colunas */
 .row {
-    display: flex; /* Certifica-se de que é um contêiner flexível */
-    gap: -10px; /* Ajuste o valor conforme necessário */
+    display: flex;
+    justify-content: center; /* Centraliza as colunas horizontalmente */
+    align-items: stretch; /* Faz com que as colunas tenham a mesma altura */
+    gap: 0; /* Remove o espaçamento entre as colunas */
 }
 
 .col {
-    padding: 5px; /* Ajuste o padding conforme necessário */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo (imagem e texto) */
+    text-align: center;
+    margin-right: 0; /* Remove margens laterais */
 }
+
+.combo-image {
+    width: 70%; /* Largura fixa para todas as imagens */
+    height: 70%; /* Altura fixa para todas as imagens */
+    border-radius: 5%;
+    margin-bottom: 5px; /* Margem inferior */
+    object-fit: cover; /* Ajusta a imagem para preencher o espaço */
+}
+.left-image {
+    /* Estilos específicos para a imagem da esquerda */
+    margin-left: 60%; /* pode ajustar a margem aqui */
+
+}
+
+.middle-image {
+    /* Estilos específicos para a imagem do meio */
+    margin-left: 5px; /* pode ajustar a margem aqui */
+    margin-right: 5px; /* pode ajustar a margem aqui */
+}
+
+.right-image {
+    /* Estilos específicos para a imagem da direita */
+    margin-right: 60%; /* pode ajustar a margem aqui */
+}
+
+.combo-description {
+    color: #e3cbbc;
+    font-size: 1em;
+    text-align: justify;
+    margin: 0;
+    max-width: 70%; /* Mesma largura da imagem */
+}
+
+.left-description{
+    margin-left: 60%;
+    min-width: 70%;
+    max-width: 70%;
+}
+
+.right-description{
+    margin-right: 60%;
+    min-width: 70%;
+    max-width: 70%;
+
+}
+
+.combo-container {
+    padding: 0;
+    text-align: center;
+    margin-top: -2%;
+}
+
+.btn-custom{
+    border-radius: 25px;
+    padding: 1% 8%;
+    width: 25%;
+    font-family: 'League Spartan';
+    font-size: 1em;
+    background-color: #e3cbbc;
+    color: #001d2f;
+    font-weight: bold;
+}
+
+.multi-category-button:hover {
+    
+    transform: scale(1.1); /* Aumenta o botão em 10% */
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6); /* Aumenta a sombra ao passar o mouse */
+
+}
+
+

@@ -1,0 +1,48 @@
+
+.img-container {
+    border-radius: 5%;
+    overflow: hidden;
+    height: 400px; /* Defina a altura desejada aqui */
+  }
+  
+  .img-container img {
+    width: 100%;
+    height: 100%; /* Mantém a altura do contêiner */
+    object-fit: cover; /* Ajusta a imagem para cobrir o contêiner */
+    display: block;
+    border-radius: 30px;
+  }
+  
+  .carousel-caption-text {
+    font-family: 'Heavitas', sans-serif;
+    color: #fff;
+    text-align: left;
+    position: absolute;
+    bottom: 20%;
+    left: 1%;
+    width: 90%;
+    font-size: 2.5em;
+  }
+  
+  
+  /* Personalização das setas */
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: transparent; /* Cor de fundo das setas */
+    border-radius: 50%; /* Tornar as setas redondas */
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 10%; /* Ajuste a largura das setas */
+  }
+  
+  .carousel-control-prev {
+    left: 1%; /* Posição da seta esquerda */
+    color:  #e3cbbc;
+  }
+  
+  .carousel-control-next {
+    right: 1%; /* Posição da seta direita */
+  }
+  

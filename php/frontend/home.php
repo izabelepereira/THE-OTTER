@@ -5,6 +5,7 @@
 $pageTitle = 'Home';
 include_once('../head.php');
 ?>
+<link rel="stylesheet" href="../css/home.css">
 <style>
   .col-md-3 {
     display: none;
@@ -31,105 +32,97 @@ include_once '../navbar.php';
   <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <div class="container" style="border-radius: 5%; overflow: hidden;">
-          <img src="../../images/mufasa.png" class="d-block w-100" alt="..." style="width: 100%; height: auto; display: block; border-radius: 30px;">
+        <div class="container img-container">
+          <img src="../../images/mufasa.png" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-caption d-none d-md-block">
-          <h5 style="font-family: 'Heavitas', sans-serif; color: #fff; text-align: left; position: absolute; bottom: 20%; left: 1%; width: 90%; font-size: 2.5em;">First slide label</h5>
+          <h5 class="carousel-caption-text">First slide label</h5>
         </div>
       </div>
 
       <div class="carousel-item">
-        <div class="container" style="border-radius: 5%; overflow: hidden;">
-          <img src="../../images/dragao.png" class="d-block w-100" alt="..." style="width: 100%; height: auto; display: block; border-radius: 30px;">
+        <div class="container img-container">
+          <img src="../../images/dragao.png" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-caption d-none d-md-block">
-          <h5 style="font-family: 'Heavitas', sans-serif; color: #fff; text-align: left; position: absolute; bottom: 20%; left: 1%; width: 90%; font-size: 2.5em;">First slide label</h5>
+          <h5 class="carousel-caption-text">First slide label</h5>
         </div>
       </div>
 
       <div class="carousel-item">
-        <div class="container" style="border-radius: 5%; overflow: hidden;">
-          <img src="../../images/coringa.png" class="d-block w-100" alt="..." style="width: 100%; height: auto; display: block; border-radius: 30px;">
+        <div class="container img-container">
+          <img src="../../images/coringa.png" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-caption d-none d-md-block">
-          <h5 style="font-family: 'Heavitas', sans-serif; color: #fff; text-align: left; position: absolute; bottom: 20%; left: 1%; width: 90%; font-size: 2.5em;">First slide label</h5>
-
-        </div>
-      </div>
-
-      <!-- Adicione mais slides aqui -->
-      <div class="carousel-item">
-        <div class="container" style="border-radius: 5%; overflow: hidden;">
-          <img src="../../images/deadpool.png" class="d-block w-100" alt="..." style="width: 100%; height: auto; display: block; border-radius: 30px;">
-        </div>
-        <div class="carousel-caption d-none d-md-block">
-          <h5 style="font-family: 'Heavitas', sans-serif; color: #fff; text-align: left; position: absolute; bottom: 20%; left: 1%; width: 90%; font-size: 2.5em;">First slide label</h5>
-
+          <h5 class="carousel-caption-text">First slide label</h5>
         </div>
       </div>
 
       <div class="carousel-item">
-        <div class="container" style="border-radius: 5%; overflow: hidden;">
-          <img src="../../images/wicked.png" class="d-block w-100" alt="..." style="width: 100%; height: auto; display: block; border-radius: 30px;">
+        <div class="container img-container">
+          <img src="../../images/deadpool.png" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-caption d-none d-md-block">
-          <h5 style="font-family: 'Heavitas', sans-serif; color: #fff; text-align: left; position: absolute; bottom: 20%; left: 1%; width: 90%; font-size: 2.5em;">First slide label</h5>
-
+          <h5 class="carousel-caption-text">First slide label</h5>
         </div>
       </div>
 
       <div class="carousel-item">
-        <div class="container" style="border-radius: 5%; overflow: hidden;">
-          <img src="../../images/moana.png" class="d-block w-100" alt="..." style="width: 100%; height: auto; display: block; border-radius: 30px;">
+        <div class="container img-container">
+          <img src="../../images/wicked.png" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-caption d-none d-md-block">
-          <h5 style="font-family: 'Heavitas', sans-serif; color: #fff; text-align: left; position: absolute; bottom: 20%; left: 1%; width: 90%; font-size: 2.5em;">First slide label</h5>
-
+          <h5 class="carousel-caption-text">First slide label</h5>
         </div>
       </div>
 
       <div class="carousel-item">
-        <div class="container" style="border-radius: 5%; overflow: hidden;">
-          <img src="../../images/morte.png" class="d-block w-100" alt="..." style="width: 100%; height: auto; display: block; border-radius: 30px;">
+        <div class="container img-container">
+          <img src="../../images/moana.png" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-caption d-none d-md-block">
-          <h5 style="font-family: 'Heavitas', sans-serif; color: #fff; text-align: left; position: absolute; bottom: 20%; left: 1%; width: 90%; font-size: 2.5em;">First slide label</h5>
-
-        </div>
-      </div>
-
-      <!--carrossel-->
-      <div class="carousel-item">
-        <div class="container" style="border-radius: 5%; overflow: hidden; margin-top: 5%;">
-          <img src="../../images/gladiador.png" class="d-block w-100" alt="..." style="width: 100%; height: auto; display: block; border-radius: 30px;">
-        </div>
-        <div class="carousel-caption d-none d-md-block">
-          <h5 style="font-family: 'Heavitas', sans-serif; color: #fff; text-align: left; position: absolute; bottom: 20%; left: 1%; width: 90%; font-size: 2.5em;">First slide label</h5>
-
+          <h5 class="carousel-caption-text">First slide label</h5>
         </div>
       </div>
 
       <div class="carousel-item">
-        <div class="container" style="border-radius: 5%; overflow: hidden;">
-          <img src="../../images/image9.png" class="d-block w-100" alt="..." style="width: 100%; height: auto; display: block; border-radius: 30px;">
+        <div class="container img-container">
+          <img src="../../images/morte.png" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-caption d-none d-md-block">
-          <h5 style="font-family: 'Heavitas', sans-serif; color: #fff; text-align: left; position: absolute; bottom: 20%; left: 1%; width: 90%; font-size: 2.5em;">First slide label</h5>
-
+          <h5 class="carousel-caption-text">First slide label</h5>
         </div>
       </div>
 
       <div class="carousel-item">
-        <div class="container" style="border-radius: 5%; overflow: hidden;">
-          <img src="../../images/assiste.png" class="d-block w-100" alt="..." style="width: 100%; height: auto; display: block; border-radius: 30px;">
+        <div class="container img-container">
+          <img src="../../images/gladiador.png" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-caption d-none d-md-block">
-          <h5 style="font-family: 'Heavitas', sans-serif; color: #fff; text-align: left; position: absolute; bottom: 20%; left: 1%; width: 90%; font-size: 2.5em;">First slide label</h5>
+          <h5 class="carousel-caption-text">First slide label</h5>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="container img-container">
+          <img src="../../images/image9.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="carousel-caption-text">First slide label</h5>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="container img-container">
+          <img src="../../images/assiste.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="carousel-caption-text">First slide label</h5>
         </div>
       </div>
 
     </div>
+
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
@@ -139,10 +132,7 @@ include_once '../navbar.php';
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-
-
-
-
+  
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
