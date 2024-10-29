@@ -1,0 +1,230 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    background-color: #021c2d;
+}
+
+h1 {
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+}
+
+.seat-section-container {
+    display: flex; /* Exibe os grupos lado a lado */
+    align-items: flex-start; /* Alinha os grupos ao topo */
+    justify-content: center; /* Centraliza os grupos na página */
+    flex-wrap: wrap; /* Permite quebra de linha quando necessário */
+    width: 100%;
+    max-width: 1200px;
+    margin-top: -50px; /* Reduz a margem superior */
+
+}
+
+
+.seat-map-container {
+    display: flex; /* Mantém os grupos de assentos em linha */
+    flex-direction: row; /* Garante que fiquem lado a lado */
+    gap: 20px; /* Espaço entre os grupos */
+}
+
+.letter-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza as letras */
+    margin-right: 10%; /* Espaçamento entre a coluna de letras e os assentos */
+    gap: 5px; /* Espaço entre as letras */
+    color: #e3cbbc !important;
+}
+
+.seat-section {
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 0 1 auto; /* Permite que os grupos ocupem espaço com base no conteúdo */
+    min-width: 200px; /* Largura mínima dos grupos */
+}
+
+.seat-map {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;    
+}
+
+.seat-row {
+    display: flex; /* Flex para a linha de assentos */
+    gap: 5px; /* Espaço entre os assentos */
+    justify-content: center; /* Centraliza os assentos na linha */
+    align-items: center; /* Alinha a letra e os assentos */
+}
+
+.row-letter {
+    width: 30px; /* Largura da letra */
+    text-align: left; /* Centraliza o texto da letra */
+    font-weight: bold; /* Para destacar a letra */
+    color: hsla(23, 41%, 81%, 0.532); /* Cor da letra */
+}
+.group3-letter {
+    color: hsla(23, 41%, 81%, 0.532); /* Azul como exemplo */
+    font-size: 1em;
+    padding-left: 5%; /* Ajusta o espaçamento conforme necessário */
+}
+
+.seat {
+    width: 30px;
+    height: 30px;
+    background-color: #e3cbbc;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #021c2d;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    font-family: 'League Spartan';
+    font-size: 0.8em;
+}
+
+.seat.selected {
+    color: #e3cbbc;
+    background-color: #124868;
+}
+
+
+.screen {
+    width: 80%; /* Largura total */
+    height: 20px; /* Altura da tela */
+    background-color: #e3cbbc; /* Cor da tela */
+    margin: 20px 0; /* Espaço acima e abaixo da tela */
+    position: relative; /* Para posicionamento relativo */
+    box-shadow: 0 -5px 10px rgba(225, 217, 217, 0.3); /* Sombra apenas acima */
+    display: flex; /* Para centralizar o texto */
+    justify-content: center; /* Centraliza o texto horizontalmente */
+    margin-bottom: 5%;
+}
+
+.screen:hover{
+    box-shadow: 0 -5px 10px rgba(225, 217, 217, 0.6); /* Sombra apenas acima */
+}
+
+.screen h2 {
+    position: relative;
+    font-size: 1em;
+    color: #021c2d;
+    font-family: 'League Spartan';
+}
+
+.letter-column h2 {
+    color: #021c2d;
+    font-family: 'League Spartan';
+    font-size: 1em;
+    margin-top: 80%;
+}
+
+/* Estilo específico para o tamanho dos assentos do Grupo 2 */
+#group2 .seat {
+    width: 50px; /* Aumente para 50px */
+}
+
+.assentos {
+    display: flex; /* Mantém o contêiner como um flex container */
+    flex-direction: column; /* Alinha os itens em coluna */
+    align-items: flex-start; /* Alinha os itens ao início do contêiner (à esquerda) */
+    width: 70%; /* Garante que o contêiner ocupe toda a largura */
+}
+
+.assentos h3 {
+    color: #e3cbbc;
+    font-family: 'League Spartan';
+    font-size: 1.2em;
+    margin-top: 5%; /* Margem superior */
+    text-align: left; /* Alinha o texto à esquerda */
+    font-weight: bold;
+}
+
+.assentos p {
+    color: #e3cbbc;
+    font-family: 'League Spartan';
+    font-size: 1.2em;
+    margin-top: 1%; /* Margem superior */
+    text-align: left; /* Alinha o texto à esquerda */
+}
+
+
+.legenda {
+    display: flex; /* Alinha a legenda em linha */
+    justify-content: flex-start; /* Alinha os itens da legenda à esquerda */
+    align-items: center; /* Alinha verticalmente */
+    margin-top: 20px; /* Espaço acima da legenda */
+    width: 70%; /* Garante que o contêiner ocupe toda a largura */
+    border: #e3cbbc solid 1px;
+    border-radius: 5px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.legenda-item {
+    display: flex; /* Flex para alinhar o botão e o texto */
+    align-items: center; /* Alinha verticalmente */
+    margin: 0 10px; /* Espaço entre os itens da legenda */
+}
+
+.legenda-item button {
+    width: 30px; /* Tamanho do botão da legenda */
+    height: 20px; /* Tamanho do botão da legenda */
+    border: none; /* Remove a borda */
+    border-radius: 4px; /* Bordas arredondadas */
+    cursor: default; /* Cursor padrão */
+}
+
+.legenda-item span {
+    color: #e3cbbc; /* Cor do texto da legenda */
+    margin-left: 5px; /* Espaço entre o botão e o texto */
+    font-family: 'League Spartan'; /* Fonte da legenda */
+    font-size: 0.9em; /* Tamanho da fonte da legenda */
+}
+
+.assento-ocupado {
+    background-color:#124868; /* Vermelho para assento ocupado */
+}
+
+.assento-livre {
+    background-color:#e3cbbc;/* Verde para assento livre */
+}
+
+.footer {
+    background-color: #021c2d; /* Cor de fundo do footer */
+    color: #ffffff; /* Cor do texto */
+    font-family: 'League Spartan', sans-serif; /* Fonte do footer */
+    font-weight: bold; /* Peso da fonte */
+    font-size: 20px; /* Tamanho da fonte */
+    text-align: center; /* Centraliza o texto */
+    padding: 10px; /* Espaçamento interno */
+}
+
+.btn-add-to-cart {
+    display: block; /* Faz o botão ser um bloco */
+    margin: 0 auto; /* Adiciona margem automática para centralizar */
+    color: #e3cbbc63; /* Cor do texto do botão */
+    border: none; /* Remove borda padrão */
+    border-radius: 8px; /* Bordas arredondadas */
+    font-size: 20px; /* Tamanho da fonte */
+    font-weight: bold; /* Peso da fonte */
+    transition: background-color 0.3s, color 0.3s; /* Efeito de transição */
+    cursor: pointer; /* Muda o cursor ao passar sobre o botão */
+    text-transform: uppercase; /* Transforma o texto para maiúsculas */
+    padding: 10px 20px; /* Adiciona espaçamento interno */
+    text-align: center; /* Centraliza o texto dentro do botão */
+}
+
+
+.btn-add-to-cart:hover {
+    color: #e3cbbc; /* Cor do texto ao passar o mouse */
+}

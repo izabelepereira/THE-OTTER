@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-dark" style="background-color: #001d2f;">
+<nav class="navbar fixed-top navbar-dark" style="background-color: #021c2d;">
     <div class="container d-flex justify-content-between align-items-center">
         <!-- Ícone de voltar que aparece em todas as resoluções -->
         <a href="javascript:history.back();" class="navbar-brand d-none d-md-block" style="color: #e3cbbc; margin-left: 20%;">

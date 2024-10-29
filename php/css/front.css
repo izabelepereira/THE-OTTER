@@ -1,0 +1,162 @@
+/* Cor de fundo e textos */
+.bg-body {
+    background-color: #001d2f !important;
+  }
+  
+  .text-light {
+    color:#e3cbbc;
+  }
+  
+  /* Estilos do container de cadastro */
+  .cadastro-container {
+    max-width: 800px;
+    margin-bottom: 100px;
+    background-color: #001d2f !important;
+  }
+  
+  .card-body {
+    background-color: #001d2f !important;
+  }
+  /* Títulos */
+  .header-title {
+    font-family: 'League Spartan', sans-serif;
+    color: #e3cbbc;
+    font-weight: bold;
+    font-size: 19px;
+    text-align: left;
+  }
+  
+  .section-title {
+    font-family: 'League Spartan', sans-serif;
+    color: #e3cbbc;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: left;
+  }
+  
+  /* Campos de entrada */
+  .text-input {
+    background-color: #0c344b;
+    color:#e3cbbc;
+    border-radius: 15px;
+    border: none;
+    padding: 5%;
+    border: 2px solid transparent; /* Inicialmente, a borda é transparente */
+  }
+
+  /* Estilo para o placeholder */
+.text-input::placeholder {
+    color:  #e3cbbc; /* Cor do placeholder */
+    opacity: 0.7; /* Opacidade do placeholder */
+    font-family: 'League Spartan';
+  }
+  
+
+  /* Estilo para o campo quando estiver em foco */
+.text-input:focus {
+    background-color: #12445d; /* Cor de fundo diferente para o campo em foco */
+    color: #e3cbbc; /* Cor do texto enquanto digita */
+    outline: none; /* Remove a borda padrão do foco */
+    border: 2px solid #e3cbbc; /* Borda da mesma cor do texto */
+  }
+  
+  /* Rodapé fixo com botão de cadastro */
+  .footer {
+    background-color: #021c2d;
+    color: #ffffff;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .btn-cadastrar {
+    background-color: #021c2d;
+    color: #1a4a67;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .btn-cadastrar:hover {
+    color: #e3cbbc;
+  }
+  
+  #nome {
+min-width: 100%;
+  width: 100%; /* Preenche toda a largura do container pai */
+  max-width: 400px; /* Define uma largura máxima para o input */
+  padding: 3%; /* Ajuste o padding conforme desejado */
+  border-radius: 15px; /* Arredonda as bordas */
+  background-color: #0c344b; /* Cor de fundo do input */
+  color: #ffffff; /* Cor do texto */
+  transition: border 0.3s; /* Transição suave para a borda */
+}
+
+#nome:focus {
+    border: 2px solid #e3cbbc; /* Mantém a borda da mesma cor do texto ao focar */
+    outline: none; /* Remove a borda padrão do foco */
+  }
+  
+  /* Estilo para o placeholder do input do nome */
+  #nome::placeholder {
+    color:  #e3cbbc; /* Cor do placeholder */
+    opacity: 0.7; /* Opacidade do placeholder */
+  }
+
+ /* Estilizando o container do checkbox */
+ .form-check {
+    display: flex; /* Flexbox para alinhar o checkbox e a label */
+    align-items: center; /* Centraliza verticalmente */
+    margin-bottom: 15px; /* Espaçamento entre checkboxes */
+    margin-left: 1%;
+}
+
+/* Estilizando o input do checkbox */
+.form-check-input {
+    appearance: none; /* Remove a aparência padrão */
+    width: 20px; /* Largura do checkbox */
+    height: 20px; /* Altura do checkbox */
+    border: 2px solid #15567b; /* Cor da borda */
+    border-radius: 4px; /* Bordas arredondadas */
+    position: relative; /* Para permitir posicionar a marca de verificação */
+    margin-right: 10px; /* Espaçamento entre o checkbox e a label */
+    cursor: pointer; /* Muda o cursor ao passar sobre */
+    background-color: #0c344b; /* Cor de fundo */
+}
+
+/* Estilizando o estado de foco */
+.form-check-input:focus {
+    outline: none; /* Remove a borda padrão do foco */
+    border-color: #ffffff; /* Cor da borda ao focar */
+}
+
+/* Estilizando a marca de verificação */
+.form-check-input:checked {
+    background-color:#15567b; /* Cor de fundo quando verificado */
+    border-color: #15567b; /* Cor da borda quando verificado */
+}
+
+/* Adicionando o ícone de check apenas quando o checkbox está verificado */
+.form-check-input:checked::after {
+    position: absolute; /* Posiciona absolutamente */
+    top: 50%; /* Alinha verticalmente no meio */
+    left: 50%; /* Alinha horizontalmente no meio */
+    transform: translate(-50%, -50%); /* Centraliza o ícone */
+    font-size: 16px; /* Tamanho do ícone de check */
+    color: #0c344b; /* Cor do ícone de check */
+}
+
+.form-check-label {
+    font-family: 'League Spartan';
+    font-size: 1em;
+    text-align: center;
+    color:  #e3cbbc !important; /* Cor do placeholder */
+    opacity: 0.7; /* Opacidade do placeholder */
+    margin-top: 1%;
+} 

@@ -5,41 +5,32 @@
 $pageTitle = 'Crie sua conta';
 include_once('../head.php');
 ?>
+<link rel="stylesheet" href="../css/front.css">
 
-<body style="background-color: #001d2f;" class="text-light">
-  <nav class="navbar fixed-top navbar-dark" style="background-color: #001d2f;">
-    <div class="container d-flex justify-content-between align-items-center">
-      <a href="#" class="navbar-brand" style="color: #e3cbbc; margin-left: 180px;">
-        <i class="fas fa-arrow-left"></i>
-      </a>
-      <a href="#" class="navbar-brand mx-auto">
-        <img src="../../images/theotter1.png" alt="Logo" class="img-fluid" style="height: 20px;">
-      </a>
-      <a href="#" class="navbar-brand" style="color: #e3cbbc; margin-right: 200px;">
-        <i class="fas fa-times"></i>
-      </a>
-    </div>
-  </nav>
-  <div class="container mt-5 py-4" style="max-width: 800px; margin-bottom: 100px;">
+<body class="text-light bg-body">
+<?php
+$pageLabel = "cadastro"; 
+include '../navbar1.php';
+?>
+
+  <div class="container mt-5 py-4 cadastro-container">
     <div class="row justify-content-center">
       <div class="col-md-12">
         <div class="card border-0 bg-dark">
-          <div class="card-body" style="background-color: #001d2f;">
-            <h2 class="text-left" style="font-family: 'League Spartan', sans-serif; color: #e3cbbc; font-weight: bold; font-size: 19px;">
+          <div class="card-body">
+            <h2 class="header-title">
               CRIE SUA CONTA PARA GANHAR DESCONTOS!
             </h2>
-            <form action="back.php" method="post" id="signupForm">
-              <h5 class="text-left" style="font-family: 'League Spartan', sans-serif; color: #e3cbbc; font-weight: bold; font-size: 18px; margin-top: 20px;">
+            <form action="../backend/back.php" method="post" id="signupForm">
+              <h5 class="section-title">
                 PREENCHA COM SEUS DADOS:
               </h5>
               <div class="form-group mt-2 mb-1">
-                <div class="form-floating">
-                  <input type="text" class="form-control border-0 p-4 text-light" name="nome" id="nome" placeholder="Nome completo*" style="background-color: #0c344b; border-radius: 15px;">
-                </div>
+                  <input type="text" class="form-control text-input" name="nome" id="nome" placeholder="Nome completo*">
               </div>
               <div class="row gx-1">
                 <div class="form-group col-md-6 mb-1">
-                  <select id="genero" class="form-control border-0 p-4 select-placeholder" name="genero" style="background-color: #0c344b; border-radius: 15px;">
+                  <select id="genero" class="form-control text-input" name="genero">
                     <option value="" disabled selected>Gênero*</option>
                     <option value="feminino">Feminino</option>
                     <option value="masculino">Masculino</option>
@@ -47,54 +38,51 @@ include_once('../head.php');
                   </select>
                 </div>
                 <div class="form-group col-md-6 mb-1">
-                  <input type="text" class="form-control border-0 p-4" name="apelido" id="apelido" placeholder="Como gostaria de ser chamado(a)?" style="background-color: #0c344b; color: #ffffff; border-radius: 15px;">
+                  <input type="text" class="form-control text-input" name="apelido" id="apelido" placeholder="Como gostaria de ser chamado(a)?">
                 </div>
               </div>
               <div class="row gx-1">
                 <div class="form-group col-md-6 mb-1">
-                  <input type="text" class="form-control border-0 p-4" name="cpf" id="cpf" placeholder="CPF*" style="background-color: #0c344b; border-radius: 15px;">
+                  <input type="text" class="form-control text-input" name="cpf" id="cpf" placeholder="CPF*" oninput="mascaraCpf(this)">
                 </div>
                 <div class="form-group col-md-6">
-                  <input type="text" class="form-control border-0 p-4" name="dataNascimento" id="dataNascimento" style="background-color: #0c344b; border-radius: 15px;" placeholder="Data de nascimento*">
+                  <input type="text" class="form-control text-input" name="dataNascimento" id="dataNascimento" placeholder="Data de nascimento*">
                 </div>
               </div>
               <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="usarMesmoCPF" name="usarMesmoCPF" autocomplete="off">
                 <label class="form-check-label text-light" for="usarMesmoCPF">Usar o mesmo CPF para notas fiscais e recibos</label>
               </div>
-              <h2 class="text-left mt-5 mb-1" style="font-family: 'League Spartan', sans-serif; color: #e3cbbc; font-weight: bold; font-size: 20px;">
+              <h2 class="section-title mt-5 mb-1">
                 INFORMAÇÕES DE CONTATO
               </h2>
               <div class="row gx-1">
                 <div class="form-group col-md-6">
-                  <input type="email" class="form-control border-0 p-4" name="email" id="email" placeholder="E-mail*" style="background-color: #0c344b; border-radius: 15px;">
+                  <input type="email" class="form-control text-input" name="email" id="email" placeholder="E-mail*">
                 </div>
                 <div class="form-group col-md-6">
-                  <input type="tel" class="form-control border-0 p-4" name="telefone" id="telefone" placeholder="Telefone*" style="background-color: #0c344b; border-radius: 15px;">
+                  <input type="tel" class="form-control text-input" name="telefone" id="telefone" placeholder="Telefone*" oninput="mascaraTelefone(this)">
                 </div>
               </div>
-              <h2 class="text-left mt-5 mb-1" style="font-family: 'League Spartan', sans-serif; color: #e3cbbc; font-weight: bold; font-size: 20px;">
+              <h2 class="section-title mt-5 mb-1">
                 CRIE SUA SENHA
               </h2>
               <div class="row gx-1">
                 <div class="form-group col-md-6">
-                  <input type="password" class="form-control border-0 p-4" name="senha" id="senha" placeholder="Senha*" style="background-color: #0c344b; border-radius: 15px;">
+                  <input type="password" class="form-control text-input" name="senha" id="senha" placeholder="Senha*">
                 </div>
                 <div class="form-group col-md-6">
-                  <input type="password" class="form-control border-0 p-4" name="senhaconfirm" id="senhaconfirm" placeholder="Confirmar senha*" style="background-color: #0c344b; border-radius: 15px;">
+                  <input type="password" class="form-control text-input" name="senhaconfirm" id="senhaconfirm" placeholder="Confirmar senha*">
                 </div>
               </div>
               <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="usarMesmoCPF" name="usarMesmoCPF" autocomplete="off">
-                <label class="form-check-label text-light" for="usarMesmoCPF">Declaro que todas informações aqui são verdadeiras</label>
+                <input type="checkbox" class="form-check-input" id="declaracao" name="declaracao" autocomplete="off">
+                <label class="form-check-label text-light" for="declaracao">Declaro que todas informações aqui são verdadeiras</label>
               </div>
 
-              <footer class="fixed-bottom" style="background-color: #021c2d; color: #ffffff; font-family: 'League Spartan', sans-serif; font-weight: bold; font-size: 20px; text-align: center; padding: 10px;">
+              <footer class="fixed-bottom footer">
                 <form class="form-inline justify-content-center">
-                  <button type="submit" class="btn"
-                    style="background-color: #021c2d; color: #1a4a67; border: none; border-radius: 8px; padding: 15px 30px; font-size: 20px; font-weight: bold; transition: background-color 0.3s, color 0.3s;"
-                    onmouseover="this.style.backgroundColor='#021c2d'; this.style.color='#e3cbbc';"
-                    onmouseout="this.style.backgroundColor='#021c2d'; this.style.color='#1a4a67';">
+                  <button type="submit" class="btn btn-cadastrar">
                     CADASTRAR
                   </button>
                 </form>
@@ -108,9 +96,46 @@ include_once('../head.php');
       flatpickr("#dataNascimento", {
         dateFormat: "d/m/Y",
         placeholder: "Data de nascimento*",
-        locale: "pt" // Configura o idioma para português, se necessário
+        locale: "pt"
       });
     </script>
+    <script>
+    function mascaraTelefone(telefone) {
+    let value = telefone.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+    if (value.length > 11) {
+        value = value.slice(0, 11); // Limita a 11 dígitos
+    }
+    // Aplica a máscara
+    if (value.length > 6) {
+        value = value.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3'); // Formato para números com 9 dígitos
+    } else if (value.length > 2) {
+        value = value.replace(/^(\d{2})(\d{4,5})$/, '($1) $2'); // Formato para números com 8 ou 9 dígitos
+    } else if (value.length > 0) {
+        value = value.replace(/^(\d{2})/, '($1'); // Formato inicial
+    }
+    telefone.value = value; // Atualiza o campo de entrada com a máscara aplicada
+}
+
+function mascaraCpf(cpf) {
+    let value = cpf.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+    if (value.length > 11) {
+        value = value.slice(0, 11); // Limita a 11 dígitos
+    }
+    // Aplica a máscara
+    if (value.length === 11) {
+        value = value.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, '$1.$2.$3-$4'); // CPF completo
+    } else if (value.length > 6) {
+        value = value.replace(/^(\d{3})(\d{3})(\d{1})$/, '$1.$2-$3'); // Primeiro grupo com máscara
+    } else if (value.length > 3) {
+        value = value.replace(/^(\d{3})(\d{1})$/, '$1.$2'); // Dois grupos com máscara
+    } else if (value.length > 0) {
+        value = value.replace(/^(\d{1,3})/, '$1'); // Apenas números
+    }
+    cpf.value = value; // Atualiza o campo de entrada com a máscara aplicada
+}
+
+</script> <!-- Certifique-se de usar o caminho correto -->
+
 
 </body>
 
