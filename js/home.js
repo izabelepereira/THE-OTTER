@@ -74,5 +74,3 @@ window.onclick = function(event) {
 
 // Quando o botão de abrir for clicado, abre o modal
 openButton.onclick = openModal;
-
-
