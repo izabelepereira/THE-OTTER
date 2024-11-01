@@ -43,7 +43,7 @@ include 'filmes.php'; // Ajuste conforme o diretório atual
 include 'carrossel.php'; // Ajuste conforme o diretório atual
 
 // Carrossel inicial
-gerarCarrossel(array_slice($filmes, 0, 8));
+gerarCarrossel(array_slice($filmes, 0, 10));
 ?>
 
 <div class="container">
@@ -62,25 +62,48 @@ gerarCarrossel(array_slice($filmes, 9, 16));
 ?>
 
 
-<div class="film-modal" id="film-modal"> 
-    <div class="film-modal-content">
-        <span class="film-close" id="film-close">&times;</span>
-        <h2 id="film-title">Título do Filme</h2>
-        <p id="film-description">Descrição do filme aqui...</p>
+<!-- Modal para Detalhes do Filme -->
+<div id="film-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+        <!-- Cabeçalho do Modal -->
+        <span id="film-close" class="close-button">&times;</span>
+        <div class="modal-body">
+            <div class="modal-left">
+                <img id="film-poster" src="" alt="Cartaz do Filme" />
+            </div>
+            <div class="modal-right">
+                <h2 id="film-title">Título do Filme</h2>
+                <p id="film-description">Descrição do filme aparecerá aqui.</p>
 
-        <div class="button-modal">
-            <button id="button1" class="info-button">Informação 1</button>
-            <button id="button2" class="info-button">Informação 2</button>
+                <!-- Opções de Ingresso, Horário e Data -->
+                <div id="session-options">
+                    <div class="session-group">
+                        <label>Escolha o tipo de ingresso:</label><br>
+                        <label><input type="radio" name="ticketType" value="inteira"> Inteira</label>
+                        <label><input type="radio" name="ticketType" value="meia"> Meia</label>
+                    </div>
+                    <div class="session-group">
+                        <label>Escolha o horário:</label><br>
+                        <label><input type="radio" name="sessionTime" value="19h dublado"> 19h - Dublado</label>
+                        <label><input type="radio" name="sessionTime" value="21h legendado"> 21h - Legendado</label>
+                    </div>
+                    <div class="session-group">
+                        <label>Escolha a data:</label><br>
+                        <div id="date-options"></div> <!-- Aqui você irá inserir as opções de data via JS -->
+                    </div>
+                    <div id="document-upload" style="display: none;">
+                        <label>Envie um comprovante de estudante:</label><br>
+                        <input type="file" id="student-document" accept="image/*">
+                        <p id="document-status" style="color: red;"></p>
+                    </div>
+                    <a href="assentos.php" id="confirm-session" class="confirm-button">Escolher assentos</a>
+                </div>
+            </div>
         </div>
-
-        <div class="ticket">
-            <i class="bi bi-ticket"></i>
-            <p class="ticket-label">Texto aqui</p>
-        </div>
-
-        <button id="add-to-cart" class="buy-button">Comprar Ingressos</button>
     </div>
 </div>
+
+
 
     <script src="/THE-OTTER/js/home.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

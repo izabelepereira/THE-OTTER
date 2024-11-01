@@ -8,14 +8,32 @@ include_once('../head.php');
 
 <body>
 <?php
-$pageLabel = "seleção de assentos"; 
+$pageLabel = "Seleção de Assentos"; 
 include '../navbar1.php';
 ?>
 
-<h1>Seleção de Assentos</h1>
+
+
+<!-- Recuperar informações passadas pela URL -->
+<?php
+$movieId = isset($_GET['movieId']) ? $_GET['movieId'] : 'Desconhecido';
+$movieName = isset($_GET['movieTitle']) ? $_GET['movieTitle'] : 'Filme Desconhecido';
+$moviePrice = isset($_GET['ticketPrice']) ? $_GET['ticketPrice'] : '0';
+$showTime = isset($_GET['sessionTime']) ? $_GET['sessionTime'] : 'Não definido';
+$selectedSeatsString = isset($_GET['seats']) ? $_GET['seats'] : '';
+
+?>
+
 <div class="assentos">
     <h3>Selecione os assentos:</h3>
     <p>Capacidade da sala - 312 assentos</p>
+</div>
+
+<div class="informacoes-filme">
+    <h4>Filme: <span class="info-url"><?php echo htmlspecialchars($movieName); ?></span></h4>
+    <p>Preço do Ingresso: <span class="info-url">R$ <?php echo htmlspecialchars($moviePrice); ?></span></p>
+    <p>Horário: <span class="info-url"><?php echo htmlspecialchars($showTime); ?></span></p>
+    <p>Assentos Selecionados: <span id="seats-list"><?php echo htmlspecialchars($selectedSeatsString); ?></span></p>
 </div>
 <div class="legenda">
     <div class="legenda-item">
@@ -27,26 +45,23 @@ include '../navbar1.php';
         <span>Assento Livre</span>
     </div>
 </div>
+
 <div class="seat-section-container">
-    <!-- Coluna de letras -->
     <div class="letter-column">
         <h2>Filas</h2>
         <div id="letters"></div>
     </div>
 
     <div class="seat-map-container">
-        <!-- Grupos de assentos lado a lado -->
         <div class="seat-section">
-           <div class="seat-map" id="group1"></div>
+            <div class="seat-map" id="group1"></div>
         </div>
 
         <div class="seat-section">
-
             <div class="seat-map" id="group2"></div>
         </div>
 
         <div class="seat-section">
-
             <div class="seat-map" id="group3"></div>
         </div>
     </div>
@@ -59,11 +74,10 @@ include '../navbar1.php';
 <footer class="footer fixed-bottom">
     <form class="form-inline justify-content-center" onsubmit="event.preventDefault(); addToCart();">
         <button type="submit" class="btn btn-add-to-cart">
-           prosseguir
+           Prosseguir
         </button>
     </form>
 </footer>
-
 
 <script>
 const selectedSeats = [];
@@ -82,7 +96,6 @@ function createSeats(groupId, startId, numberOfSeats, seatsInRow, initialLetterI
 
         // Condicional para exibir a letra do lado esquerdo ou direito
         if (groupId === "group1") {
-            // Letra à esquerda
             const letter = document.createElement('div');
             letter.classList.add('row-letter');
             letter.innerText = alphabet[letterIndex];
@@ -90,7 +103,6 @@ function createSeats(groupId, startId, numberOfSeats, seatsInRow, initialLetterI
             letterIndex++;
         }
 
-        // Adiciona os assentos na linha
         for (let i = 0; i < seatsInRow && seatId <= startId + numberOfSeats - 1; i++) {
             const seat = document.createElement('div');
             seat.classList.add('seat');
@@ -102,7 +114,6 @@ function createSeats(groupId, startId, numberOfSeats, seatsInRow, initialLetterI
         }
 
         if (groupId === "group3") {
-            // Letra à direita
             const letter = document.createElement('div');
             letter.classList.add('row-letter', 'group3-letter');
             letter.innerText = alphabet[letterIndex];
@@ -124,17 +135,38 @@ function toggleSeat(seat) {
     } else {
         selectedSeats.push(seatId);
     }
+    updateSelectedSeats();
+}
+
+function updateSelectedSeats() {
+    const seatsListElement = document.getElementById('seats-list');
+    if (selectedSeats.length > 0) {
+        seatsListElement.innerText = selectedSeats.join(', ');
+    } else {
+        seatsListElement.innerText = 'Nenhum';
+    }
 }
 
 function addToCart() {
-    console.log(selectedSeats);
+    if (selectedSeats.length === 0) {
+        alert('Por favor, selecione pelo menos um assento.');
+        return;
+    }
+
+    const selectedSeatsString = selectedSeats.join(',');
+    const movieName = '<?php echo addslashes($movieName); ?>';
+    const moviePrice = '<?php echo addslashes($moviePrice); ?>';
+    const showTime = '<?php echo addslashes($showTime); ?>';
+    const selectedSeatsParam = `seats=${encodeURIComponent(selectedSeatsString)}&movie=${encodeURIComponent(movieName)}&price=${encodeURIComponent(moviePrice)}&time=${encodeURIComponent(showTime)}`;
+
+    // Redireciona ou processa a compra conforme necessário
+    window.location.href = `carrinho.php?${selectedSeatsParam}`;
 }
 
 // Criar assentos para todos os grupos
 createSeats('group1', 1, 82, 6, 0);      // Grupo 1: Assentos 1 a 82, letras A a N à esquerda
 createSeats('group2', 83, 148, 11, 0);   // Grupo 2: Assentos 83 a 230, sem letras
 createSeats('group3', 231, 82, 6, 0);    // Grupo 3: Assentos 231 a 312, letras A a N à direita
-
 </script>
 
 </body>

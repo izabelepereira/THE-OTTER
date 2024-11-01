@@ -228,3 +228,46 @@ h1 {
 .btn-add-to-cart:hover {
     color: #e3cbbc; /* Cor do texto ao passar o mouse */
 }
+
+.informacoes-filme {
+    background-color: transparent;
+    border: #e3cbbc solid 1px;
+    border-radius: 15px;
+    padding: 15px;
+    margin-left: 0%; /* Espaço à direita da seção */
+    width: 70%; /* Largura fixa para a seção de informações */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.informacoes-filme h4 {
+    margin: 0 0 10px;
+    font-size: 1.3em;
+    color:#e3cbbc; /* Azul para destacar o título do filme */
+    font-family: 'League Spartan';
+    font-weight: bold;
+}
+
+.informacoes-filme p {
+    margin: 5px 0;
+    font-size: 1.3em;
+    color: #e3cbbc;
+    font-family: 'League Spartan';
+    font-weight: bold;
+}
+
+/* Estilos para informações que vêm da URL */
+.info-url {
+    color: #e3cbbc; /* Azul para destacar informações da URL */
+    font-weight: normal;
+
+
+}
+
+#seats-list {
+    font-weight: bold; /* Destaca a lista de assentos selecionados */
+    color: #e3cbbc;
+    font-family: 'League Spartan';
+}
+
+.selection h1 {
+    color: #e3cbbc; }

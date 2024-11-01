@@ -5,8 +5,23 @@
 $pageTitle = 'Snack Bar';
 include_once('../head.php');
 ?>
- <link rel="stylesheet" href="../css/snack.css"> <!-- Link para o arquivo CSS -->
+ <link rel="stylesheet" href="../css/snack.css">
+<style>
+  .col-md-3 {
+    display: none;
+    /* Oculta todos os produtos inicialmente */
+  }
 
+  @font-face {
+    font-family: 'Heavitas';
+    /* Nome que você deseja usar para a fonte */
+    src: url('../../fonts/Heavitas.ttf') format('truetype');
+    /* Caminho para a fonte */
+    font-weight: normal;
+    /* Ajuste o peso se necessário */
+    font-style: normal;
+    /* Ajuste o estilo se necessário */
+  }
 <body style="background-color: #001d2f;" class="text-light">
 
 <?php 

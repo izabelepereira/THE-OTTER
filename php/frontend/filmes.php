@@ -154,14 +154,21 @@ $carouselItems = [
         'buttonText' => '18',
     ],
     [
-        'image' => '../../images/deadpool.png',
-        'title' => 'Deadpool & Wolverine',
+        'image' => '../../images/gladiador.png',
+        'title' => 'Gladiador II',
         'textColor' => 'color:#FFD54A;',
         'buttonClass' => 'idade-18',
         'buttonText' => '18',
         'subtitleColor' => 'color:#B72020;',
     ],
-    // Continue adicionando os outros slides aqui
+    [
+        'image' => '../../images/moana.png',
+        'title' => 'Moana 2',
+        'textColor' => 'color:#34365d;',
+        'buttonClass' => 'idade-L',
+        'buttonText' => 'L',
+        'subtitleColor' => 'color:#fff;',
+    ],
 ];
 
 ?>
