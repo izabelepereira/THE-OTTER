@@ -13,10 +13,11 @@ include('../backend/conexao.php'); // Inclui o arquivo de conexão
 $pageTitle = 'Carrinho de Compras';
 include_once('../head.php');
 ?>
+<link rel="stylesheet" href="../css/carrinho.css">
 
 <body style="background-color: #001d2f;" class="text-light">
 <?php
-$pageLabel = "seu carrinho"; 
+$pageLabel = "Seu Carrinho"; 
 include '../navbar1.php';
 ?>
 
@@ -42,7 +43,7 @@ include '../navbar1.php';
                     echo '<div class="card-body" style="flex-grow: 1; display: flex; flex-direction: column;">';
                     echo '<h5 class="card-title" style="color: #e3cbbc; margin: 0; font-family: \'League Spartan\', sans-serif;">' . htmlspecialchars($produto['nome']) . '</h5>';
                     echo '<p class="card-text" style="color: #e3cbbc; margin: 0; font-family: \'League Spartan\', sans-serif; font-weight: bold; font-size: 1.6em;">R$ ' . number_format($produto['preco'], 2, ',', '.') . '</p>';
-
+                    
                     // Exibe a quantidade do produto
                     echo '<p class="card-text m-0">' . htmlspecialchars($produto['quantidade']) . '</p>';
 
@@ -50,22 +51,40 @@ include '../navbar1.php';
 
                     $total += $produto['preco'] * $produto['quantidade']; // Adiciona o preço do produto ao total
                 }
-            } else {
-                echo '<div class="col-12 text-center" style="color: #e3cbbc; margin-top: 5%;">';
-                echo '<h3 style="margin: 0; font-size: 1.9em; font-family: \'League Spartan\', sans-serif;">Seu carrinho está vazio.</h3>';
-                echo '<p style="color: #e3cbbc; font-size: 1.2em;">Adicione produtos para começar a comprar!</p>';
-                echo '<a href="snack.php" class="btn btn-light" style="background-color: #e3cbbc; color: #001d2f; border-radius: 10px; margin-top: 2%; font-family: \'League Spartan\', sans-serif;">Voltar às Compras</a>';
-                echo '</div>';
-            }
+            } 
+            ?>
+        </div>
+
+        <!-- Exibir informações dos ingressos -->
+       
+<div class="row">
+    <div class="col-12">
+        <div class="informacoes-filme">
+            <?php
+            // Recuperar informações dos ingressos passadas pela URL
+            $selectedSeats = isset($_GET['seats']) ? $_GET['seats'] : 'Nenhum assento selecionado';
+            $movieName = isset($_GET['movieTitle']) ? $_GET['movieTitle'] : 'Filme Desconhecido';
+            $ticketPrice = isset($_GET['ticketPrice']) ? $_GET['ticketPrice'] : 0;
+            $showTime = isset($_GET['sessionTime']) ? $_GET['sessionTime'] : 'Não definido';
+            $room = isset($_GET['room']) ? $_GET['room'] : 'Sala Desconhecida';
+
+            // Exibir as informações
+            echo '<h4>Filme: <span class="info-url">' . htmlspecialchars($movieName) . '</span></h4>';
+            echo '<p>Preço do Ingresso: <span class="info-url">R$ ' . number_format($ticketPrice, 2, ',', '.') . '</span></p>';
+            echo '<p>Horário: <span class="info-url">' . htmlspecialchars($showTime) . '</span></p>';
+            echo '<p>Sala: <span class="info-url">' . htmlspecialchars($room) . '</span></p>'; // Adicionada a exibição da sala
+            echo '<p>Assento Selecionado: <span id="seats-list">' . htmlspecialchars($selectedSeats) . '</span></p>';
             ?>
         </div>
     </div>
+</div>
+
 
     <!-- Total no Rodapé -->
     <footer class="fixed-bottom" style="background-color: #021c2d; color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-weight: bold; font-size: 20px; padding: 10px; width: 100%; display: flex; justify-content: center; align-items: center;">
         <div style="display: flex; align-items: center; justify-content: center;">
             <div style="margin-right: 20px;">
-                SUBTOTAL: <span style="font-weight: bold;">R$ <?php echo isset($total) ? number_format($total, 2, ',', '.') : '0,00'; ?></span>
+                SUBTOTAL: <span style="font-weight: bold;">R$ <?php echo number_format($total + (isset($ticketPrice) ? $ticketPrice : 0), 2, ',', '.'); ?></span>
             </div>
             <form class="form-inline" action="pagamento.php" method="post">
                 <button type="submit" class="btn"

@@ -74,6 +74,7 @@ gerarCarrossel(array_slice($filmes, 9, 16));
             <div class="modal-right">
                 <h2 id="film-title">Título do Filme</h2>
                 <p id="film-description">Descrição do filme aparecerá aqui.</p>
+                <p id="film-room"></p> <!-- Exibe a sala do filme -->
 
                 <!-- Opções de Ingresso, Horário e Data -->
                 <div id="session-options">
@@ -82,19 +83,19 @@ gerarCarrossel(array_slice($filmes, 9, 16));
                         <label><input type="radio" name="ticketType" value="inteira"> Inteira</label>
                         <label><input type="radio" name="ticketType" value="meia"> Meia</label>
                     </div>
-                    <div class="session-group">
-                        <label>Escolha o horário:</label><br>
-                        <label><input type="radio" name="sessionTime" value="19h dublado"> 19h - Dublado</label>
-                        <label><input type="radio" name="sessionTime" value="21h legendado"> 21h - Legendado</label>
-                    </div>
-                    <div class="session-group">
-                        <label>Escolha a data:</label><br>
-                        <div id="date-options"></div> <!-- Aqui você irá inserir as opções de data via JS -->
-                    </div>
                     <div id="document-upload" style="display: none;">
                         <label>Envie um comprovante de estudante:</label><br>
                         <input type="file" id="student-document" accept="image/*">
                         <p id="document-status" style="color: red;"></p>
+                    </div>
+                    <div class="session-group">
+                        <label>Escolha o horário:</label><br>
+                        <label><input type="radio" name="sessionTime" value="19h - Dublado"> 19h - Dublado</label>
+                        <label><input type="radio" name="sessionTime" value="21h - Legendado"> 21h - Legendado</label>
+                    </div>
+                    <div class="session-group">
+                        <label>Escolha a data:</label><br>
+                        <div id="date-options"></div> <!-- Opções de data serão inseridas aqui via JS -->
                     </div>
                     <a href="assentos.php" id="confirm-session" class="confirm-button">Escolher assentos</a>
                 </div>

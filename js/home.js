@@ -11,49 +11,65 @@ document.getElementById('film-close').addEventListener('click', () => {
 
 function fetchMovieDetails(id) {
     const movies = {
-        1: { id: 1, title: "Gladiador II", description: "Duração: 2h40min", poster: "../../images/gladia.jpeg" },
-        2: { id: 2, title: "Wicked - Parte 1", description: "Duração: 1h50min", poster: "../../images/wi.jpg" },
-        3: { id: 3, title: "Terrifier 3", description: "Duração: 2h40min", poster: "../../images/terrifier.jpg" },
-        4: { id: 4, title: "Moana 2", description: "Duração: 2h20min", poster: "../../images/moana1.jpeg" },
-        5: { id: 5, title: "Mufasa", description: "Duração: 2h40min", poster: "../../images/mufasa1.jpg" },
-        6: { id: 6, title: "Sonic 3", description: "Duração: 1h45min", poster: "../../images/sonic.jpg" },
-        7: { id: 7, title: "Nosferatu", description: "Duração: 1h49min", poster: "../../images/nosferatu.jpg" },
-        8: { id: 8, title: "Kraven", description: "Duração: 3h07min", poster: "../../images/kraven.jpg" },
-        9: { id: 9, title: "Gladiador II", description: "Duração: 2h40min", poster: "../../images/gladia.jpeg" },
-        10: { id: 10, title: "Indiana Jones e a Relíquia Perdida", description: "Duração: 2h15min", poster: "../../images/indiana_jones.jpg" },
-        11: { id: 11, title: "Star Wars: A Nova Era", description: "Duração: 3h00min", poster: "../../images/star_wars.jpg" },
-        12: { id: 12, title: "A Bela e a Fera: A Nova Versão", description: "Duração: 1h45min", poster: "../../images/bela_e_a_fera.jpg" },
-        13: { id: 13, title: "Os Vingadores: Reunião Final", description: "Duração: 2h50min", poster: "../../images/vingadores.jpg" },
-        14: { id: 14, title: "Jurassic World: Renascimento", description: "Duração: 2h20min", poster: "../../images/jurassic_world.webp" },
-        15: { id: 15, title: "Detetive Chinatown 3", description: "Duração: 1h50min", poster: "../../images/detetive_chinatown.png" },
-        16: { id: 16, title: "Avatar 2", description: "Duração: 2h50min", poster: "../../images/avatar.webp" },
+        1: { id: 1, title: "Gladiador II", description: "Duração: 2h40min", poster: "../../images/gladia.jpeg", room: "Sala 1" },
+        2: { id: 2, title: "Wicked - Parte 1", description: "Duração: 1h50min", poster: "../../images/wi.jpg", room: "Sala 2" },
+        3: { id: 3, title: "Terrifier 3", description: "Duração: 2h40min", poster: "../../images/terrifier.jpg", room: "Sala 1" },
+        4: { id: 4, title: "Moana 2", description: "Duração: 2h20min", poster: "../../images/moana1.jpeg", room: "Sala 1" },
+        5: { id: 5, title: "Mufasa", description: "Duração: 2h40min", poster: "../../images/mufasa1.jpg", room: "Sala 1" },
+        6: { id: 6, title: "Sonic 3", description: "Duração: 1h45min", poster: "../../images/sonic.jpg", room: "Sala 1" },
+        7: { id: 7, title: "Nosferatu", description: "Duração: 1h49min", poster: "../../images/nosferatu.jpg", room: "Sala 2" },
+        8: { id: 8, title: "Kraven", description: "Duração: 3h07min", poster: "../../images/kraven.jpg", room: "Sala 2" },
+        9: { id: 9, title: "Gladiador II", description: "Duração: 2h40min", poster: "../../images/gladia.jpeg", room: "Sala 1" },
+        10: { id: 10, title: "Indiana Jones e a Relíquia Perdida", description: "Duração: 2h15min", poster: "../../images/indiana_jones.jpg", room: "Sala 2" },
+        11: { id: 11, title: "Star Wars: A Nova Era", description: "Duração: 3h00min", poster: "../../images/star_wars.jpg", room: "Sala 1" },
+        12: { id: 12, title: "A Bela e a Fera: A Nova Versão", description: "Duração: 1h45min", poster: "../../images/bela_e_a_fera.jpg", room: "Sala 2" },
+        13: { id: 13, title: "Os Vingadores: Reunião Final", description: "Duração: 2h50min", poster: "../../images/vingadores.jpg", room: "Sala 2" },
+        14: { id: 14, title: "Jurassic World: Renascimento", description: "Duração: 2h20min", poster: "../../images/jurassic_world.webp", room: "Sala 1" },
+        15: { id: 15, title: "Detetive Chinatown 3", description: "Duração: 1h50min", poster: "../../images/detetive_chinatown.png", room: "Sala 2" },
+        16: { id: 16, title: "Avatar 2", description: "Duração: 2h50min", poster: "../../images/avatar.webp", room: "Sala 1" },
     };
+
 
     const movie = movies[id];
     document.getElementById('film-title').innerText = movie.title;
     document.getElementById('film-description').innerText = movie.description;
     document.getElementById('film-poster').src = movie.poster;
+    document.getElementById('film-room').innerText = `Sala: ${movie.room}`; // Exibe a sala do filme no modal
 
     // Gera opções de data
     generateDateOptions();
 
     document.getElementById('film-modal').style.display = 'flex';
 
+    // Exibe o campo de documento para meia entrada
+    document.querySelectorAll('input[name="ticketType"]').forEach(input => {
+        input.addEventListener('change', () => {
+            if (input.value === 'meia') {
+                document.getElementById('document-upload').style.display = 'block';
+            } else {
+                document.getElementById('document-upload').style.display = 'none';
+                document.getElementById('student-document').value = ''; // Limpa o campo de upload se meia não for selecionado
+                document.getElementById('document-status').innerText = '';
+            }
+        });
+    });
+
     // Lógica para confirmar a sessão e redirecionar para a página de assentos
     document.getElementById('confirm-session').addEventListener('click', (e) => {
-        e.preventDefault(); // Impede o redirecionamento padrão
+        e.preventDefault();
 
         const ticketType = document.querySelector('input[name="ticketType"]:checked');
         const sessionTime = document.querySelector('input[name="sessionTime"]:checked');
         const sessionDate = document.querySelector('input[name="sessionDate"]:checked');
         const documentUpload = document.getElementById('student-document').files.length;
 
-        // Verifica se os campos obrigatórios estão preenchidos
+        // Verifica se todos os campos obrigatórios estão preenchidos
         if (!ticketType || !sessionTime || !sessionDate) {
             alert('Por favor, preencha todos os campos.');
             return;
         }
 
+        // Verifica o upload do documento para meia entrada
         if (ticketType.value === 'meia' && documentUpload === 0) {
             document.getElementById('document-status').innerText = 'Por favor, envie um comprovante de estudante.';
             return;
@@ -61,10 +77,10 @@ function fetchMovieDetails(id) {
             document.getElementById('document-status').innerText = '';
         }
 
-        // Armazenando dados na URL da página de assentos
-        const movieTitle = encodeURIComponent(movie.title); // Altere isso para usar movie.title
-        const ticketPrice = ticketType.value === 'meia' ? 15 : 30; // Preço do ingresso
-        const ticketDetails = `?movieId=${movie.id}&movieTitle=${movieTitle}&ticketType=${ticketType.value}&sessionTime=${sessionTime.value}&sessionDate=${sessionDate.value}&ticketPrice=${ticketPrice}`;
+        // Armazena dados na URL da página de assentos
+        const movieTitle = encodeURIComponent(movie.title);
+        const ticketPrice = ticketType.value === 'meia' ? 15 : 30; // Define o preço do ingresso
+        const ticketDetails = `?movieId=${movie.id}&movieTitle=${movieTitle}&ticketType=${ticketType.value}&sessionTime=${sessionTime.value}&sessionDate=${sessionDate.value}&ticketPrice=${ticketPrice}&room=${movie.room}`;
 
         window.location.href = `assentos.php${ticketDetails}`;
     });
@@ -72,6 +88,7 @@ function fetchMovieDetails(id) {
 
 function generateDateOptions() {
     const dateOptions = document.getElementById('date-options');
+    dateOptions.innerHTML = ''; // Limpa as opções de data antes de adicionar novas
     const today = new Date();
     for (let i = 0; i < 3; i++) {
         const date = new Date(today);
