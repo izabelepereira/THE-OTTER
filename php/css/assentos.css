@@ -237,12 +237,27 @@ h1 {
     margin-left: 0%; /* Espaço à direita da seção */
     width: 70%; /* Largura fixa para a seção de informações */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between; /* Espaça os elementos de forma que fiquem em lados opostos */
+    align-items: center; /* Centraliza verticalmente os itens */
+}
+
+.info-texto {
+    flex-grow: 1; /* Permite que o bloco de texto ocupe o espaço disponível */
+}
+
+.poster-imagem {
+    width: 13%; /* Mantém a largura do pôster */
+    height: auto; /* Mantém a proporção da imagem */
+    margin-left: 15px; /* Espaço à esquerda do pôster */
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .informacoes-filme h4 {
     margin: 0 0 10px;
     font-size: 1.3em;
-    color:#e3cbbc; /* Azul para destacar o título do filme */
+    color: #e3cbbc; /* Azul para destacar o título do filme */
     font-family: 'League Spartan';
     font-weight: bold;
 }
@@ -259,8 +274,6 @@ h1 {
 .info-url {
     color: #e3cbbc; /* Azul para destacar informações da URL */
     font-weight: normal;
-
-
 }
 
 #seats-list {
@@ -270,4 +283,38 @@ h1 {
 }
 
 .selection h1 {
-    color: #e3cbbc; }
+    color: #e3cbbc;
+}
+
+.container {
+    max-width: 800px;
+    text-align: center;
+}
+
+.row-letter {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.modal-content {
+    background-color:#0a2d42;
+    color:#e3cbbc;
+    font-family: 'League Spartan';
+    border-radius: 15px;
+}
+
+.modal-header {
+    border-bottom: #e3cbbc solid 1px;
+}
+.modal-title {
+    font-weight: bold;
+}
+
+ 
+
+
+.btn-light {
+    color:#021c2d;
+    background-color: #e3cbbc;
+
+}

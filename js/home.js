@@ -29,32 +29,28 @@ function fetchMovieDetails(id) {
         16: { id: 16, title: "Avatar 2", description: "Duração: 2h50min", poster: "../../images/avatar.webp", room: "Sala 1" },
     };
 
-
     const movie = movies[id];
     document.getElementById('film-title').innerText = movie.title;
     document.getElementById('film-description').innerText = movie.description;
     document.getElementById('film-poster').src = movie.poster;
-    document.getElementById('film-room').innerText = `Sala: ${movie.room}`; // Exibe a sala do filme no modal
+    document.getElementById('film-room').innerText = `Sala: ${movie.room}`;
 
-    // Gera opções de data
     generateDateOptions();
 
     document.getElementById('film-modal').style.display = 'flex';
 
-    // Exibe o campo de documento para meia entrada
     document.querySelectorAll('input[name="ticketType"]').forEach(input => {
         input.addEventListener('change', () => {
             if (input.value === 'meia') {
                 document.getElementById('document-upload').style.display = 'block';
             } else {
                 document.getElementById('document-upload').style.display = 'none';
-                document.getElementById('student-document').value = ''; // Limpa o campo de upload se meia não for selecionado
+                document.getElementById('student-document').value = '';
                 document.getElementById('document-status').innerText = '';
             }
         });
     });
 
-    // Lógica para confirmar a sessão e redirecionar para a página de assentos
     document.getElementById('confirm-session').addEventListener('click', (e) => {
         e.preventDefault();
 
@@ -63,13 +59,11 @@ function fetchMovieDetails(id) {
         const sessionDate = document.querySelector('input[name="sessionDate"]:checked');
         const documentUpload = document.getElementById('student-document').files.length;
 
-        // Verifica se todos os campos obrigatórios estão preenchidos
         if (!ticketType || !sessionTime || !sessionDate) {
             alert('Por favor, preencha todos os campos.');
             return;
         }
 
-        // Verifica o upload do documento para meia entrada
         if (ticketType.value === 'meia' && documentUpload === 0) {
             document.getElementById('document-status').innerText = 'Por favor, envie um comprovante de estudante.';
             return;
@@ -77,10 +71,10 @@ function fetchMovieDetails(id) {
             document.getElementById('document-status').innerText = '';
         }
 
-        // Armazena dados na URL da página de assentos
         const movieTitle = encodeURIComponent(movie.title);
-        const ticketPrice = ticketType.value === 'meia' ? 15 : 30; // Define o preço do ingresso
-        const ticketDetails = `?movieId=${movie.id}&movieTitle=${movieTitle}&ticketType=${ticketType.value}&sessionTime=${sessionTime.value}&sessionDate=${sessionDate.value}&ticketPrice=${ticketPrice}&room=${movie.room}`;
+        const ticketPrice = ticketType.value === 'meia' ? 15 : 30;
+        const poster = encodeURIComponent(movie.poster); // Codifica o caminho da imagem para URL
+        const ticketDetails = `?movieId=${movie.id}&movieTitle=${movieTitle}&ticketType=${ticketType.value}&sessionTime=${sessionTime.value}&sessionDate=${sessionDate.value}&ticketPrice=${ticketPrice}&room=${movie.room}&poster=${poster}`;
 
         window.location.href = `assentos.php${ticketDetails}`;
     });
@@ -88,7 +82,7 @@ function fetchMovieDetails(id) {
 
 function generateDateOptions() {
     const dateOptions = document.getElementById('date-options');
-    dateOptions.innerHTML = ''; // Limpa as opções de data antes de adicionar novas
+    dateOptions.innerHTML = '';
     const today = new Date();
     for (let i = 0; i < 3; i++) {
         const date = new Date(today);
@@ -98,6 +92,7 @@ function generateDateOptions() {
         dateOptions.appendChild(option);
     }
 }
+
 
 
 const slider = document.querySelector('.film-items');

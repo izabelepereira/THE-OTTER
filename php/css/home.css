@@ -20,18 +20,19 @@
     font-size: 2.5em; /* Para o h5 */
     text-transform: uppercase;
     margin-bottom: 10px; /* Margem abaixo do h5 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .assista-text {
-    font-family: 'League Spartan', sans-serif;
+    font-family: 'Heavitas', sans-serif;
     color: #ffffff;
     text-align: left;
     width: 90%;
     font-size: 1.5em; /* Tamanho do h1 */
-    font-weight: bolder;
     text-transform: uppercase;
     font-style: italic;
     margin-top: 10px; /* Aumente conforme necessário para mover o h1 mais para baixo */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -192,8 +193,8 @@
   border-radius: 15px;
   cursor: pointer;
   font-weight: bold;
-  text-transform: uppercase;
   text-decoration: none;
+  font-family: 'League Spartan';
 }
 
 .modal-body {
@@ -216,8 +217,6 @@
   padding: 10px; /* Espaçamento interno */
 }
 
-
-
 .now-showing {
   padding: 20px;
   text-align: left;
@@ -227,7 +226,7 @@
   font-size: 1.3rem;
   color:#e3cbbc;
   margin-top: 3%;
-  margin-left: 7%;
+  margin-left: 6%;
   font-family: 'League Spartan';
   font-weight: bold;
   text-transform: uppercase;
