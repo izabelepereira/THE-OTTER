@@ -6,15 +6,14 @@ include_once('../head.php');
 ?>
 <link rel="stylesheet" href="../css/assentos.css">
 
+
+
 <body>
 <?php
 $pageLabel = "Seleção de Assentos"; 
 include '../navbar1.php';
-?>
 
-<!-- Recuperar informações passadas pela URL -->
-
-<?php
+// Recuperar informações passadas pela URL
 $movieId = isset($_GET['movieId']) ? $_GET['movieId'] : 'Desconhecido';
 $movieName = isset($_GET['movieTitle']) ? $_GET['movieTitle'] : 'Filme Desconhecido';
 $moviePrice = isset($_GET['ticketPrice']) ? $_GET['ticketPrice'] : '0';
@@ -23,8 +22,6 @@ $selectedSeatsString = isset($_GET['seats']) ? $_GET['seats'] : '';
 $roomNumber = isset($_GET['room']) ? $_GET['room'] : 'Sala Desconhecida';
 $posterPath = isset($_GET['poster']) ? $_GET['poster'] : '../../images/default_poster.jpg';
 ?>
-
-
 
 <div class="assentos">
     <h3>Selecione os assentos:</h3>
@@ -42,8 +39,6 @@ $posterPath = isset($_GET['poster']) ? $_GET['poster'] : '../../images/default_p
     <img src="<?php echo htmlspecialchars($posterPath); ?>" alt="Poster do Filme" class="poster-imagem">
 </div>
 
-
-
 <div class="legenda">
     <div class="legenda-item">
         <button class="assento-ocupado"></button>
@@ -58,7 +53,7 @@ $posterPath = isset($_GET['poster']) ? $_GET['poster'] : '../../images/default_p
 <div class="seat-section-container">
     <div class="letter-column">
         <h2>Filas</h2>
-        <div id="letters"></div>
+        <div id="letters"></div> <!-- Este local será preenchido com letras das filas -->
     </div>
 
     <div class="seat-map-container">
@@ -73,15 +68,17 @@ $posterPath = isset($_GET['poster']) ? $_GET['poster'] : '../../images/default_p
 </div>
 
 <footer class="footer fixed-bottom">
-    <form class="form-inline justify-content-center" onsubmit="event.preventDefault(); addToCart();">
-           Prosseguir
+<form class="form-inline justify-content-center" onsubmit="event.preventDefault(); addToCart();">
+        <button type="submit" class="btn"
+            style="background-color: #021c2d; color: #1a4a67; border: none; padding: 15px 30px; font-size: 20px; font-weight: bold;">
+            Prosseguir
         </button>
     </form>
 </footer>
 
 <!-- Modal para mensagem de um assento por ingresso -->
 <div class="modal fade" id="modalUmAssento" tabindex="-1" aria-labelledby="modalUmAssentoLabel" aria-hidden="true">
-    <div class="modal-dialog modal-top"> <!-- Classe modal-top para sair da parte superior da tela -->
+    <div class="modal-dialog modal-top">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalUmAssentoLabel">Limite de Assentos</h5>
@@ -99,8 +96,9 @@ $posterPath = isset($_GET['poster']) ? $_GET['poster'] : '../../images/default_p
     </div>
 </div>
 
-<script>
-const selectedSeats = [];
+
+  <script>
+        const selectedSeats = [];
 const alphabet = 'ABCDEFGHIJKLMN'; // Letras de A a N
 
 // Função para criar os assentos
@@ -114,39 +112,34 @@ function createSeats(groupId, startId, numberOfSeats, seatsInRow, initialLetterI
         const row = document.createElement('div');
         row.classList.add('seat-row');
 
-        if (groupId === "group1") {
+        // Adiciona a letra da fila para os grupos 1 e 3
+        if (groupId === "group1" || groupId === "group3") {
             const letter = document.createElement('div');
             letter.classList.add('row-letter');
-            letter.innerText = alphabet[letterIndex];
-            row.appendChild(letter); 
-            letterIndex++;
-        }
-
-        for (let i = 0; i < seatsInRow && seatId <= startId + numberOfSeats - 1; i++) {
-            const seat = document.createElement('div');
-            seat.classList.add('seat');
-            seat.dataset.seatId = seatId;
-            seat.innerText = seatId;
-            seat.addEventListener('click', () => toggleSeat(seat));
-            row.appendChild(seat);
-            seatId++;
-        }
-
-        if (groupId === "group3") {
-            const letter = document.createElement('div');
-            letter.classList.add('row-letter', 'group3-letter');
             letter.innerText = alphabet[letterIndex];
             row.appendChild(letter);
             letterIndex++;
         }
 
-        rows.unshift(row);
+        // Criação dos assentos
+        for (let i = 0; i < seatsInRow && seatId <= startId + numberOfSeats - 1; i++) {
+            const seat = document.createElement('div');
+            seat.classList.add('seat');
+            seat.dataset.seatId = seatId;
+            seat.innerText = seatId;
+            seat.addEventListener('click', () => toggleSeat(seat)); // Evento de clique
+            row.appendChild(seat);
+            seatId++;
+        }
+
+        rows.unshift(row); // Adiciona a fila ao topo da lista
     }
 
+    // Adiciona todas as filas ao grupo de assentos
     rows.forEach(row => seatMap.appendChild(row));
 }
 
-// Função para alternar a seleção de assento e exibir modal se houver mais de um assento selecionado
+// Função para alternar a seleção de assento
 function toggleSeat(seat) {
     const seatId = seat.dataset.seatId;
 
@@ -158,9 +151,9 @@ function toggleSeat(seat) {
 
     seat.classList.toggle('selected');
     if (selectedSeats.includes(seatId)) {
-        selectedSeats.splice(selectedSeats.indexOf(seatId), 1);
+        selectedSeats.splice(selectedSeats.indexOf(seatId), 1); // Remove o assento
     } else {
-        selectedSeats.push(seatId);
+        selectedSeats.push(seatId); // Adiciona o assento
     }
     updateSelectedSeats();
 }
@@ -171,11 +164,88 @@ function updateSelectedSeats() {
     seatsListElement.innerText = selectedSeats.length > 0 ? selectedSeats.join(', ') : 'Nenhum';
 }
 
-// Criação dos assentos
+// Função para carregar os assentos ocupados do backend
+function loadSelectedSeats() {
+    const movieId = '<?php echo htmlspecialchars($movieId); ?>';  // Passando o movieId para o JS via PHP
+
+    fetch(`/THE-OTTER/php/backend/getSelectedSeats.php?movieId=${movieId}`)
+    .then(response => response.json())
+    .then(data => {
+        console.log('Assentos ocupados:', data);
+        if (data.success && data.seats) {
+            const occupiedSeatsArray = data.seats;
+
+            // Marcar os assentos ocupados
+            occupiedSeatsArray.forEach(seatId => {
+                const seat = document.querySelector(`[data-seat-id="${seatId}"]`);
+                if (seat) {
+                    seat.classList.add('assento-ocupado');
+                    seat.disabled = true; // Desabilitar o assento, para que não seja selecionado
+                }
+            });
+        } else {
+            console.error('Erro ao carregar os assentos:', data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Erro ao carregar os assentos:', error);
+    });
+}
+// Função para adicionar ao carrinho
+function addToCart() {
+    const selectedSeatsString = selectedSeats.join(',');
+
+    if (selectedSeats.length === 0) {
+        alert('Você deve selecionar ao menos um assento!');
+        return;
+    }
+
+    const movieId = '<?php echo htmlspecialchars($movieId); ?>';  // Verifique se o movieId está correto
+    const movieName = '<?php echo htmlspecialchars($movieName); ?>';
+    const moviePrice = '<?php echo htmlspecialchars($moviePrice); ?>';
+    const showTime = '<?php echo htmlspecialchars($showTime); ?>';
+    const roomNumber = '<?php echo htmlspecialchars($roomNumber); ?>';
+    const posterPath = '<?php echo htmlspecialchars($posterPath); ?>';
+
+    // Enviar dados via POST
+    fetch('../backend/addToCart.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+            'movieId': movieId,
+            'movieName': movieName,
+            'moviePrice': moviePrice,
+            'showTime': showTime,
+            'roomNumber': roomNumber,
+            'seats': selectedSeatsString,
+            'posterPath': posterPath
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Redireciona para o carrinho após sucesso
+            window.location.href = 'ver_carrinho.php';
+        } else {
+            alert(data.message || 'Erro ao adicionar ao carrinho');
+        }
+    })
+    .catch(error => {
+        console.error('Erro ao se comunicar com o servidor. Tente novamente mais tarde.');
+    });
+}
+
+// Criando os assentos ao carregar a página
 createSeats('group1', 1, 82, 6, 0);      // Grupo 1: Assentos 1 a 82, letras A a N à esquerda
-createSeats('group2', 83, 148, 11, 0);   // Grupo 2: Assentos 83 a 230, sem letras
+createSeats('group2', 83, 148, 11, 0);   // Grupo 2: Assentos 83 a 148, sem letras
 createSeats('group3', 231, 82, 6, 0);    // Grupo 3: Assentos 231 a 312, letras A a N à direita
 
-</script>
+// Carregar os assentos selecionados do backend
+loadSelectedSeats();
+
+    </script>
+
 </body>
 </html>

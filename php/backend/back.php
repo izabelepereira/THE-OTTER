@@ -44,7 +44,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // 9. Executa a consulta
         if ($stmt->execute()) {
-            echo "Cadastro realizado com sucesso!";
+            // Cadastro realizado com sucesso! Agora redireciona para a página home.php
+            header("Location: /THE-OTTER/php/frontend/home.php");  // Redirecionamento para home.php
+            exit();  // Garante que o código seguinte não seja executado após o redirecionamento
         } else {
             echo "Erro ao cadastrar: " . $stmt->error;
         }

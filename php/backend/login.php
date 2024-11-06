@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 // Configurações do banco de dados
 $host = 'localhost';
 $db = 'theotter';
@@ -23,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Preparar e executar a consulta
     $stmt = $conn->prepare("
-        SELECT senha, nome_completo 
+        SELECT id, senha, nome_completo, token_autenticacao 
         FROM usuarios 
         WHERE email = ? OR cpf = ?
     ");
@@ -33,15 +31,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Verificar se algum resultado foi retornado
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($hashed_password, $nome_completo);
+        $stmt->bind_result($id, $hashed_password, $nome_completo, $stored_token);
         $stmt->fetch();
 
         // Verificar a senha
         if (password_verify($password, $hashed_password)) {
-            $_SESSION['loggedin'] = true;
-            $_SESSION['emailOrCpf'] = $emailOrCpf;
-            $_SESSION['nome_completo'] = $nome_completo; // Armazenar o nome completo na sessão
-            header("Location: welcome.php");
+            // Gerar um token único
+            $token = bin2hex(random_bytes(16)); // Gera um token seguro
+            
+            // Atualizar o banco de dados com o novo token
+            $update_stmt = $conn->prepare("UPDATE usuarios SET token_autenticacao = ? WHERE id = ?");
+            $update_stmt->bind_param("si", $token, $id);
+            $update_stmt->execute();
+
+            // Salvar o token em um cookie
+            setcookie("token_autenticacao", $token, time() + 3600, "/"); // O token vai expirar em 1 hora
+
+            // Redirecionar para a página principal ou painel do usuário
+            header("Location: ../frontend/home.php");
             exit();
         } else {
             header("Location: error.php?message=Usuário ou senha inválidos.");

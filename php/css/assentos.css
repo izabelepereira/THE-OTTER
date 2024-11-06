@@ -192,12 +192,18 @@ h1 {
 }
 
 .assento-ocupado {
-    background-color:#124868; /* Vermelho para assento ocupado */
+    background-color: #124868; /* Vermelho para assento ocupado */
+    pointer-events: none; /* Desabilita a interação com o assento */
 }
 
 .assento-livre {
-    background-color:#e3cbbc;/* Verde para assento livre */
+    background-color: #e3cbbc; /* Verde para assento livre */
 }
+
+.seat.selected {
+    background-color: #ffcc00; /* Cor para assento selecionado */
+}
+
 
 .footer {
     background-color: #021c2d; /* Cor de fundo do footer */

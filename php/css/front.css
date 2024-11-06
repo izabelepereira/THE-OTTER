@@ -94,8 +94,9 @@ min-width: 100%;
   padding: 3%; /* Ajuste o padding conforme desejado */
   border-radius: 15px; /* Arredonda as bordas */
   background-color: #0c344b; /* Cor de fundo do input */
-  color: #ffffff; /* Cor do texto */
+  color:#e3cbbc; /* Cor do texto */
   transition: border 0.3s; /* Transição suave para a borda */
+  font-family: 'League Spartan';
 }
 
 #nome:focus {
@@ -160,3 +161,4 @@ min-width: 100%;
     opacity: 0.7; /* Opacidade do placeholder */
     margin-top: 1%;
 } 
+

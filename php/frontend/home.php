@@ -97,7 +97,8 @@ gerarCarrossel(array_slice($filmes, 9, 16));
                         <label>Escolha a data:</label><br>
                         <div id="date-options"></div> <!-- Opções de data serão inseridas aqui via JS -->
                     </div>
-                    <a href="assentos.php" id="confirm-session" class="confirm-button">Escolher assentos</a>
+                    <a href="assentos.php?movie_id=1&movie_name=Filme%20Exemplo&show_time=19h%20-%20Dublado&room_number=5" id="confirm-session" class="confirm-button">Escolher assentos</a>
+
                 </div>
             </div>
         </div>

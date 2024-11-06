@@ -114,7 +114,7 @@ const filterButtons = document.querySelectorAll('.filter-button');
 
     function adicionarCarrinho(produtoId) {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "carrinho.php", true);
+    xhr.open("POST", "../carrinho.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     xhr.onload = function() {

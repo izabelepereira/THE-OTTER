@@ -22,10 +22,12 @@ include_once('../head.php');
     font-style: normal;
     /* Ajuste o estilo se necessário */
   }
+</style>
+
 <body style="background-color: #001d2f;" class="text-light">
 
 <?php 
-include_once '../navbar.php'; 
+include_once('../navbar.php'); 
 ?>
 
 <div class="container">
