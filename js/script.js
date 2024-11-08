@@ -111,26 +111,3 @@ const filterButtons = document.querySelectorAll('.filter-button');
             comboButton.click(); // Simula um clique no botão de filtro de combos
         }
     }
-
-    function adicionarCarrinho(produtoId) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "../carrinho.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            // Verifica a resposta JSON
-            var response = JSON.parse(xhr.responseText);
-            if (response.success) {
-                // Mostrar o modal
-                var modal = new bootstrap.Modal(document.getElementById('modalCarrinho'));
-                modal.show();
-            } else {
-                alert(response.message); // Mostra mensagem de erro
-            }
-        }
-    };
-
-    // Enviar o ID do produto
-    xhr.send("produto_id=" + produtoId);
-}

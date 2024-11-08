@@ -1,14 +1,19 @@
-<?php
+<?php 
 // Iniciar a sessão
 session_start();
 
 // Conectar ao banco de dados
 include('conexao.php');
 
+// Verifique se a conexão foi bem-sucedida
+if (!$conn) {
+    echo json_encode(['success' => false, 'message' => 'Erro ao conectar ao banco de dados.']);
+    exit();
+}
+
 // Verificar se o token está presente
 if (!isset($_COOKIE['token_autenticacao'])) {
-    // Se não tiver token, redireciona para o login
-    echo "Token não encontrado. Por favor, faça login novamente.";
+    echo json_encode(['success' => false, 'message' => 'Token não encontrado. Por favor, faça login novamente.']);
     exit();
 }
 
@@ -22,8 +27,7 @@ $stmt->execute();
 $stmt->store_result();
 
 if ($stmt->num_rows == 0) {
-    // Token inválido ou expirado
-    echo "Token inválido ou expirado. Faça login para continuar.";
+    echo json_encode(['success' => false, 'message' => 'Token inválido ou expirado. Faça login para continuar.']);
     exit();
 }
 
@@ -31,15 +35,15 @@ $stmt->bind_result($usuario_id, $nome_completo);
 $stmt->fetch();
 $stmt->close();
 
-// Verifica se o produto foi adicionado ao carrinho
+// Verificar se o produto ou ingresso foi adicionado ao carrinho ou se a quantidade precisa ser atualizada
 if (isset($_POST['produto_id']) || isset($_POST['movie_id'])) {
     
-    // Adicionar produto ao carrinho
+    // Adicionar ou atualizar produto do snack bar no carrinho
     if (isset($_POST['produto_id'])) {
         $produto_id = $_POST['produto_id'];
-        $quantidade = isset($_POST['quantidade']) ? $_POST['quantidade'] : 1; // Quantidade do produto (1 por padrão)
-        
-        // Consulta o produto no banco de dados
+        $quantidade = isset($_POST['quantidade']) ? $_POST['quantidade'] : 1;
+
+        // Verificar se o produto existe
         $sql = "SELECT * FROM produtos WHERE id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $produto_id);
@@ -49,7 +53,7 @@ if (isset($_POST['produto_id']) || isset($_POST['movie_id'])) {
         if ($result->num_rows > 0) {
             $produto = $result->fetch_assoc();
 
-            // Verifica se o produto já está no carrinho
+            // Verificar se o produto já está no carrinho
             $sqlCheck = "SELECT * FROM carrinho WHERE usuario_id = ? AND produto_id = ?";
             $stmtCheck = $conn->prepare($sqlCheck);
             $stmtCheck->bind_param("ii", $usuario_id, $produto_id);
@@ -57,44 +61,44 @@ if (isset($_POST['produto_id']) || isset($_POST['movie_id'])) {
             $resultCheck = $stmtCheck->get_result();
 
             if ($resultCheck->num_rows > 0) {
-                // Produto já está no carrinho, apenas aumenta a quantidade
                 $item = $resultCheck->fetch_assoc();
                 $nova_quantidade = $item['quantidade'] + $quantidade;
 
+                // Atualizar a quantidade do produto no carrinho
                 $sqlUpdate = "UPDATE carrinho SET quantidade = ? WHERE id = ?";
                 $stmtUpdate = $conn->prepare($sqlUpdate);
                 $stmtUpdate->bind_param("ii", $nova_quantidade, $item['id']);
                 $stmtUpdate->execute();
                 $stmtUpdate->close();
-                echo "Produto quantidade atualizada no carrinho!";
+                echo json_encode(['success' => true, 'message' => 'Quantidade de produto atualizada no carrinho!']);
+                exit();
             } else {
-                // Se o produto não foi encontrado no carrinho, adiciona-o ao carrinho
+                // Adicionar o produto ao carrinho
                 $sqlInsert = "INSERT INTO carrinho (usuario_id, produto_id, quantidade) VALUES (?, ?, ?)";
                 $stmtInsert = $conn->prepare($sqlInsert);
                 $stmtInsert->bind_param("iii", $usuario_id, $produto_id, $quantidade);
                 $stmtInsert->execute();
                 $stmtInsert->close();
-                echo "Produto adicionado ao carrinho!";
+                echo json_encode(['success' => true, 'message' => 'Produto do snack bar adicionado ao carrinho!']);
+                exit();
             }
-
             $stmtCheck->close();
         } else {
-            echo "Produto não encontrado.";
+            echo json_encode(['success' => false, 'message' => 'Produto não encontrado.']);
+            exit();
         }
-
         $stmt->close();
     }
 
     // Adicionar ingresso ao carrinho
     if (isset($_POST['movie_id'])) {
         $movie_id = $_POST['movie_id'];
-        $movie_name = $_POST['movie_name'];
         $ticket_price = $_POST['ticket_price'];
         $show_time = $_POST['show_time'];
         $room = $_POST['room'];
         $seat = $_POST['seat'];
 
-        // Verifica se o ingresso já está no carrinho (não permite duplicação de assentos)
+        // Verificar se o assento já está no carrinho
         $sqlCheck = "SELECT * FROM carrinho WHERE usuario_id = ? AND movie_id = ? AND seat = ?";
         $stmtCheck = $conn->prepare($sqlCheck);
         $stmtCheck->bind_param("iis", $usuario_id, $movie_id, $seat);
@@ -102,29 +106,46 @@ if (isset($_POST['produto_id']) || isset($_POST['movie_id'])) {
         $resultCheck = $stmtCheck->get_result();
 
         if ($resultCheck->num_rows > 0) {
-            // Ingresso já está no carrinho, não permite mais de um ingresso por assento
-            echo "Este assento já foi reservado para este filme.";
+            echo json_encode(['success' => false, 'message' => 'Este assento já foi reservado para este filme.']);
+            exit();
         } else {
-            // Adiciona o ingresso ao carrinho
+            // Adicionar o ingresso ao carrinho
             $sqlInsert = "INSERT INTO carrinho (usuario_id, movie_id, produto_id, ticket_price, show_time, room, seat, poster_path) 
                           VALUES (?, ?, NULL, ?, ?, ?, ?, ?)";
             $stmtInsert = $conn->prepare($sqlInsert);
             $stmtInsert->bind_param("iisisss", $usuario_id, $movie_id, $ticket_price, $show_time, $room, $seat, $_POST['poster_path']);
             $stmtInsert->execute();
             $stmtInsert->close();
-            echo "Ingresso adicionado ao carrinho!";
+            echo json_encode(['success' => true, 'message' => 'Ingresso adicionado ao carrinho!']);
+            exit();
         }
-
         $stmtCheck->close();
     }
-
-} else {
-    echo "Dados do produto ou ingresso não fornecidos.";
 }
 
-// Redireciona para a página de visualização do carrinho (opcional)
-header("Location: ../frontend/ver_carrinho.php");
-exit();
+// Atualizar a quantidade de um produto específico no carrinho
+if (isset($_POST['produto_id']) && isset($_POST['nova_quantidade'])) {
+    $produto_id = $_POST['produto_id'];
+    $nova_quantidade = (int) $_POST['nova_quantidade'];
 
+    if ($nova_quantidade <= 0) {
+        echo json_encode(['success' => false, 'message' => 'Quantidade inválida.']);
+        exit();
+    }
+
+    $sqlUpdate = "UPDATE carrinho SET quantidade = ? WHERE usuario_id = ? AND produto_id = ?";
+    $stmtUpdate = $conn->prepare($sqlUpdate);
+    $stmtUpdate->bind_param("iii", $nova_quantidade, $usuario_id, $produto_id);
+
+    if ($stmtUpdate->execute()) {
+        echo json_encode(['success' => true, 'message' => 'Quantidade atualizada com sucesso!']);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Erro ao atualizar quantidade.']);
+    }
+    $stmtUpdate->close();
+    exit();
+}
+
+echo json_encode(['success' => false, 'message' => 'Dados do produto ou ingresso não fornecidos.']);
 $conn->close();
 ?>

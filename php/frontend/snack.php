@@ -132,6 +132,7 @@ include_once('../navbar.php');
 
 
 <!-- Modal -->
+<!-- Modal -->
 <div class="modal fade" id="modalCarrinho" tabindex="-1" aria-labelledby="modalCarrinhoLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -152,23 +153,39 @@ include_once('../navbar.php');
 </div>
 
 <script>
-    function adicionarCarrinho(produtoId) {
-        // Fazer a requisição AJAX
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "carrinho.php", true);
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                // Mostrar o modal
-                var modal = new bootstrap.Modal(document.getElementById('modalCarrinho'));
-                modal.show();
+   function adicionarCarrinho(produtoId) {
+    console.log("Adicionando ao carrinho, ID do produto:", produtoId);  // Log para ver o ID do produto
+
+    // Fazer a requisição AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "../backend/carrinho.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            try {
+                var response = JSON.parse(xhr.responseText);
+                console.log("Resposta do servidor:", response);  // Log para ver a resposta JSON do backend
+
+                if (response.success) {
+                    // Mostrar o modal de confirmação
+                    var modal = new bootstrap.Modal(document.getElementById('modalCarrinho'));
+                    modal.show();
+                } else {
+                    console.error("Erro do servidor:", response.message);
+                }
+            } catch (e) {
+                console.error("Erro ao processar a resposta JSON:", e);
             }
-        };
-        
-        // Enviar o ID do produto
-        xhr.send("produto_id=" + produtoId);
-    }
+        } else {
+            console.error("Erro HTTP:", xhr.status);
+        }
+    };
+    
+    // Enviar o ID do produto
+    xhr.send("produto_id=" + produtoId);
+}
+
 </script>
 
 <div class="fila-container">
