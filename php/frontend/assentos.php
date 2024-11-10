@@ -191,6 +191,8 @@ function loadSelectedSeats() {
         console.error('Erro ao carregar os assentos:', error);
     });
 }
+
+
 // Função para adicionar ao carrinho
 function addToCart() {
     const selectedSeatsString = selectedSeats.join(',');

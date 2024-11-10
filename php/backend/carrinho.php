@@ -94,7 +94,7 @@ if (isset($_POST['produto_id']) || isset($_POST['movie_id'])) {
     if (isset($_POST['movie_id'])) {
         $movie_id = $_POST['movie_id'];
         $ticket_price = $_POST['ticket_price'];
-        $show_time = $_POST['show_time'];
+        $sessionTime = $_POST['sessionTime'];
         $room = $_POST['room'];
         $seat = $_POST['seat'];
 
@@ -110,10 +110,10 @@ if (isset($_POST['produto_id']) || isset($_POST['movie_id'])) {
             exit();
         } else {
             // Adicionar o ingresso ao carrinho
-            $sqlInsert = "INSERT INTO carrinho (usuario_id, movie_id, produto_id, ticket_price, show_time, room, seat, poster_path) 
+            $sqlInsert = "INSERT INTO carrinho (usuario_id, movie_id, produto_id, ticket_price, sessionTime, room, seat, poster_path) 
                           VALUES (?, ?, NULL, ?, ?, ?, ?, ?)";
             $stmtInsert = $conn->prepare($sqlInsert);
-            $stmtInsert->bind_param("iisisss", $usuario_id, $movie_id, $ticket_price, $show_time, $room, $seat, $_POST['poster_path']);
+            $stmtInsert->bind_param("iisisss", $usuario_id, $movie_id, $ticket_price, $sessionTime, $room, $seat, $_POST['poster_path']);
             $stmtInsert->execute();
             $stmtInsert->close();
             echo json_encode(['success' => true, 'message' => 'Ingresso adicionado ao carrinho!']);
