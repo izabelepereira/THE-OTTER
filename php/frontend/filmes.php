@@ -65,70 +65,62 @@ $filmes = [
         'genero' => 'Ação - Suspense'
     ],
     [
-            'id' => 9,
-            'titulo' => 'Gladiador II',
-            'duracao' => '2h40min',
-            'imagem' => '../../images/gladia.jpeg',
-            'classificacao' => '18',
-            'genero' => 'Ação - Drama'
-        ],
-        [
-            'id' => 10,
-            'titulo' => 'Indiana Jones e a Relíquia Perdida',
-            'duracao' => '2h15min',
-            'imagem' => '../../images/indiana_jones.jpg',
-            'classificacao' => '12',
-            'genero' => 'Aventura - Ação'
-        ],
-        [
-            'id' => 11,
-            'titulo' => 'Star Wars: A Nova Era',
-            'duracao' => '3h00min',
-            'imagem' => '../../images/star_wars.jpg',
-            'classificacao' => '14',
-            'genero' => 'Ficção Científica - Ação'
-        ],
-        [
-            'id' => 12,
-            'titulo' => 'A Bela e a Fera: A Nova Versão',
-            'duracao' => '1h45min',
-            'imagem' => '../../images/bela_e_a_fera.jpg',
-            'classificacao' => 'L',
-            'genero' => 'Fantasia - Musical'
-        ],
-        [
-            'id' => 13,
-            'titulo' => 'Os Vingadores: Reunião Final',
-            'duracao' => '2h50min',
-            'imagem' => '../../images/vingadores.jpg',
-            'classificacao' => '12',
-            'genero' => 'Ação - Fantasia'
-        ],
-        [
-            'id' => 14,
-            'titulo' => 'Jurassic World: Renascimento',
-            'duracao' => '2h20min',
-            'imagem' => '../../images/jurassic_world.webp',
-            'classificacao' => '10',
-            'genero' => 'Aventura - Ficção Científica'
-        ],
-        [
-            'id' => 15,
-            'titulo' => 'Detetive Chinatown 3',
-            'duracao' => '1h50min',
-            'imagem' => '../../images/detetive_chinatown.png',
-            'classificacao' => '12',
-            'genero' => 'Comédia - Mistério'
-        ],
-        [
-            'id' => 16,
-            'titulo' => 'Avatar 2',
-            'duracao' => '2h50min',
-            'imagem' => '../../images/avatar.webp',
-            'classificacao' => '12',
-            'genero' => 'Ficção Científica - Aventura'
-        ],
-    ];
+        'id' => 9,
+        'titulo' => 'Indiana Jones e a Relíquia Perdida',
+        'duracao' => '2h15min',
+        'imagem' => '../../images/indiana_jones.jpg',
+        'classificacao' => '12',
+        'genero' => 'Aventura - Ação'
+    ],
+    [
+        'id' => 10,
+        'titulo' => 'Star Wars: A Nova Era',
+        'duracao' => '3h00min',
+        'imagem' => '../../images/star_wars.jpg',
+        'classificacao' => '14',
+        'genero' => 'Ficção Científica - Ação'
+    ],
+    [
+        'id' => 11,
+        'titulo' => 'A Bela e a Fera: A Nova Versão',
+        'duracao' => '1h45min',
+        'imagem' => '../../images/bela_e_a_fera.jpg',
+        'classificacao' => 'L',
+        'genero' => 'Fantasia - Musical'
+    ],
+    [
+        'id' => 12,
+        'titulo' => 'Os Vingadores: Reunião Final',
+        'duracao' => '2h50min',
+        'imagem' => '../../images/vingadores.jpg',
+        'classificacao' => '12',
+        'genero' => 'Ação - Fantasia'
+    ],
+    [
+        'id' => 13,
+        'titulo' => 'Jurassic World: Renascimento',
+        'duracao' => '2h20min',
+        'imagem' => '../../images/jurassic_world.webp',
+        'classificacao' => '10',
+        'genero' => 'Aventura - Ficção Científica'
+    ],
+    [
+        'id' => 14,
+        'titulo' => 'Detetive Chinatown 3',
+        'duracao' => '1h50min',
+        'imagem' => '../../images/detetive_chinatown.png',
+        'classificacao' => '12',
+        'genero' => 'Comédia - Mistério'
+    ],
+    [
+        'id' => 15,
+        'titulo' => 'Avatar 2',
+        'duracao' => '2h50min',
+        'imagem' => '../../images/avatar.webp',
+        'classificacao' => '12',
+        'genero' => 'Ficção Científica - Aventura'
+    ],
+];
 
 
 $carouselItems = [

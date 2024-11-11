@@ -2,6 +2,7 @@
     border-radius: 5%;
     overflow: hidden;
     height: 400px; /* Defina a altura desejada aqui */
+    position: relative;
   }
   
   .img-container img {
@@ -78,6 +79,7 @@
   border-radius: 20px;
   overflow: hidden;
   transition: background-color 0.2s; /* Efeito de transição ao passar o mouse */
+  position: relative;
 }
 
 .film-card:hover {
