@@ -1,0 +1,355 @@
+/* Arquivo CSS - style.css */
+
+/* Estilos Gerais */
+body {
+    font-family: 'League Spartan';
+    margin: 0;
+    padding: 0;
+    background-color: #001D2F;
+    font-size: 1.5em;
+}
+
+ h3 {
+    color:#e3cbbc;
+    font-size: 1em;
+
+}
+h2 {
+    color:#e3cbbc;
+    font-size: 1em;
+    margin-left: 3%;
+}
+
+p {
+    color:#e3cbbc;
+}
+
+/* Estilo do Formulário */
+form {
+    margin: 20px auto; /* Centraliza horizontalmente */
+    padding: 20px;
+    background-color: #001D2F;
+    border-radius: 8px;
+    box-shadow: none;
+    width: 100%; /* Ajuste a largura conforme necessário */
+    max-width: 80%; /* Limita a largura máxima */
+    margin-left: 15%;
+}
+
+form label {
+    font-size: 0.7em;
+    margin-bottom: 10px;
+    color: #e3cbbc;
+}
+
+form select {
+    width: 90%;
+    padding: 1%;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: none;
+    background-color: #0c344b ;
+    color: #e3cbbc;
+    font-family: 'League Spartan';
+    border-radius: 15px;
+    outline: none; /* Remove a linha azul padrão */
+    appearance: none; /* Remove a aparência padrão do navegador */
+    -webkit-appearance: none; /* Para navegadores Webkit */
+    -moz-appearance: none; /* Para navegadores Firefox */
+}
+
+/* Estilo para a opção selecionada */
+form select:focus {
+    background-color: #2d485f; /* Cor de fundo quando o select é focado */
+    color:#e3cbbc; /* Cor do texto quando selecionado */
+    outline: 2px solid #e3cbbc;
+}
+
+/* Estilo para a opção selecionada no menu */
+form select option:checked {
+    background-color: #4b6278; /* Cor de fundo da opção selecionada */
+    color: #ffffff; /* Cor do texto da opção selecionada */
+}
+
+
+
+
+ form textarea  {
+    width: 90%;
+    padding: 10px !important;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: none;
+    background-color: #0c344b ;
+    color: #e3cbbc;
+    font-family: 'League Spartan'    ;
+    border-radius: 15px;
+    font-size: 0.6em !important;
+}
+ form button {
+    width: 90%;
+    padding: 1%;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #e3cbbc;
+    background-color: #0c344b ;
+    color: #e3cbbc;
+    font-family: 'League Spartan';
+    border-radius: 20px;
+}
+
+form button {
+    background-color:#e3cbbc;
+    color:#001D2F;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color:#dbb9a3;
+}
+
+/* Estilo do Checkbox */
+input[type="checkbox"] {
+    margin-right: 10px;
+    appearance: none; /* Remove a aparência padrão */
+    width: 15px; /* Largura do checkbox */
+    height: 15px; /* Altura do checkbox */
+    border: 2px solid #15567b; /* Cor da borda */
+    border-radius: 4px; /* Bordas arredondadas */
+    position: relative; /* Para permitir posicionar a marca de verificação */
+    cursor: pointer; /* Muda o cursor ao passar sobre */
+    background-color: #0c344b; /* Cor de fundo */
+}
+
+input[type="checkbox"]:checked {
+    background-color: #15567b; /* Cor de fundo quando verificado */
+    border-color: #15567b; /* Cor da borda quando verificado */
+}
+
+input[type="checkbox"]:focus {
+    outline: none; /* Remove a borda padrão do foco */
+    border-color: #e3cbbc; /* Cor da borda ao focar */
+}
+
+input[type="checkbox"]:checked::after {
+    content: "✓"; /* Adiciona o ícone de check */
+    position: absolute; /* Posiciona absolutamente */
+    top: 50%; /* Alinha verticalmente no meio */
+    left: 50%; /* Alinha horizontalmente no meio */
+    transform: translate(-50%, -50%); /* Centraliza o ícone */
+    font-size: 16px; /* Tamanho do ícone de check */
+    color:#e3cbbc; /* Cor do ícone de check */
+}
+
+/* Estilo dos Termos e Condições */
+div h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+div p {
+    font-size: 0.8em;
+    line-height: 1.5;
+    text-align: justify;
+    border: solid 1px #e3cbbc;
+    padding: 1%;
+    border-radius: 10px;
+    width: 88%;
+}
+
+/* Arquivo CSS - reembolso.css */
+
+/* Estilos da Mensagem de Reembolso */
+.msg-aprovado {
+    background-color:#219326;
+    color:#001D2F;
+    font-size: 0.7em;
+    text-align: center;
+    padding: 1%;
+    border-radius: 8px;
+    margin: 50px auto;
+    width: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 20%;
+    margin-top: -1%;
+
+}
+
+.msg-negado {
+    background-color: #e11f33;
+    color:#001D2F;
+    font-size: 0.7em;
+    text-align: center;
+    padding: 1%;
+    border-radius: 8px;
+    margin: 50px auto;
+    width: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 20%;
+    margin-top: -1%;
+}
+
+/* Estilos do Modal */
+#myModal {
+    display: none; /* Inicialmente o modal está oculto */
+    position: fixed;
+    z-index: 1; /* Fica acima do conteúdo da página */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo semitransparente */
+    padding-top: 100px;
+}
+
+/* Estilo do conteúdo do modal */
+#myModal .modal-content {
+    background-color:#001D2F;
+    margin: 5% auto;
+    padding: 20px;
+    border: none;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para o botão de fechar */
+#myModal .close {
+    color:#e3cbbc;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+#myModal .close:hover,
+#myModal .close:focus {
+    color:#dbb9a3;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Título dentro do modal */
+#myModal h3 {
+    font-size: 0.7em;
+    margin-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Texto explicativo do modal */
+#myModal p {
+    font-size: 16px;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    text-align: justify;
+    border: none;
+}
+
+/* Estilo para o botão OK */
+#myModal #confirmar {
+    background-color:#e3cbbc;
+    color:#001D2F;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8em;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: background-color 0.3s;
+}
+
+#myModal #confirmar:hover {
+    background-color: #45a049;
+}
+#descricao:focus {
+    outline: none; /* Remove a borda de foco padrão */
+  }
+
+#descricao::placeholder {
+    color:#e3cbbc; /* Define a cor do placeholder */
+    font-size: 0.9em !important; /* Define o tamanho da fonte */
+}
+
+#descricao {
+    padding: 10px; /* Define um espaçamento de 10px em todos os lados */
+    width: 90%;
+    height: 50px; /* Ajuste a altura conforme necessário */
+    box-sizing: border-box;
+    
+}
+
+#tipo_reembolso {
+    font-size: 0.6em;
+}
+  
+.btn-cadastrar {
+    background-color:#001D2F; /* Cor de fundo */
+    color:#a0a0a0; /* Cor do texto */
+    padding: 20px 20px; /* Espaçamento interno */
+    font-family: 'League Spartan', sans-serif; /* Fonte */
+    font-size: 0.7em;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    margin-left: 5%;
+
+    
+}
+
+.btn-cadastrar:hover {
+    background-color:#001D2F; 
+    color: #e3cbbc;/* Cor ao passar o mouse */
+    border: none;
+}
+
+
+@media (max-width: 600px) {
+    .msg-negado {
+        background-color: #e11f33;
+        color:#001D2F;
+        font-size: 0.7em;
+        text-align: center;
+        padding: 1%;
+        border-radius: 8px;
+        margin: 50px auto;
+        width: 80%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: -1%;
+        margin-right: 15%;
+    }
+    .msg-aprovado {
+        background-color:#219326;
+        color:#001D2F;
+        font-size: 0.7em;
+        text-align: center;
+        padding: 1%;
+        border-radius: 8px;
+        margin: 50px auto;
+        width: 80%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: -1%;
+        margin-right: 15%;
+    }
+    
+    div p {
+        font-size: 0.6em;
+        line-height: 1.5;
+        border: solid 1px #e3cbbc;
+        border-radius: 10px;
+        width: 88%;
+    }
+
+    form select {
+        font-size: 0.5em;
+        padding: 2%;
+    }
+}
+

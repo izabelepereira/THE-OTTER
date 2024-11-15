@@ -80,6 +80,7 @@
   overflow: hidden;
   transition: background-color 0.2s; /* Efeito de transição ao passar o mouse */
   position: relative;
+  margin-bottom: 2%;
 }
 
 .film-card:hover {
@@ -275,7 +276,7 @@
 
 }
 .film-card h4 {
-  margin: -15px auto 0 auto; /* Move o <h4> ligeiramente para cima */
+  margin: -20px auto 0 auto; /* Move o <h4> ligeiramente para cima */
   font-size: 0.8rem;
   color: #e3cbbc;
   text-align: center;
@@ -283,6 +284,7 @@
   background-color: transparent;
   width: 100%; /* Garante que o <h4> ocupe a largura total do container */
   display: block;
+  box-shadow: none;
 }
 
 
@@ -407,3 +409,53 @@
   margin-top: -5%;
 }
 
+.container-principal {
+  flex-grow: 1; /* Faz com que o conteúdo ocupe o espaço restante */
+  padding-bottom: 100px; /* Ajuste o valor conforme necessário para evitar que o conteúdo seja coberto pelo footer */
+
+}
+
+   /* Estilo para as imagens no final */
+   .footer-image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 0; /* Removendo o espaçamento entre as imagens */
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-image {
+    width: 70%;
+    height: auto;
+    margin-left: 15%;
+    margin-right: -10%;
+  }
+
+  /* Estilo para o texto acima das imagens */
+  .footer-text {
+    text-align: center;
+    color:#e3cbbc;
+    font-family: 'League Spartan';
+    font-size: 1.2rem;
+    margin-bottom: 2%;
+    margin-top: -5%;
+    text-transform: uppercase;
+  }
+
+  .footer-image-left {
+    /* Estilo específico para a imagem da esquerda */
+    margin-left: 30%;
+    width: 70%;
+    height: auto;
+  }
+  
+  .footer-image-right {
+    width: 70%;
+    height: auto;
+  }
+  
+  .section-divider {
+    border-top: 2px solid #e3cbbc;
+    margin: 30px 0;
+}

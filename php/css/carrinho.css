@@ -92,3 +92,8 @@
     padding-top: 15%;
 }
 
+.container-principal {
+    flex-grow: 1; /* Faz com que o conteúdo ocupe o espaço restante */
+    padding-bottom: 200px; /* Ajuste o valor conforme necessário para evitar que o conteúdo seja coberto pelo footer */
+
+}

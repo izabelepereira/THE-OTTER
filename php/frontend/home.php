@@ -43,7 +43,7 @@ include 'filmes.php'; // Ajuste conforme o diretório atual
 include 'carrossel.php'; // Ajuste conforme o diretório atual
 
 // Carrossel inicial
-gerarCarrossel(array_slice($filmes, 0, 10));
+gerarCarrossel(array_slice($filmes, 0, 8));
 ?>
 
 <div class="container">
@@ -58,9 +58,9 @@ gerarCarrossel(array_slice($filmes, 0, 10));
 </div> 
 
 <?php
-gerarCarrossel(array_slice($filmes, 9, 16));
+gerarCarrossel(array_slice($filmes, 8, 16));
 ?>
-
+<div class="section-divider"></div>
 
 <!-- Modal para Detalhes do Filme -->
 <div id="film-modal" class="modal-overlay" style="display: none;">
@@ -105,6 +105,20 @@ gerarCarrossel(array_slice($filmes, 9, 16));
     </div>
 </div>
 
+ <!-- Texto acima das imagens -->
+ <div class="footer-text">
+    Explore nossos conteúdos e novidades no cinema!
+  </div>
+
+  <!-- Imagens clicáveis no final da página -->
+  <div class="footer-image-container">
+  <a href="../php/frontend/front.php">
+    <img src="../../images/conta.png" alt="Imagem 1" class="footer-image-left">
+  </a>
+  <a href="../php/frontend/another-page.php">
+    <img src="../../images/login.png" alt="Imagem 2" class="footer-image-right">
+  </a>
+</div>
 
 
     <script src="/THE-OTTER/js/home.js" defer></script>

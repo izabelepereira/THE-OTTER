@@ -1,151 +1,152 @@
 <?php
-session_start(); // Inicia a sessão
+session_start();
+include('../backend/conexao.php');
 
-// Verifica se o total está definido na sessão
-$total = isset($_SESSION['ver_carrinho']) ? $_SESSION['ver_carrinho'] : 0;
+// Verificar se o total foi passado corretamente
+if (!isset($_POST['total'])) {
+    header('Location: carrinho.php');
+    exit();
+}
+$total = (float) str_replace(',', '.', $_POST['total']);
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
-    
 <?php
 $pageTitle = 'Finalizar Compra - Snack Bar';
 include_once('../head.php');
 ?>
+<link rel="stylesheet" href="../css/pay.css">
 
 <body style="background-color: #001d2f; color: #e3cbbc; font-family: 'League Spartan', sans-serif;">
 
-    <nav class="navbar fixed-top navbar-dark" style="background-color: #001d2f;">
-        <div class="container d-flex justify-content-between align-items-center">
-            <a href="ver_carrinho.php" class="navbar-brand" style="color: #e3cbbc; margin-left: 180px;">
-                <i class="fas fa-arrow-left"></i>
-            </a>
-            <span class="navbar-brand mx-auto" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-size: 18px;">
-                Finalizar Compra
-            </span>
-            <a href="#" class="navbar-brand" style="color: #e3cbbc; margin-right: 200px;">
-                <i class="fas fa-times"></i>
-            </a>
-        </div>
-    </nav>
+<?php
+$pageLabel = "Pagamento"; 
+include '../navbar1.php';
+?>
+
+<div class="container-principal" style="flex-grow: 1;">
+    <div class="container" style="display: flex; justify-content: center; align-items: center; height: 80vh;">
+        <img id="snackImage" src="../../images/pago.png" alt="Imagem" class="snack-image" style="width: 100%; border-radius: 15px; height: auto;">
+    </div>
 
     <div style="padding-top: 80px;">
         <div class="container">
-            <h2 class="text-center" style="margin: 20px 0;"> Pagamento</h2>
-            <!-- Exibir valor total aqui -->
+            <h2 class="text-center" style="margin: 20px 0; margin-top: -10%;">Pagamento</h2>
             <p>Subtotal: R$ <?php echo number_format($total, 2, ',', '.'); ?></p>
+            
             <div class="row">
                 <div class="col-md-4 offset-md-4">
-                    <div class="payment-option" id="credit-card"
-                        style="cursor: pointer; border: 2px solid transparent; border-radius: 10px; padding: 15px; transition: border-color 0.3s;"
-                        onclick="selectPayment('credit-card')">
+                    <!-- Formas de pagamento -->
+                    <div class="payment-option" id="credit-card" style="cursor: pointer; border: 2px solid transparent; border-radius: 10px; padding: 15px; transition: border-color 0.3s;" onclick="selectPayment('credit-card')">
                         <i class="fas fa-credit-card" style="font-size: 24px; margin-right: 10px;"></i>
                         <h5 style="display: inline;">Cartão de Crédito</h5>
                     </div>
-                    <div class="payment-option" id="debit-card"
-                        style="cursor: pointer; border: 2px solid transparent; border-radius: 10px; padding: 15px; transition: border-color 0.3s;"
-                        onclick="selectPayment('debit-card')">
+                    <div class="payment-option" id="debit-card" style="cursor: pointer; border: 2px solid transparent; border-radius: 10px; padding: 15px; transition: border-color 0.3s;" onclick="selectPayment('debit-card')">
                         <i class="fas fa-credit-card" style="font-size: 24px; margin-right: 10px;"></i>
                         <h5 style="display: inline;">Cartão de Débito</h5>
                     </div>
-                    <div class="payment-option" id="pix"
-                        style="cursor: pointer; border: 2px solid transparent; border-radius: 10px; padding: 15px; transition: border-color 0.3s;"
-                        onclick="selectPayment('pix')">
+                    <div class="payment-option" id="pix" style="cursor: pointer; border: 2px solid transparent; border-radius: 10px; padding: 15px; transition: border-color 0.3s;" onclick="selectPayment('pix')">
                         <i class="fas fa-money-bill-wave" style="font-size: 24px; margin-right: 10px;"></i>
                         <h5 style="display: inline;">PIX</h5>
                     </div>
+                    
+                    <p id="payment-message" style="text-align: center; margin-top: 20px;"></p>
+                    <p style="text-align: center; margin-top: 20px; font-weight: bold; color: #ff0000;">* Caso tenha dúvidas, entre em contato com nosso suporte.</p>
+                    
+                    <div id="credit-card-form" style="display: none;">
+                        <label for="cardNumber">Número do Cartão</label>
+                        <input type="text" id="cardNumber" class="form-control" placeholder="XXXX-XXXX-XXXX-XXXX">
+                        <label for="expiryDate">Data de Validade</label>
+                        <input type="text" id="expiryDate" class="form-control" placeholder="MM/AA">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" class="form-control" placeholder="CVV">
+                    </div>
+                    
                     <canvas id="qr-code" style="margin-top: 20px; display: none;"></canvas>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Footer fixo com design consistente -->
-    <footer class="fixed-bottom" style="background-color: #001d2f; padding: 15px 0;">
-        <div class="container text-center">
-            <button id="confirm-footer-button" class="btn btn-primary" disabled
-                style="background-color: #001d2f; color: #e3cbbc; padding: 10px 20px; border: none; font-weight: bold; font-size: 18px;"
-                onclick="confirmPurchase()">
-                CONFIRMAR COMPRA
-            </button>
-        </div>
-    </footer>
+<!-- Footer fixo -->
+<form action="../backend/processar_pagamento.php" method="POST" id="formPagamento">
+    <input type="hidden" name="valor_total" value="<?php echo $total; ?>">
+    <input type="hidden" name="payment_method" id="payment_method">
+    <button type="submit" id="confirm-footer-button" class="btn btn-primary" disabled style="background-color: #001d2f; color: #e3cbbc; padding: 10px 20px; border: none; font-weight: bold; font-size: 18px;">
+        CONFIRMAR COMPRA
+    </button>
+</form>
 
-    <!-- Modal para confirmação de pagamento -->
-    <div class="modal fade" id="paymentConfirmationModal" tabindex="-1" aria-labelledby="paymentConfirmationModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content" style="background-color: #001d2f; color: #e3cbbc;">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="paymentConfirmationModalLabel">Pagamento Confirmado</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Seu pagamento foi confirmado com sucesso! Obrigado pela sua compra.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+<div id="feedback-message" style="color: red; margin-top: 20px; text-align: center;"></div> <!-- Div para exibir mensagens -->
 
-    <script>
-        let selectedPayment = null;
-        const qrCodeCanvas = document.getElementById('qr-code');
-        const qr = new QRious({
-            element: qrCodeCanvas,
-            size: 200, // Tamanho do QR Code
-            value: '', // Valor inicial vazio
+<script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+<script>
+    let selectedPayment = null;
+    const qrCodeCanvas = document.getElementById('qr-code');
+    const qr = new QRious({
+        element: qrCodeCanvas,
+        size: 200, 
+        value: '',
+    });
+
+    function selectPayment(paymentMethod) {
+        const paymentOptions = document.querySelectorAll('.payment-option');
+        paymentOptions.forEach(option => {
+            option.style.borderColor = 'transparent';
         });
 
-        // Recupera o valor total passado pela URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const total = urlParams.get('total');
-        document.getElementById('valor-total').innerText = `Valor Total: R$ ${parseFloat(total).toFixed(2).replace('.', ',')}`;
+        const selectedOption = document.getElementById(paymentMethod);
+        selectedOption.style.borderColor = '#e3cbbc';
+        selectedPayment = paymentMethod;
 
-        function selectPayment(paymentMethod) {
-            // Remove a seleção anterior
-            const paymentOptions = document.querySelectorAll('.payment-option');
-            paymentOptions.forEach(option => {
-                option.style.borderColor = 'transparent'; // Reseta a borda
-            });
-
-            // Adiciona a borda à opção selecionada
-            const selectedOption = document.getElementById(paymentMethod);
-            selectedOption.style.borderColor = '#e3cbbc'; // Define a borda da opção selecionada
-            selectedPayment = paymentMethod;
-
-            // Ativa o botão de confirmação no footer
-            document.getElementById('confirm-footer-button').disabled = false;
-
-            // Limpa o canvas do QR Code
+        const message = document.getElementById('payment-message');
+        if (paymentMethod === 'pix') {
+            message.innerText = 'Você escolheu PIX. O código QR será gerado abaixo.';
+            const pixQRCodeValue = `00020101021126790014BR.GOV.BCB.PIX0136${parseFloat('<?php echo $total; ?>').toFixed(2).replace('.', '').replace(',', '')}5204000053039865802BR5912Loja Cinema6009SAO PAULO62070503***6304`;
+            qr.set({ value: pixQRCodeValue });
+            qrCodeCanvas.style.display = 'block';
+        } else {
+            message.innerText = `Você escolheu ${paymentMethod}. Finalize a compra com o botão abaixo.`;
             qrCodeCanvas.style.display = 'none';
-            qr.set({
-                value: ''
-            });
-
-            // Gera o QR Code se a opção PIX for selecionada
-            if (paymentMethod === 'pix') {
-                const valorPix = total; // Usar o total do pagamento
-                const pixQRCodeValue = `00020101021126790014BR.GOV.BCB.PIX01368300000000000D024${valorPix.replace('.', '')}00`; // Exemplo de string para gerar o código QR
-                qr.set({
-                    value: pixQRCodeValue
-                });
-                qrCodeCanvas.style.display = 'block'; // Mostra o QR Code
-            }
+            qr.set({ value: '' });
         }
 
-        function confirmPurchase() {
-            if (selectedPayment) {
-                // Mostra o modal de confirmação
-                const paymentConfirmationModal = new bootstrap.Modal(document.getElementById('paymentConfirmationModal'));
-                paymentConfirmationModal.show();
-            } else {
-                alert('Por favor, selecione uma forma de pagamento.');
-            }
+        if (paymentMethod === 'credit-card' || paymentMethod === 'debit-card') {
+            document.getElementById('credit-card-form').style.display = 'block';
+        } else {
+            document.getElementById('credit-card-form').style.display = 'none';
         }
-    </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        document.getElementById('confirm-footer-button').disabled = false;
+        document.getElementById('payment_method').value = paymentMethod;
+    }
+
+    // Validar o formulário antes de enviar
+    document.getElementById('formPagamento').addEventListener('submit', function (event) {
+        const feedbackMessage = document.getElementById('feedback-message');
+        feedbackMessage.innerText = ''; // Limpar mensagens anteriores
+
+        // Verificar se uma forma de pagamento foi selecionada
+        if (!selectedPayment) {
+            event.preventDefault();
+            feedbackMessage.innerText = 'Por favor, selecione uma forma de pagamento.';
+            return;
+        }
+
+        // Se cartão de crédito ou débito foi escolhido, verificar os campos
+        if ((selectedPayment === 'credit-card' || selectedPayment === 'debit-card') && 
+            (!document.getElementById('cardNumber').value.trim() || 
+             !document.getElementById('expiryDate').value.trim() || 
+             !document.getElementById('cvv').value.trim())) {
+            event.preventDefault();
+            feedbackMessage.innerText = 'Por favor, preencha todos os dados do cartão.';
+            return;
+        }
+    });
+</script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
 </body>
-
 </html>
