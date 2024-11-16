@@ -19,13 +19,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $emailOrCpf = $_POST['emailOrCpf'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    // Preparar e executar a consulta
-    $stmt = $conn->prepare("
-        SELECT id, senha, nome_completo, token_autenticacao 
-        FROM usuarios 
-        WHERE email = ? OR cpf = ?
-    ");
-    $stmt->bind_param("ss", $emailOrCpf, $emailOrCpf);
+    // Validação de e-mail ou CPF
+    if (empty($emailOrCpf) || empty($password)) {
+        header("Location: ../frontend/login_page.php?message=Preencha todos os campos.");
+        exit();
+    }
+
+    // Verifica se é um e-mail ou CPF
+    if (filter_var($emailOrCpf, FILTER_VALIDATE_EMAIL)) {
+        $isEmail = true;
+
+        // Validar o domínio do e-mail (exemplo: "gmail.com")
+        $allowedDomain = 'gmail.com'; // Você pode mudar para o domínio desejado
+        $emailParts = explode('@', $emailOrCpf);
+        if (count($emailParts) == 2 && $emailParts[1] === $allowedDomain) {
+            // Preparar e executar a consulta para buscar o e-mail no banco de dados
+            $stmt = $conn->prepare("SELECT id, senha, nome_completo, token_autenticacao FROM usuarios WHERE email = ?");
+        } else {
+            header("Location: ../frontend/login_page.php?message=Email com domínio inválido. Apenas $allowedDomain permitido.");
+            exit();
+        }
+
+    } elseif (preg_match('/^\d{3}\.\d{3}\.\d{3}-\d{2}$/', $emailOrCpf)) {
+        $isEmail = false;
+        // Preparar e executar a consulta para buscar o CPF no banco de dados
+        $stmt = $conn->prepare("SELECT id, senha, nome_completo, token_autenticacao FROM usuarios WHERE cpf = ?");
+    } else {
+        header("Location: ../frontend/login_page.php?message=Formato de e-mail ou CPF inválido.");
+        exit();
+    }
+    
+    // Bind e execução da consulta
+    $stmt->bind_param("s", $emailOrCpf);
     $stmt->execute();
     $stmt->store_result();
 
@@ -51,11 +76,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header("Location: ../frontend/home.php");
             exit();
         } else {
-            header("Location: error.php?message=Usuário ou senha inválidos.");
+            header("Location: ../frontend/login_page.php?message=Usuário ou senha inválidos.");
             exit();
         }
     } else {
-        header("Location: error.php?message=Usuário ou senha inválidos.");
+        header("Location: ../frontend/login_page.php?message=Usuário ou senha inválidos.");
         exit();
     }
 

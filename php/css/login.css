@@ -1,0 +1,354 @@
+body {
+    background-color: #001d2f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.col-md-6 {
+    flex: 1;
+    max-width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.img-fluid {
+    max-width: 50%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    align-self: flex-start;
+    margin-bottom: 12%;
+    margin-right: 15%;
+}
+
+.col-md-6 p {
+    color: #e3cbbc;
+    font-family: 'League Spartan';
+    text-align: left;
+    font-size: 1em;
+}
+
+.col-md-6 h2 {
+    color: #e3cbbc;
+    font-family: 'League Spartan';
+    text-align: left;
+    font-size: 1.5em;
+    margin-left: -100%;
+    margin-right: 15%;
+}
+
+.col-md-6 form {
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #001d2f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    margin-left: -30%;
+}
+
+.form-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.form-control {
+    border: none;
+    background-color: #0c344b;
+    border-radius: 15px;
+    padding: 10px 150px;
+    width: 100%;
+    font-family: League Spartan, sans-serif;
+    font-size: 15px;
+    color: #e3cbbc;
+    padding-left: 40px;
+}
+
+.input-wrapper i.bi-person {
+    position: absolute;
+    left: 90%;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #e3cbbc;
+    font-size: 18px;
+    z-index: 1;
+}
+
+#password {
+    background-color: #0c344b;
+    padding: 10px 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 15px;
+    width: 100%;
+    border: none;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 1em;
+    color: #e3cbbc;
+}
+
+#password::placeholder {
+    color: #e3cbbc;
+    text-align: left;
+    padding: -50px;
+}
+
+#password:focus {
+    outline:  4px solid #0a3b59;
+}
+
+#emailOrCpf::placeholder {
+    color: #e3cbbc;
+}
+
+#emailOrCpf:focus {
+    color: #e3cbbc;
+    background-color: #0c344b;
+    outline:  4px solid #0a3b59;
+}
+
+#togglePassword {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #e3cbbc;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+p {
+    text-align: center;
+}
+
+p a {
+    color: #e3cbbc;
+    font-weight: 100;
+}
+
+button.btn {
+    width: 100%;
+    background-color: #e3cbbc;
+    color: #001d2f;
+    border: none;
+    padding: 10px 100px;
+    font-size: 18px;
+    border-radius: 30px;
+    font-family: 'League Spartan', sans-serif;
+    box-sizing: border-box;
+    display: block;
+}
+
+
+/* Ajustes específicos para dispositivos móveis (celulares) */
+@media (max-width: 480px) {
+    /* Centralizar a imagem */
+    .img-fluid {
+        max-width: 70%; /* Tornar a imagem ainda menor */
+        margin-bottom: -15%; /* Ajusta o espaçamento abaixo da imagem */
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30%; /* Aumenta a margem superior para mover mais para baixo */
+    }
+
+    body {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .row {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .col-md-6 {
+        width: 100%;
+        padding: 15px;
+        margin-left: 0;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .col-md-6 h2 {
+        font-size: 1.3em;
+        margin-left: 15% !important;
+    }
+
+    .form-control {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    button.btn {
+        padding: 10px 30px;
+        font-size: 16px;
+    }
+
+    #acessar {
+        display: flex;           /* Torna flexível para centralizar */
+        justify-content: center; /* Centraliza horizontalmente */
+        align-items: center;     /* Centraliza verticalmente */
+        text-align: center;      /* Alinha o texto no centro */
+        font-size: 0.8em;        /* Texto menor em telas pequenas */
+        padding: 10px;           /* Adiciona espaçamento interno */
+        margin: 10px auto;       /* Espaçamento e centralização */
+        width: 100%;             /* Ocupa toda a largura */
+        margin-right: -85%  !important;
+        margin-bottom: -5%;
+        margin-top: -5%;
+        color: #e3cbbc !important;
+    }
+
+    .col-md-6 form {
+        margin-left: 0;
+        max-width: 100%;
+    }
+}
+
+
+@media (max-width: 728px) {
+    /* Centralizar a imagem */
+    .img-fluid {
+        max-width: 70%; /* Tornar a imagem ainda menor */
+        margin-bottom: -15%; /* Ajusta o espaçamento abaixo da imagem */
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30%; /* Aumenta a margem superior para mover mais para baixo */
+    }
+
+    body {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .row {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .col-md-6 {
+        width: 100%;
+        padding: 15px;
+        margin-left: 0;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .col-md-6 h2 {
+        font-size: 1.3em;
+        margin-left: 0;
+    }
+
+    .form-control {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    button.btn {
+        padding: 10px 30px;
+        font-size: 16px;
+    }
+
+    #acessar {
+        display: flex;           /* Torna flexível para centralizar */
+        justify-content: center; /* Centraliza horizontalmente */
+        align-items: center;     /* Centraliza verticalmente */
+        text-align: center;      /* Alinha o texto no centro */
+        font-size: 0.8em;        /* Texto menor em telas pequenas */
+        padding: 10px;           /* Adiciona espaçamento interno */
+        margin: 10px auto;       /* Espaçamento e centralização */
+        width: 100%;             /* Ocupa toda a largura */
+        margin-right: -85%  !important;
+        margin-bottom: -5%;
+        margin-top: -5%;
+        color: #e3cbbc !important;
+    }
+
+    .col-md-6 form {
+        margin-left: 0;
+        max-width: 100%;
+    }
+}
+
+/* Classe para o aviso de erro */
+.error-message {
+    position: fixed; /* Fixa o aviso na tela */
+    top: 75%; /* Distância do topo */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Ajuste para centralizar exatamente */
+    background-color: #f8d7da; /* Cor de fundo (aviso de erro) */
+    color: #721c24; /* Cor do texto */
+    padding: 10px 20px; /* Espaçamento interno */
+    border: 1px solid #f5c6cb; /* Borda do aviso */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-size: 16px; /* Tamanho da fonte */
+    z-index: 9999; /* Garante que o aviso fique acima de outros elementos */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    opacity: 1;
+    transition: opacity 0.5s ease; /* Animação suave */
+}
+
+
+/* Para esconder o erro após um tempo (opcional) */
+.error-message.hide {
+    opacity: 0;
+}
