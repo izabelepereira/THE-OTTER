@@ -53,7 +53,7 @@
     border-radius: 15px;
     width: 40%;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .btn-danger {
@@ -97,3 +97,4 @@
     padding-bottom: 200px; /* Ajuste o valor conforme necessário para evitar que o conteúdo seja coberto pelo footer */
 
 }
+

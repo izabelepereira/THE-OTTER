@@ -3,7 +3,7 @@ session_start();
 include('../backend/conexao.php');
 
 if (!isset($_COOKIE['token_autenticacao'])) {
-    header('Location: ../backend/login.php');
+    header('Location: ../frontend/login_page.php');
     exit();
 }
 
@@ -14,7 +14,7 @@ $stmt->execute();
 $stmt->store_result();
 
 if ($stmt->num_rows == 0) {
-    header('Location: ../backend/login.php');
+    header('Location: ../frontend/login_page.php');
     exit();
 }
 

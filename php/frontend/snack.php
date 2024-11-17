@@ -97,7 +97,7 @@ include_once('../navbar.php');
             echo '<div class="row">'; // Adiciona uma row para alinhar os cards
             while ($row = $result->fetch_assoc()) {
                 echo '<div class="col-6 col-md-3 mb-4" data-category="' . htmlspecialchars($row['categoria']) . '">'; // Exibe 2 por linha em dispositivos menores
-                echo '<div class="card product-card" style="display: flex; flex-direction: column; height: 250px;">'; // Container flex
+                echo '<div class="card product-card" style="display: flex; flex-direction: column; height: 30%;">'; // Container flex
 
                 // Coloca a imagem à esquerda e o texto à direita
                 echo '<div style="display: flex; align-items: center; flex-grow: 1;">'; // Flex para imagem e texto
@@ -138,14 +138,14 @@ include_once('../navbar.php');
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalCarrinhoLabel">Carrinho</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"  style="color: #e3cbbc !important; "></button>
             </div>
             <div class="modal-body">
                 Produto adicionado ao carrinho!
             </div>
             <div class="modal-footer">
                 <a href="ver_carrinho.php" style="text-decoration: none;">
-                    <button type="button" class="btn btn-light">Ver Carrinho</button>
+                    <button type="button" class="btn btn-carrinho">Ver Carrinho</button>
                 </a>
             </div>
         </div>
@@ -194,7 +194,7 @@ include_once('../navbar.php');
 </div>
 
 
-<div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 5%; border-radius: 20px;">
+<div class="container-anuncios" style="display: flex; justify-content: space-between; align-items: center; padding: 5%; border-radius: 20px;">
     <!-- Primeira imagem (comer5.png) associada a uma categoria -->
     <img id="multi-category-button" class="filter-button" src="../../images/comer5.png" alt="Imagem Esquerda" style="width: 35%; height: auto; border-radius: 5%; margin-left: 15%; cursor: pointer;">
     
@@ -216,15 +216,16 @@ include_once('../navbar.php');
             </p>
         </div>
         <div class="col">
-            <img src="../../images/combo2.png" alt="Imagem do Meio" class="combo-image middle-image">
+            <img src="../../images/eita.png" alt="Imagem do Meio" class="combo-image middle-image">
             <p class="combo-description middle-description">
-                Combo Gourmet: 1 pipoca grande + 1 pipoca pequena + 1 barra de chocolate 40g + 1 H2O.
+                
+                Combo Individual: 1 pipoca grande + 1 Coca-Cola refil 500ml + 1 barra de chocolate 40g.
             </p>
         </div>
         <div class="col">
-            <img src="../../images/combo3.png" alt="Imagem Direita" class="combo-image right-image">
+            <img src="../../images/combo8.png" alt="Imagem Direita" class="combo-image right-image">
             <p class="combo-description right-description">
-                Combo Individual: 1 pipoca grande + 1 Coca-Cola refil 500ml + 1 barra de chocolate 40g.
+                Combo Gourmet: 1 pipoca grande + 1 pipoca pequena + 1 barra de chocolate 40g + 1 H2O.
             </p>
         </div>
     </div>
