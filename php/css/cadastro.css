@@ -1,3 +1,6 @@
+body {
+  font-family: 'League Spartan';
+}
 /* Cor de fundo e textos */
 .bg-body {
     background-color: #001d2f !important;
@@ -162,3 +165,100 @@ min-width: 100%;
     margin-top: 1%;
 } 
 
+/* Estilo para o select quando o usuário não interage ainda */
+select {
+  color: #e3cbbc !important;         /* Cor mais clara para o texto */
+  font-family: 'League Spartan';  /* Estilo de itálico para simular o placeholder */
+  opacity: 0.7; 
+  background-color: #0c3952 !important;
+}
+
+.flatpickr-calendar {
+  background-color: #e3cbbc; /* Cor de fundo */
+  border: 1px solid #555; /* Cor da borda */
+  color:#001d2f; /* Cor das letras */
+  font-family: 'League Spartan', sans-serif; /* Fonte do calendário */
+}
+
+.flatpickr-day {
+  background-color: #e3cbbc;
+  color: #001d2f;
+  border-radius: 50%; /* Dias mais arredondados */
+  margin: 2px;
+}
+
+.flatpickr-day:hover {
+  background-color: #021c2d; /* Cor de hover */
+  color: #e3cbbc; /* Cor do texto ao passar o mouse */
+}
+
+/* Dias selecionados */
+.flatpickr-day.selected {
+  background-color: #0c3952; /* Azul do Bootstrap */
+  color: #e3cbbc;
+  font-weight: bold;
+  border: none;
+}
+
+.error-message {
+  position: fixed; /* Fixa o aviso na tela */
+  top: 80%; /* Distância do topo */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translateX(-50%); /* Ajuste para centralizar exatamente */
+  background-color: #f8d7da; /* Cor de fundo (aviso de erro) */
+  color: #721c24; /* Cor do texto */
+  padding: 10px 20px; /* Espaçamento interno */
+  border: 1px solid #f5c6cb; /* Borda do aviso */
+  border-radius: 5px; /* Bordas arredondadas */
+  font-size: 16px; /* Tamanho da fonte */
+  z-index: 9999; /* Garante que o aviso fique acima de outros elementos */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  opacity: 1;
+  transition: opacity 0.5s ease; /* Animação suave */
+}
+
+.error-message.hide {
+  opacity: 0;
+}
+
+#error-message {
+  display: none; /* Inicialmente oculta */
+}
+
+@media (max-width: 480px) {
+  .form-check-label {
+  font-family: 'League Spartan';
+  font-size: 0.7em;
+  text-align: center;
+  color:  #e3cbbc !important; /* Cor do placeholder */
+  opacity: 0.7; /* Opacidade do placeholder */
+  margin-top: 2%;
+  }
+
+  input[type="date"] {
+    display: block; /* Exibe o input de data padrão */
+  }
+
+  /* Se o dispositivo tiver uma largura de tela menor que 768px (por exemplo, dispositivos móveis) */
+  @media (max-width: 768px) {
+  .flatpickr-calendar {
+      display: none !important; /* Esconde o calendário do flatpickr */
+  }
+
+  input[type="date"] {
+      display: block; /* Exibe o input de data padrão */
+  }
+}
+
+/* Para telas maiores, o flatpickr funciona normalmente */
+@media (min-width: 769px) {
+  input[type="date"] {
+      display: none; /* Esconde o input de data padrão */
+  }
+
+  .flatpickr-calendar {
+      display: block; /* Exibe o calendário do flatpickr */
+  }
+}
+
+}
