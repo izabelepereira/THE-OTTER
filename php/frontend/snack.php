@@ -1,3 +1,5 @@
+<!-- MOR AQUI NÃO TA RESPONSIVO, PARE DE JULGAR!!!!!! -->
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -97,7 +99,7 @@ include_once('../navbar.php');
             echo '<div class="row">'; // Adiciona uma row para alinhar os cards
             while ($row = $result->fetch_assoc()) {
                 echo '<div class="col-6 col-md-3 mb-4" data-category="' . htmlspecialchars($row['categoria']) . '">'; // Exibe 2 por linha em dispositivos menores
-                echo '<div class="card product-card" style="display: flex; flex-direction: column; height: 30%;">'; // Container flex
+                echo '<div class="card product-card" style="display: flex; flex-direction: column;">'; // Container flex
 
                 // Coloca a imagem à esquerda e o texto à direita
                 echo '<div style="display: flex; align-items: center; flex-grow: 1;">'; // Flex para imagem e texto

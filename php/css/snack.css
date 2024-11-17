@@ -238,8 +238,8 @@ body {
 
 .product-image {
     border-radius: 15px;
-    width: 60%;  /* Tamanho fixo para largura */
-    height: auto; /* Tamanho fixo para altura */
+    width: 150px;  /* Tamanho fixo para largura */
+    height: 150px; /* Tamanho fixo para altura */
     object-fit: contain; /* Mantém a proporção da imagem, ajustando-a ao container */
     margin-right: 15px; /* Espaçamento entre imagem e texto */
     display: block;

@@ -1,13 +1,5 @@
 <?php
-// Configurações do banco de dados
-$host = 'localhost';
-$db = 'theotter';
-$user = 'root';
-$pass = '';
-
-// Conectar ao banco de dados
-$conn = new mysqli($host, $user, $pass, $db);
-
+include('conexao.php');
 // Verificar conexão
 if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);

@@ -1,13 +1,5 @@
 <?php
-// Configurações do banco de dados
-$host = 'localhost';  // Ajuste conforme o seu ambiente
-$db = 'theotter';     // Nome do seu banco de dados
-$user = 'root';       // Usuário do banco de dados
-$pass = '';           // Senha do banco de dados
-
-// Conectar ao banco de dados
-$conn = new mysqli($host, $user, $pass, $db);
-
+include('conexao.php');
 // Verificar se o cookie de autenticação está presente
 if (isset($_COOKIE['token_autenticacao'])) {
     $token = $_COOKIE['token_autenticacao'];

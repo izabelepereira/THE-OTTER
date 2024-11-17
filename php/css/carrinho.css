@@ -98,3 +98,32 @@
 
 }
 
+/* Estilos para telas menores */
+@media (max-width: 768px) {
+    /* Ajuste a exibição dos itens no carrinho */
+    .item-carrinho {
+        display: inline-block !important;
+        vertical-align: top !important;
+        width: 48% !important; /* Metade da largura com margem */
+        padding: 5px !important;
+        margin-right: 2% !important;
+    }
+
+    /* Ajuste para o último card na linha não ter margem à direita */
+    .item-carrinho:nth-child(2n) {
+        margin-right: 0 !important;
+    }
+
+    /* Ajuste os cartões de ingressos e snacks */
+    .card {
+        flex-direction: column !important; /* Alinhar conteúdo verticalmente */
+        text-align: center !important; /* Centralizar conteúdo */
+        width: 100% !important; /* Cards ajustados à largura do contêiner */
+    }
+
+    /* Imagem dos produtos */
+    .card-img-right, .card-img-left {
+        width: 100% !important;
+        height: auto !important;
+    }
+}

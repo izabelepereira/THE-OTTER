@@ -4,19 +4,7 @@ session_start();  // Inicia a sessão para usar variáveis de sessão
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Configuração do banco de dados
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "theotter";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verifica a conexão
-if ($conn->connect_error) {
-    die('Erro na conexão com o banco de dados.');
-}
-
+include('conexao.php');
 // Verifica se o método é POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Coleta os dados do formulário
