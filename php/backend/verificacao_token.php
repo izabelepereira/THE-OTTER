@@ -19,13 +19,13 @@ if (isset($_COOKIE['token_autenticacao'])) {
         // $_SESSION['usuario_id'] = $usuario_id;
     } else {
         // Token inválido ou expirado, redirecionar para a página de login
-        header("Location: html/login.html");
+        header("Location: /php/frontend/login_page.php");
         exit();
     }
     $stmt->close();
 } else {
     // Se o cookie não existir, redireciona para o login
-    header("Location: html/login.html");
+    header("Location: /php/frontend/login_page.php");
     exit();
 }
 

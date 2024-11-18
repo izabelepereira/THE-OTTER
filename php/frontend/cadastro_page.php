@@ -37,7 +37,7 @@ include_once('../head.php');
                             ?>
                         </div>
 
-                        <form id="signupForm" action="/THE-OTTER/php/backend/cadastro.php" method="POST" onsubmit="return validarCampos()">
+                    <form  id="signupForm" action="/THE-OTTER/php/backend/cadastro.php" method="POST" onsubmit="return validarCampos()">
                             <h5 class="section-title">PREENCHA COM SEUS DADOS:</h5>
                             <div class="form-group mt-2 mb-1">
                                 <input type="text" class="form-control text-input" name="nome" id="nome" placeholder="Nome completo*" required>
@@ -93,13 +93,13 @@ include_once('../head.php');
                             </div>
 
                             <footer class="fixed-bottom footer">
-                                <form class="form-inline justify-content-center">
-                                    <button type="submit" class="btn btn-cadastrar">
-                                        CADASTRAR
-                                    </button>
-                                </form>
-                            </footer>
-                        </form>
+                            <form class="form-inline justify-content-center">
+                                <button type="submit" form="signupForm" class="btn btn-cadastrar">
+                                    CADASTRAR
+                                </button>
+                            </form>
+                        </footer>
+                    </form>
                     </div>
                 </div>
             </div>

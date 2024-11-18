@@ -1,7 +1,8 @@
 <?php
 function gerarCarrossel($filmesCarrossel) {
     echo '<div class="film-slider">';
-    echo '<button class="nav-button prev">&#10094;</button>';
+    // Botão de navegação anterior
+    echo '<button class="nav-button prev"><i class="bi bi-caret-left-square-fill"></i></button>';
     echo '<div class="film-items">';
 
     foreach ($filmesCarrossel as $filmes) {
@@ -26,7 +27,8 @@ function gerarCarrossel($filmesCarrossel) {
     }
 
     echo '</div>';
-    echo '<button class="nav-button next">&#10095;</button>';
+    // Botão de navegação próximo
+    echo '<button class="nav-button next"><i class="bi bi-caret-right-square-fill"></i></button>';
     echo '</div>';
 }
 ?>

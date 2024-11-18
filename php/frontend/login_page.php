@@ -47,7 +47,7 @@ include_once('../head.php');
                             <i class="fas fa-eye-slash" id="togglePassword" onclick="togglePasswordVisibility()"></i> <!-- Ícone de olho -->
                         </div>
                     </div>
-                    <p>Não tem uma conta? <a href="front.php">Crie uma aqui!</a></p>
+                    <p>Não tem uma conta? <a href="cadastro_page.php">Crie uma aqui!</a></p>
                     <div>
                         <button type="submit" class="btn btn-primary">Entrar</button>
                     </div>

@@ -20,3 +20,186 @@ footer {
     padding: 15px 0;
     z-index: 10; /* Garante que o footer fique acima do conteúdo */
 }
+
+/* Estilo do Modal */
+.modal {
+    display: none; /* Inicialmente escondido */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-top: 60px;
+}
+
+.modal-content {
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.col-md-4 {
+    border: #e3ccbc solid 2px;
+    padding: 10px 50px;
+    border-radius: 10px;
+}
+
+/* Estilo para os rótulos dos inputs */
+.input-label {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    color: #e3ccbc;
+}
+
+/* Estilo para os campos de input */
+.input-field {
+    width: 100% !important; /* Ajusta a largura do campo */
+    padding: 10px;
+    margin-bottom: 15px; /* Espaço entre os inputs */
+    border: none !important;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+    background-color: #0c344b; /* Cor de fundo dos inputs */
+    color: #e3ccbc !important; /* Cor do texto digitado (importante para sobrescrever estilos anteriores) */
+}
+
+/* Efeito de foco nos inputs */
+.input-field:focus {
+    border-color: #28a745; /* Cor da borda ao focar */
+    outline: none; /* Remove o contorno padrão do navegador */
+}
+
+/* Estilo para o container do formulário */
+#credit-card-form {
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: none;
+    
+}
+
+/* Espaçamento extra entre os inputs */
+#credit-card-form input {
+    margin-bottom: 10px;
+}
+
+/* Estilo do placeholder */
+.input-field::placeholder {
+    color: #e3ccbc !important; /* Cor do texto do placeholder */
+    font-style: italic;
+}
+
+/* Garantir que o fundo de todos os campos seja o mesmo */
+#cardNumber, #cvv, #expiryDate {
+    background-color: #0c344b; /* Cor de fundo consistente */
+    color: #e3ccbc;
+    border: none;
+    width: 100% !important;
+} 
+
+#cardNumber::placeholder {
+    color: #e3ccbc;
+}
+#cvv::placeholder {
+    color: #e3ccbc;
+}
+#expiryDate::placeholder {
+    color: #e3ccbc;
+}
+
+/* Estilo para os contêineres principais e elementos em dispositivos menores */
+@media (max-width: 768px) {
+    .container-principal {
+        flex-direction: column; /* Empilha os elementos na vertical */
+        padding-bottom: 20px;
+    }
+
+    .payment-option {
+        display: inline-block; /* Alinha as opções de pagamento horizontalmente */
+        width: 100%; /* Ocupa toda a largura disponível */
+        padding: 10px;
+    }
+
+    /* Ajusta o tamanho da imagem */
+    .snack-image {
+        width: 80%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    #credit-card-form {
+        width: 100%;
+        padding: 10px;
+        margin-top: 20px;
+    }
+
+    /* Ajusta o footer fixo */
+    #confirm-footer-button {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+}
+
+/* Estilo para os elementos principais em telas médias e maiores */
+@media (min-width: 769px) {
+    .container-principal {
+        flex-direction: row; /* Exibe os elementos lado a lado */
+        padding-bottom: 100px;
+    }
+
+    .payment-option {
+        display: block; /* Exibe as opções de pagamento em bloco */
+        width: auto; /* Ajusta a largura conforme o conteúdo */
+        padding: 15px;
+    }
+
+    /* Imagem e formulário com mais espaço */
+    .snack-image {
+        width: 50%;
+        margin-right: 20px;
+    }
+
+    #credit-card-form {
+        width: 50%;
+    }
+}
+
+/* Estilos para navegadores WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 8px;   /* Largura da barra de rolagem */
+    height: 12px;  /* Altura da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #e3ccbc; /* Cor do polegar */
+    border-radius: 10px; /* Bordas arredondadas */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #e3ccbc; /* Cor de fundo da barra */
+}
+
+/* Estilos para Firefox */
+html {
+    scrollbar-width: thin; /* Barra fina */
+    scrollbar-color: #e3ccbc #e3ccbc; /* Cor do polegar e do fundo */
+}

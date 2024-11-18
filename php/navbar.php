@@ -9,12 +9,12 @@
         }
 
         /* Animação do modal */
-#myModal .modal-dialog {
+#myModalCard .modal-dialog {
     transform: translateX(100%);
     transition: transform 0.3s ease;
 }
 
-#myModal.show .modal-dialog {
+#myModalCard.show .modal-dialog {
     transform: translateX(0);
 }
 
@@ -29,11 +29,11 @@
 /* Modal ocupa tela toda em dispositivos menores */
 /* Modal ocupa a tela toda em dispositivos menores (até 576px) */
 @media (max-width: 576px) {
-    #myModal .modal-dialog {
+    #myModalCard .modal-dialog {
       width: 100% !important;
       transform: none !important; /* Remover translação para ocupar a tela toda */
     }
-    #myModal .modal-content {
+    #myModalCard .modal-content-card {
       border-radius: 0 !important; /* Remover as bordas arredondadas em telas menores */
     }
   }
@@ -55,7 +55,7 @@
 
         <!-- Botão para abrir o modal do navbar (visível em telas pequenas) -->
       <!-- Botão para abrir o modal do navbar (visível em telas pequenas) -->
-        <button class="btn btn-light d-lg-none btn-person-icon" type="button" style="border: none; color: #e3cbbc; background-color: transparent; box-shadow: none; padding: 0; margin-right: 1%; transform: translateY(-10%);" data-bs-toggle="modal" data-bs-target="#myModal">
+        <button class="btn btn-light d-lg-none btn-person-icon" type="button" style="border: none; color: #e3cbbc; background-color: transparent; box-shadow: none; padding: 0; margin-right: 1%; transform: translateY(-10%);" data-bs-toggle="modal" data-bs-target="#myModalCard">
             <i class="bi bi-person-fill" style="font-size: 1.3rem;"></i>
         </button>
 
@@ -78,7 +78,7 @@
                 <input type="text" id="searchInput" placeholder="Encontre um filme" style="border: none; padding: 5px; border-radius: 4px; background-color: #001d2f; color: #e3cbbc; font-family:'League Spartan', sans-serif; outline: none; ">
 
                 <!-- Botão para abrir o modal lateral (visível em telas maiores) -->
-                <button class="btn btn-light d-none d-lg-block" type="button" style="border: none; color: #e3cbbc; background-color: transparent; box-shadow: none; padding: 0; margin-right: 1%; transform: translateY(-10%);" data-bs-toggle="modal" data-bs-target="#myModal">
+                <button class="btn btn-light d-none d-lg-block" type="button" style="border: none; color: #e3cbbc; background-color: transparent; box-shadow: none; padding: 0; margin-right: 1%; transform: translateY(-10%);" data-bs-toggle="modal" data-bs-target="#myModalCard">
                     <i class="bi bi-person-fill" style="font-size: 1.3rem;"></i>
                 </button>
             </div>
@@ -89,7 +89,7 @@
 <!-- Modal para icon colapsado-->
 <div class="modal fade" id="navbarModal" tabindex="-1" aria-labelledby="navbarModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-side" style="width: 100%; margin: 0; position: fixed; top: 0; left: 0; height: 100%; transform: translateX(-100%); transition: transform 0.5s ease-in-out;">
-        <div class="modal-content" style="background-color: #001d2f; color: #e3cbbc; height: 100%; border-radius: 0;">
+        <div class="modal-content-card" style="background-color: #001d2f; color: #e3cbbc; height: 100%; border-radius: 0;">
             <div class="modal-header d-flex justify-content-between" style="display: flex; justify-content: space-between; border: none;">
                 <!-- Ícone de Pesquisa à esquerda -->
                 <i class="bi bi-search" onclick="document.getElementById('searchInput').focus();" style="color: #e3cbbc; font-size: 1rem; cursor: pointer;  margin-left: 2%;"></i>
@@ -104,11 +104,11 @@
                 <a class="nav-link" href="home.php" style="color: #e3cbbc;font-weight: bold; font-family: 'League Spartan', sans-serif; margin-bottom: 10%; margin-top: 5%; font-size: 1.3em;">PROGRAMAÇÃO</a>
                 <a class="nav-link" href="snack.php" style="color: #e3cbbc;font-weight: bold; font-family: 'League Spartan', sans-serif; margin-bottom: 10%; font-size: 1.3em;">SNACKBAR</a>
                 <a class="nav-link" href="ver_carrinho.php" style="color: #e3cbbc; font-weight: bold; font-family: 'League Spartan', sans-serif; margin-bottom: 10%; font-size: 1.3em; ">SEU CARRINHO</a>
-                <a class="nav-link" href="../../login.html" style="color: #e3cbbc; font-weight: bold; font-family: 'League Spartan', sans-serif; margin-bottom: 10%; font-size: 1.3em;">FAZER LOGIN</a>
+                <a class="nav-link" href="login_page.php" style="color: #e3cbbc; font-weight: bold; font-family: 'League Spartan', sans-serif; margin-bottom: 10%; font-size: 1.3em;">FAZER LOGIN</a>
                 
                 <!-- Link Sair no canto inferior esquerdo -->
                 <div style="margin-top: auto; margin-bottom: 5%; margin-left: 2%;">
-                    <a class="nav-link" href="front.php" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; margin: 0;">Criar uma conta</a>
+                    <a class="nav-link" href="cadastro_user.php" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; margin: 0;">Criar uma conta</a>
                     <a class="nav-link" href="logout.php" style="color: #e3cbbc; font-family: 'League Spartan', sans-serif; margin: 0;">Sair</a>
                 </div>
             </div>
@@ -121,9 +121,9 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true"> 
+<div class="modal fade" id="myModalCard" tabindex="-1" aria-labelledby="myModalCardLabel" aria-hidden="true"> 
   <div class="modal-dialog modal-fullscreen-sm-down" style="position: fixed; top: 0; right: 0; margin: 0; height: 100%; width: 90%; transform: translateX(100%); transition: transform 0.3s ease;">
-    <div class="modal-content" style="height: 100%; border-radius: 3% 0 0 3%; background-color: #001d2f; color: #e3cbbc; padding-left: 5%; padding-right: 5%;"> 
+    <div class="modal-content-card" style="height: 100%; border-radius: 3% 0 0 3%; background-color: #001d2f; color: #e3cbbc; padding-left: 5%; padding-right: 5%;"> 
       <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; border: none;">
         <h6 style="margin: 0; color: #e3cbbc; font-family: 'League Spartan', sans-serif; font-size: 1.3em; font-weight: bold; margin-top: 3%;">PERFIL</h6>
         <i class="bi bi-x" style="color: #e3cbbc; font-size: 2rem; cursor: pointer;" data-bs-dismiss="modal" aria-label="Close"></i>
@@ -180,7 +180,7 @@
     });
 
      // Evento para quando o modal é mostrado
-     var modalElement = document.getElementById('myModal');
+     var modalElement = document.getElementById('myModalCard');
 modalElement.addEventListener('show.bs.modal', function () {
   var modalDialog = modalElement.querySelector('.modal-dialog');
   modalDialog.style.transform = 'translateX(0)';  // Move o modal para a posição original

@@ -262,3 +262,23 @@ select {
 }
 
 }
+
+::-webkit-scrollbar {
+  width: 8px;   /* Largura da barra de rolagem */
+  height: 12px;  /* Altura da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #e3ccbc; /* Cor do polegar */
+  border-radius: 10px; /* Bordas arredondadas */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #e3ccbc; /* Cor de fundo da barra */
+}
+
+/* Estilos para Firefox */
+html {
+  scrollbar-width: thin; /* Barra fina */
+  scrollbar-color: #e3ccbc #e3ccbc; /* Cor do polegar e do fundo */
+}

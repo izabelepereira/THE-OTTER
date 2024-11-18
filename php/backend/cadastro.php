@@ -4,9 +4,11 @@ session_start();  // Inicia a sessão para usar variáveis de sessão
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-include('conexao.php');
+include('../backend/conexao.php');
 // Verifica se o método é POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    file_put_contents('debug.log', print_r($_POST, true), FILE_APPEND);
     // Coleta os dados do formulário
     $nomeCompleto = trim($_POST['nome']);
     $genero = $_POST['genero'] ?? null;

@@ -80,7 +80,7 @@
   overflow: hidden;
   transition: background-color 0.2s; /* Efeito de transição ao passar o mouse */
   position: relative;
-  margin-bottom: 2%;
+  margin-bottom: 4%;
 }
 
 .film-card:hover {
@@ -90,7 +90,7 @@
 
 
 .film-card img {
-  width: 100%; /* Imagem ocupa 100% da largura do card */
+  width: 70%; /* Imagem ocupa 100% da largura do card */
   height: 150px; /* Defina uma altura menor, se necessário */
   object-fit: cover; /* Ajusta a imagem para cobrir o contêiner */
   border-radius: 5px 5px 0 0; /* Canto superior arredondado */
@@ -98,22 +98,22 @@
 
 .nav-button {
     position: absolute; /* Permite posicionar fora do container */
-    top: 50%; /* Centraliza verticalmente */
+    top: 96%; /* Centraliza verticalmente */
     transform: translateY(-50%); /* Ajusta a posição vertical */
     z-index: 10; /* Garante que as setas fiquem acima de outros elementos */
-    background-color: rgba(255, 255, 255, 0.8); /* Fundo semitransparente */
+    background-color: transparent; /* Fundo semitransparente */
     border: none; /* Remove a borda */
     font-size: 24px; /* Tamanho da seta */
     cursor: pointer; /* Muda o cursor para indicar que é clicável */
-    color: #ff0000; /* Cor das setas */
+    color: #e3cbbc; /* Cor das setas */
 }
 
 .nav-button.prev {
-    left: 20px; /* Ajuste este valor conforme necessário */
+    left: 95%; /* Ajuste este valor conforme necessário */
 }
 
 .nav-button.next {
-    right: 20px; /* Ajuste este valor conforme necessário */
+    right: -2px; /* Ajuste este valor conforme necessário */
 }
 
 /* Estilo do grupo de sessões */
@@ -144,7 +144,7 @@
 }
 
 .modal-content {
-  background: linear-gradient(to bottom, #e3cbbc, #9c7861);
+  background-color: #001d2f;
   padding: 20px;
   width: 600px; /* Aumenta a largura do modal */
   border-radius: 15px;
@@ -159,14 +159,14 @@
   right: 15px;
   font-size: 24px;
   font-weight: bold;
-  color: #001d2f; /* Cor do botão de fechar */
+  color:#e3cbbc; /* Cor do botão de fechar */
   cursor: pointer;
 }
 
 #film-title {
   font-size: 24px;
   margin-bottom: 10px;
-  color: #021c2d; /* Cor do título do filme */
+  color:#e3cbbc; /* Cor do título do filme */
   font-family: 'League Spartan';
   font-weight: bold;
   text-transform: uppercase;
@@ -175,14 +175,14 @@
 #film-description {
   font-size: 16px;
   margin-bottom: 20px;
-  color: #000000; /* Cor da descrição do filme */
+  color:#e3cbbc; /* Cor da descrição do filme */
   font-weight: bold;
   font-family: 'League Spartan';
 }
 
 .session-group label {
   font-size: 16px;
-  color: #021c2d; /* Cor dos rótulos dos ingressos */
+  color:#e3cbbc; /* Cor dos rótulos dos ingressos */
   margin-right: 10px;
   font-family: 'League Spartan';
 }
@@ -190,7 +190,7 @@
 .confirm-button {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #001d2f; /* Cor do botão de confirmação */
+  background-color: #e3cbbc; /* Cor do botão de confirmação */
   color: #fff; /* Cor do texto do botão de confirmação */
   border: none;
   border-radius: 15px;
@@ -406,7 +406,7 @@
   height: auto;
   display: flex;
   border-radius: 20px;
-  margin-top: -5%;
+  margin-top: -9%;
 }
 
 .container-principal {
@@ -458,4 +458,24 @@
   .section-divider {
     border-top: 2px solid #e3cbbc;
     margin: 30px 0;
+}
+
+::-webkit-scrollbar {
+  width: 8px;   /* Largura da barra de rolagem */
+  height: 12px;  /* Altura da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #e3ccbc; /* Cor do polegar */
+  border-radius: 10px; /* Bordas arredondadas */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #e3ccbc; /* Cor de fundo da barra */
+}
+
+/* Estilos para Firefox */
+html {
+  scrollbar-width: thin; /* Barra fina */
+  scrollbar-color: #e3ccbc #e3ccbc; /* Cor do polegar e do fundo */
 }
