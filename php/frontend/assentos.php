@@ -51,7 +51,7 @@ $posterPath = isset($_GET['poster']) ? $_GET['poster'] : '../../images/default_p
 
     <div class="legenda-item">
         <button class="assento-selected"></button>
-        <span>Assento Livre</span>
+        <span>Assento Selecionado</span>
     </div>
 </div>
 

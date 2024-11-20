@@ -189,16 +189,23 @@
 
 .confirm-button {
   margin-top: 20px;
-  padding: 10px 20px;
+  padding: 10px 80px;
   background-color: #e3cbbc; /* Cor do botão de confirmação */
-  color: #fff; /* Cor do texto do botão de confirmação */
+  color: #001d2f; /* Cor do texto do botão de confirmação */
   border: none;
-  border-radius: 15px;
+  border-radius: 30px;
   cursor: pointer;
   font-weight: bold;
   text-decoration: none;
   font-family: 'League Spartan';
 }
+
+#film-room {
+  font-family: 'League Spartan';
+  font-size: 1em;
+  color: #e3cbbc;
+}
+
 
 .modal-body {
   display: flex; /* Usar flexbox para alinhar imagem e texto lado a lado */
@@ -219,6 +226,33 @@
   flex: 2; /* O texto ocupará mais espaço */
   padding: 10px; /* Espaçamento interno */
 }
+
+/* Personaliza o botão de rádio */
+input[type="radio"] {
+  appearance: none; /* Remove o estilo padrão */
+  -webkit-appearance: none; /* Compatibilidade com WebKit */
+  width: 12px; /* Tamanho do botão */
+  height: 12px;
+  border: 2px solid #e3cbbc; /* Borda padrão */
+  border-radius: 50%; /* Formato circular */
+  background-color: #001d2f; /* Fundo padrão */
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  margin-top: 10%;
+}
+
+/* Estilo ao passar o mouse */
+input[type="radio"]:hover {
+  border-color: #e4c2aa; /* Muda a cor da borda ao passar o mouse */
+}
+
+/* Estilo quando selecionado */
+input[type="radio"]:checked {
+  background-color:#104361; /* Cor de fundo ao ser selecionado */
+  border-color: #e3cbbc; /* Cor da borda ao ser selecionado */
+}
+
 
 .now-showing {
   padding: 20px;

@@ -46,7 +46,6 @@ include '../navbar1.php';
         <div class="container">
             <p style= "text-align: left; font-family: 'Heavitas'; font-size: 1.5em; margin-left: 5%; margin-top:-5%;">Subtotal: R$ <?php echo number_format($total, 2, ',', '.'); ?></p>
             <p id="pay-message" style="text-align: center; margin-top: 20px;"></p>
-                    <p style="text-align: center; margin-top: 20px; font-weight: bold; color: #e3ccbc;">* Por favor, insira somente informações irreais, isto é apenas uma simulação.</p>
                     <div id="feedback-message" style="color: red; margin-top: 20px; text-align: center;"></div> <!-- Div para exibir mensagens -->
 
                     <div class="row">

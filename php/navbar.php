@@ -140,8 +140,8 @@
         <!-- Botões lado a lado -->
         <div style="display: flex; justify-content: space-between; width: 100%; margin-top: 5%;">
           <button type="button" style="width: 48%; padding: 20%; background-color: #0c344b; border-radius: 10%; margin-bottom: 5%; border: none; font-size: 1.2rem; position: relative;">
-            <i class="bi bi-emoji-smile-fill" style="font-size: 1.5rem; color: #e3cbbc; position: absolute; left: 10px; top: 10px;"></i>
-            <span style="color: #e3cbbc; font-size: 1rem; position: absolute; bottom: 10px; left: 10px; font-weight: bold; font-family: 'League Spartan', sans-serif; text-transform: uppercase;">Sua Conta</span>
+            <i class="bi bi-cash-stack" style="font-size: 1.5rem; color: #e3cbbc; position: absolute; left: 10px; top: 10px;"></i>
+            <span style="color: #e3cbbc; font-size: 1rem; position: absolute; bottom: 10px; left: 10px; font-weight: bold; font-family: 'League Spartan', sans-serif; text-transform: uppercase;">reembolso</span>
           </button>
           <button type="button" style="width: 48%; padding: 20%; background-color: #0c344b; border-radius: 10%; margin-bottom: 5%; border: none; font-size: 1.2rem; position: relative;">
             <i class="bi bi-ticket-perforated" style="font-size: 1.5rem; color: #e3cbbc; position: absolute; left: 10px; top: 10px;"></i>
