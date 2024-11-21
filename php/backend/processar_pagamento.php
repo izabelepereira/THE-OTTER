@@ -43,15 +43,32 @@ if (isset($_POST['valor_total']) && isset($_POST['metodo_pagamento'])) {
         if ($stmtPagamento->execute()) {
             // Obter a data atual do pagamento
             $dataPagamento = date("d/m/Y H:i:s");
-            
-            // Retornar JSON com detalhes do pagamento
+
+            // Iniciar a sessão e armazenar os dados necessários
+            session_start();
+            $_SESSION['nome_completo'] = $nome_completo;
+            $_SESSION['valorTotal'] = $valorTotal;
+            $_SESSION['metodoPagamento'] = $metodoPagamento;
+            $_SESSION['dataCompra'] = $dataPagamento;
+
+            // Obter os itens do carrinho e armazená-los na sessão
+            $itensCarrinho = [];
+            $stmtCarrinho = $conn->prepare("SELECT * FROM carrinho WHERE usuario_id = ?");
+            $stmtCarrinho->bind_param("i", $usuario_id);
+            $stmtCarrinho->execute();
+            $result = $stmtCarrinho->get_result();
+            while ($row = $result->fetch_assoc()) {
+                $itensCarrinho[] = $row;
+            }
+            $_SESSION['itensCarrinho'] = $itensCarrinho;
+
+            // Retornar sucesso e a URL para redirecionamento
             echo json_encode([
                 "success" => true,
-                "message" => "Pagamento registrado com sucesso!",
-                "nome_cliente" => $nome_completo,
-                "valor_total" => number_format($valorTotal, 2, ',', '.'), // Formatar o valor com 2 casas decimais
-                "data_pagamento" => $dataPagamento
+                "message" => "Pagamento processado com sucesso!",
+                "redirect_url" => "confirmacao.php"
             ]);
+            exit();
         } else {
             echo json_encode(["success" => false, "message" => "Erro ao registrar pagamento. Tente novamente."]);
         }

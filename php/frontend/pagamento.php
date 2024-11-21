@@ -105,6 +105,7 @@ include '../navbar1.php';
 
 
 <!-- Modal de Confirmação de Pagamento -->
+<!-- Modal de Confirmação de Pagamento -->
 <div id="paymentModal" class="modal" style="display: none;">
     <div class="modal-content" style="background-color: #001d2f; color: #e3cbbc; padding: 20px; border-radius: 10px;">
         <span class="close" onclick="closeModal()" style="color: #e3cbbc; font-size: 30px; cursor: pointer;">&times;</span>
@@ -112,13 +113,20 @@ include '../navbar1.php';
             <i class="fas fa-check-circle" style="font-size: 50px; color: #28a745;"></i>
             <h3 style="margin-top: 20px;">Pagamento Realizado com Sucesso!</h3>
             <p id="modal-message" style="margin-top: 20px; font-size: 18px;">Seu pagamento foi processado com sucesso. Agradecemos pela sua compra!</p>
-            <button onclick="window.location.href='confirmacao.php'" 
-        style="background-color: #28a745; border: none; color: white; padding: 10px 20px; border-radius: 5px; cursor: not-allowed; font-size: 18px; margin-top: 20px;" 
-        disabled>Agradecemos sua preferência!</button>
-
+            
+            <!-- Formulário para enviar os dados -->
+            <form action="confirmacao.php" method="POST" id="modalForm">
+                <input type="hidden" name="valor_total" value="<?php echo $total; ?>">
+                <input type="hidden" name="payment_method" id="modalPaymentMethod">
+                <button type="submit" 
+                    style="background-color: #28a745; border: none; color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 18px; margin-top: 20px;">
+                    Continuar para Confirmação
+                </button>
+            </form>
         </div>
     </div>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
 <script>
@@ -259,3 +267,4 @@ window.addEventListener('DOMContentLoaded', function () {
 
 </body>
 </html>
+

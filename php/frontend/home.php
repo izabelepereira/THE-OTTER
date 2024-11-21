@@ -37,6 +37,7 @@ include 'carrossels.php'; // Ajuste conforme o diretório atual
         <h1>Em Cartaz:</h1>
     </header>
 </div> 
+</section>
 <?php
 // Incluindo o arquivo de filmes
 include 'filmes.php'; // Ajuste conforme o diretório atual
@@ -54,13 +55,13 @@ gerarCarrossel(array_slice($filmes, 0, 8));
   <section class="now-showing">
     <header class="section-header">
         <h1>em breve:</h1>
+  </section> 
     </header>
 </div> 
 
 <?php
 gerarCarrossel(array_slice($filmes, 8, 16));
 ?>
-<div class="section-divider"></div>
 
 <!-- Modal para Detalhes do Filme -->
 <div id="film-modal" class="modal-overlay" style="display: none;">
@@ -107,18 +108,23 @@ gerarCarrossel(array_slice($filmes, 8, 16));
 
  <!-- Texto acima das imagens -->
  <div class="footer-text">
-    Explore nossos conteúdos e novidades no cinema!
-  </div>
+ 
+ </div>
 
-  <!-- Imagens clicáveis no final da página -->
-  <div class="footer-image-container">
-  <a href="../php/frontend/front.php">
-    <img src="../../images/conta.png" alt="Imagem 1" class="footer-image-left">
-  </a>
-  <a href="../php/frontend/another-page.php">
-    <img src="../../images/login.png" alt="Imagem 2" class="footer-image-right">
-  </a>
+ <div class="footer-image-container">
+  <img src="../../images/cadeiras.png" alt="Imagem 1" class="footer-image-right">
+  <div class="button-container">
+    <div class="buttons">
+      <a href="login_page.php" class="btn-1">
+        <button>Fazer Login</button>
+      </a>
+      <a href="cadastro_page.php" class="btn-2">
+        <button>Fazer Cadastro</button>
+      </a>
+    </div>
+  </div>
 </div>
+
 
 
     <script src="/THE-OTTER/js/home.js" defer></script>

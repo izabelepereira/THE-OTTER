@@ -1,5 +1,3 @@
-<!-- MOR AQUI NÃO TA RESPONSIVO, PARE DE JULGAR!!!!!! -->
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -198,7 +196,7 @@ include_once('../navbar.php');
 
 <div class="container-anuncios" style="display: flex; justify-content: space-between; align-items: center; padding: 5%; border-radius: 20px;">
     <!-- Primeira imagem (comer5.png) associada a uma categoria -->
-    <img id="multi-category-button" class="filter-button" src="../../images/comer5.png" alt="Imagem Esquerda" style="width: 35%; height: auto; border-radius: 5%; margin-left: 15%; cursor: pointer;">
+    <img id="multi-category-button" class="filter-button" src="../../images/comida.png" alt="Imagem Esquerda" style="width: 35%; height: auto; border-radius: 5%; margin-left: 15%; cursor: pointer;">
     
     <!-- Segunda imagem (beber5.png) associada a outra categoria -->
     <img id="beverages-button" class="filter-button" data-category="bebidas" src="../../images/beber5.png" alt="Imagem Direita" style="width: 35%; height: auto; border-radius: 5%; margin-right: 13%; cursor: pointer;">

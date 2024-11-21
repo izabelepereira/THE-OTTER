@@ -1,0 +1,151 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: 'League Spartan', sans-serif;
+    background-color: #001D2F; /* Cor oficial da página */
+    color: #e3cbbc; /* Cor das letras */
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container principal */
+main {
+    background-color: #021c2d; /* Fundo escuro complementar */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px;
+}
+
+/* Título principal */
+h2 {
+    font-size: 2rem;
+    color: #e3cbbc; /* Cor das letras */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilo do parágrafo */
+p {
+    font-size: 1rem;
+    color: #e3cbbc; /* Cor das letras */
+    margin-bottom: 20px;
+}
+
+/* Seção de detalhes do pedido */
+.details-container {
+    margin-bottom: 20px;
+}
+
+.details-container h3 {
+    font-size: 1.5rem;
+    color: #e3cbbc; /* Cor das letras */
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    align-items: center;
+}
+
+.details-container p {
+    font-size: 1rem;
+    color: #e3cbbc; /* Cor das letras */
+    margin-bottom: 5px;
+}
+
+.details-container .total {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #e3cbbc; /* Cor das letras */
+}
+
+/* Seção de itens do carrinho */
+.items-container {
+    margin-bottom: 30px;
+}
+
+.items-container h4 {
+    font-size: 1.25rem;
+    color: #e3cbbc; /* Cor das letras */
+    margin-bottom: 10px;
+}
+
+.items-container .item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.items-container .item span {
+    font-size: 1rem;
+    color: #e3cbbc; /* Cor das letras */
+}
+
+/* Estilo da mensagem sobre o Snack Bar */
+.snack-info {
+    background-color: #0c344b; /* Cor dos inputs */
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.snack-info h4 {
+    font-size: 1rem;
+    color: #e3cbbc; /* Cor das letras */
+    margin-bottom: 10px;
+}
+
+.snack-info p {
+    font-size: 0.9rem;
+    color: #e3cbbc; /* Cor das letras */
+}
+
+/* Estilo do botão */
+.button {
+    display: inline-block;
+    background-color: #0c344b; /* Cor dos inputs */
+    color: #e3cbbc; /* Cor das letras */
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #021c2d; /* Fundo escuro complementar no hover */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    main {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    .button {
+        width: 100%;
+        font-size: 1.1rem;
+        padding: 12px 0;
+    }
+}

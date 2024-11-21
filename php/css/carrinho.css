@@ -74,17 +74,19 @@
     font-family: 'League Spartan';
     font-weight: bold;
     font-size: 1.2em;
-    border-radius: 15px;
+    border-radius: 50%;
+    padding: 1px 10px;
 }
 
 .btn-secondary:hover {
     border: #e3cbbc solid 2px;
-    background-color:#01456e;
-    color:#e3cbbc;
+    background-color: #e3ccbc;
+    color:#01456e;
     font-family: 'League Spartan';
     font-weight: bold;
     font-size: 1.2em;
-    border-radius: 15px;
+    border-radius: 50%;
+    padding: 1px 10px;
 
 }
 
