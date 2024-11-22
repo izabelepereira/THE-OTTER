@@ -119,13 +119,15 @@ function createSeats(groupId, startId, numberOfSeats, seatsInRow, initialLetterI
         row.classList.add('seat-row');
 
         // Adiciona a letra da fila para os grupos 1 e 3
-        if (groupId === "group1" || groupId === "group3") {
-            const letter = document.createElement('div');
-            letter.classList.add('row-letter');
-            letter.innerText = alphabet[letterIndex];
-            row.appendChild(letter);
-            letterIndex++;
-        }
+        // Adiciona a letra da fila apenas para o grupo 1
+            if (groupId === "group1") {
+                const letter = document.createElement('div');
+                letter.classList.add('row-letter');
+                letter.innerText = alphabet[letterIndex];
+                row.appendChild(letter);
+                letterIndex++;
+            }
+
 
         // Criação dos assentos
         for (let i = 0; i < seatsInRow && seatId <= startId + numberOfSeats - 1; i++) {

@@ -350,3 +350,95 @@ html {
     scrollbar-width: thin; /* Barra fina */
     scrollbar-color: #e3ccbc #e3ccbc; /* Cor do polegar e do fundo */
 }
+
+@media (max-width: 768px) {
+    body {
+        margin: 10px;
+        font-size: 14px; /* Reduz o tamanho do texto */
+    }
+
+    .seat-section-container {
+        flex-direction: column; /* Empilha os grupos verticalmente */
+        gap: 10px; /* Ajusta o espaçamento */
+    }
+
+    .seat-section {
+        min-width: 100%; /* Permite que os grupos usem a largura completa */
+        padding: 10px; /* Reduz o padding */
+    }
+
+    .screen {
+        width: 90%; /* Diminui a largura da tela */
+        font-size: 0.9em; /* Ajusta o tamanho do texto */
+    }
+
+    .informacoes-filme {
+        flex-direction: column; /* Empilha as informações */
+        align-items: center; /* Centraliza os itens */
+        width: 100%; /* Usa a largura total */
+    }
+
+    .info-texto {
+        margin-bottom: 10px; /* Espaçamento entre o texto e a imagem */
+        text-align: center; /* Centraliza o texto */
+    }
+
+    .poster-imagem {
+        width: 50%; /* Reduz a largura do pôster */
+        margin-left: 0; /* Remove margem lateral */
+    }
+
+    .seat {
+        width: 25px; /* Diminui o tamanho dos assentos */
+        height: 25px; /* Diminui a altura dos assentos */
+        font-size: 0.7em; /* Reduz o tamanho da fonte */
+    }
+
+    .legenda {
+        flex-direction: column; /* Empilha os itens da legenda */
+        align-items: center; /* Centraliza os itens */
+        padding: 10px; /* Reduz o padding */
+    }
+
+    .btn-add-to-cart {
+        font-size: 16px; /* Reduz o tamanho do botão */
+        padding: 8px 16px; /* Ajusta o padding */
+    }
+
+    .modal-content {
+        padding: 10px; /* Ajusta o padding interno do modal */
+    }
+
+    .modal-title {
+        font-size: 1em; /* Reduz o tamanho do título do modal */
+    }
+}
+
+@media (max-width: 480px) {
+    .seat-section-container {
+        gap: 5px; /* Reduz ainda mais o espaçamento */
+    }
+
+    .seat {
+        width: 20px; /* Diminui ainda mais os assentos */
+        height: 20px;
+        font-size: 0.6em;
+    }
+
+    .poster-imagem {
+        width: 70%; /* Ajusta para dispositivos muito pequenos */
+    }
+
+    .btn-add-to-cart {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    h1 {
+        font-size: 18px; /* Ajusta o tamanho do título */
+    }
+
+    p, .info-url, .legenda-item span {
+        font-size: 0.8em; /* Ajusta tamanhos menores */
+    }
+}
