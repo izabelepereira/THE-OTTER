@@ -1,23 +1,23 @@
 <?php
 $filmes = [
     [
-        'id' => 1,
+        'id' => 0,
         'titulo' => 'gladiador II',
         'duracao' => '2h40min',
-        'imagem' => '../../images/gladia.jpeg',
+        'imagem' => '../../images/gladia.jpg',
         'classificacao' => '18',
         'genero' => 'Ação - Drama'
     ],
     [
-        'id' => 2,
+        'id' => 1,
         'titulo' => 'Wicked - Parte 1',
         'duracao' => '1h50min',
-        'imagem' => '../../images/wi.jpg',
+        'imagem' => '../../images/wic.jpg',
         'classificacao' => '10',
         'genero' => 'Musical - Fantasia'
     ],
     [
-        'id' => 3,
+        'id' => 2,
         'titulo' => 'terrifier 3',
         'duracao' => '2h40min',
         'imagem' => '../../images/terrifier.jpg',
@@ -25,15 +25,15 @@ $filmes = [
         'genero' => 'Terror - Suspense'
     ],
     [
-        'id' => 4,
+        'id' => 3,
         'titulo' => 'moana 2',
         'duracao' => '2h20min',
-        'imagem' => '../../images/moana1.jpeg',
+        'imagem' => '../../images/moana1.jpg',
         'classificacao' => 'L',
         'genero' => 'Animação - Aventura'
     ],
     [
-        'id' => 5,
+        'id' => 4,
         'titulo' => 'mufasa',
         'duracao' => '2h40min',
         'imagem' => '../../images/mufasa1.jpg',
@@ -41,7 +41,7 @@ $filmes = [
         'genero' => 'Aventura - Drama'
     ],
     [
-        'id' => 6,
+        'id' => 5,
         'titulo' => 'sonic 3',
         'duracao' => '1h45min',
         'imagem' => '../../images/sonic.jpg',
@@ -49,7 +49,7 @@ $filmes = [
         'genero' => 'Ação - Aventura'
     ],
     [
-        'id' => 7,
+        'id' => 6,
         'titulo' => 'nosferatu',
         'duracao' => '1h49min',
         'imagem' => '../../images/nosferatu.jpg',
@@ -57,7 +57,7 @@ $filmes = [
         'genero' => 'Horror - Clássico'
     ],
     [
-        'id' => 8,
+        'id' => 7,
         'titulo' => 'kraven',
         'duracao' => '3h7min',
         'imagem' => '../../images/kraven.jpg',
@@ -65,62 +65,65 @@ $filmes = [
         'genero' => 'Ação - Suspense'
     ],
     [
-        'id' => 9,
-        'titulo' => 'Indiana Jones e a Relíquia Perdida',
-        'duracao' => '2h15min',
-        'imagem' => '../../images/indiana_jones.jpg',
+        'id' => 8,
+        'titulo' => 'Mission: Impossible - The Final Reckoning',
+        'duracao' => '2h30min',
+        'imagem' => '../../images/mission_impossible.jpg',
         'classificacao' => '12',
-        'genero' => 'Aventura - Ação'
+        'genero' => 'Ação'
+    ],
+    [
+        'id' => 9,
+        'titulo' => 'Thunderbolts',
+        'duracao' => '2h20min',
+        'imagem' => '../../images/thunderbolts.jpg',
+        'classificacao' => '14',
+        'genero' => 'Ação'
     ],
     [
         'id' => 10,
-        'titulo' => 'Star Wars: A Nova Era',
-        'duracao' => '3h00min',
-        'imagem' => '../../images/star_wars.jpg',
-        'classificacao' => '14',
-        'genero' => 'Ficção Científica - Ação'
+        'titulo' => 'Jurassic World Rebirth',
+        'duracao' => '2h25min',
+        'imagem' => '../../images/jurassic_world_rebirth.jpg',
+        'classificacao' => '10',
+        'genero' => 'Aventura'
     ],
     [
         'id' => 11,
-        'titulo' => 'A Bela e a Fera: A Nova Versão',
-        'duracao' => '1h45min',
-        'imagem' => '../../images/bela_e_a_fera.jpg',
-        'classificacao' => 'L',
-        'genero' => 'Fantasia - Musical'
+        'titulo' => 'The Fantastic Four: First Steps',
+        'duracao' => '2h15min',
+        'imagem' => '../../images/fantastic_four.jpg',
+        'classificacao' => '12',
+        'genero' => 'Ação - Fantasia'
     ],
     [
         'id' => 12,
-        'titulo' => 'Os Vingadores: Reunião Final',
-        'duracao' => '2h50min',
-        'imagem' => '../../images/vingadores.jpg',
+        'titulo' => 'Superman',
+        'duracao' => '2h35min',
+        'imagem' => '../../images/superman.jpg',
         'classificacao' => '12',
         'genero' => 'Ação - Fantasia'
     ],
     [
         'id' => 13,
-        'titulo' => 'Jurassic World: Renascimento',
-        'duracao' => '2h20min',
-        'imagem' => '../../images/jurassic_world.webp',
-        'classificacao' => '10',
-        'genero' => 'Aventura - Ficção Científica'
+        'titulo' => 'Captain America: Brave New World',
+        'duracao' => '2h40min',
+        'imagem' => '../../images/captain_america.jpg',
+        'classificacao' => '12',
+        'genero' => 'Ação - Fantasia'
     ],
     [
         'id' => 14,
-        'titulo' => 'Detetive Chinatown 3',
-        'duracao' => '1h50min',
-        'imagem' => '../../images/detetive_chinatown.png',
+        'titulo' => 'Tron: Ares',
+        'duracao' => '2h10min',
+        'imagem' => '../../images/tron_ares.jpg',
         'classificacao' => '12',
-        'genero' => 'Comédia - Mistério'
-    ],
-    [
-        'id' => 15,
-        'titulo' => 'Avatar 2',
-        'duracao' => '2h50min',
-        'imagem' => '../../images/avatar.webp',
-        'classificacao' => '12',
-        'genero' => 'Ficção Científica - Aventura'
-    ],
+        'genero' => 'Ficção Científica'
+    ]
+    
 ];
+
+
 
 
 $carouselItems = [
@@ -166,4 +169,10 @@ $carouselItems = [
     ],
 ];
 
+
+
 ?>
+
+<script>
+    const filmes = <?php echo json_encode($filmes); ?>;
+</script>

@@ -31,20 +31,19 @@ include_once '../navbar.php';
 include 'filmes.php'; // Ajuste conforme o diretório atual
 include 'carrossels.php'; // Ajuste conforme o diretório atual
   ?>
-
-  <section class="now-showing">
+<section class="now-showing">
     <header class="section-header">
         <h1>Em Cartaz:</h1>
     </header>
-</div> 
-</section>
+</section> <!-- Fechamento correto -->
+
 <?php
 // Incluindo o arquivo de filmes
 include 'filmes.php'; // Ajuste conforme o diretório atual
 include 'carrossel.php'; // Ajuste conforme o diretório atual
 
 // Carrossel inicial
-gerarCarrossel(array_slice($filmes, 0, 8));
+gerarCarrossel(array_slice($filmes, 0, 7));
 ?>
 
 <div class="container">
@@ -60,7 +59,7 @@ gerarCarrossel(array_slice($filmes, 0, 8));
 </div> 
 
 <?php
-gerarCarrossel(array_slice($filmes, 8, 16));
+gerarCarrossel(array_slice($filmes, 8, 14));
 ?>
 
 <!-- Modal para Detalhes do Filme -->

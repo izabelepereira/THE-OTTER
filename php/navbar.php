@@ -70,12 +70,23 @@
 
             <div class="d-flex align-items-center" style="margin-right: 6%;"> 
                 <!-- Botão de pesquisa -->
-                <button class="btn btn-light" type="button" onclick="document.getElementById('searchInput').focus();" style="border: none; color: #e3cbbc; background-color: transparent; box-shadow: none; padding: 0; margin-right: 1%; transform: translateY(-10%);">
-                    <i class="bi bi-search" style="font-size: 1rem;"></i>
-                </button>
+                <!-- Botão de foco no campo de pesquisa -->
+<button 
+    class="btn btn-light" 
+    type="button" 
+    onclick="document.getElementById('searchInput').focus();" 
+    style="border: none; color: #e3cbbc; background-color: transparent; box-shadow: none; padding: 0; margin-right: 1%; transform: translateY(-10%);">
+    <i class="bi bi-search" style="font-size: 1rem;"></i>
+</button>
 
-                <!-- Campo de pesquisa -->
-                <input type="text" id="searchInput" placeholder="Encontre um filme" style="border: none; padding: 5px; border-radius: 4px; background-color: #001d2f; color: #e3cbbc; font-family:'League Spartan', sans-serif; outline: none; ">
+<!-- Campo de pesquisa -->
+<input 
+    type="text" 
+    id="searchInput" 
+    placeholder="Encontre um filme" 
+    oninput="pesquisarFilmes()" 
+    style="border: none; padding: 5px; border-radius: 4px; background-color: #001d2f; color: #e3cbbc; font-family: 'League Spartan', sans-serif; outline: none;">
+
 
                 <!-- Botão para abrir o modal lateral (visível em telas maiores) -->
                 <button class="btn btn-light d-none d-lg-block" type="button" style="border: none; color: #e3cbbc; background-color: transparent; box-shadow: none; padding: 0; margin-right: 1%; transform: translateY(-10%);" data-bs-toggle="modal" data-bs-target="#myModalCard">
@@ -190,5 +201,35 @@ modalElement.addEventListener('hide.bs.modal', function () {
   var modalDialog = modalElement.querySelector('.modal-dialog');
   modalDialog.style.transform = 'translateX(100%)';  // Move o modal para fora da tela
 });
+
+// Função para buscar filmes pelo título
+function pesquisarFilmes() {
+  // Obter o valor digitado no campo de busca
+  const input = document.getElementById('searchInput').value.toLowerCase();
+
+  // Filtrar filmes cujo título contenha o texto digitado
+  const resultados = filmes.filter(filme => 
+    filme.titulo.toLowerCase().includes(input)
+  );
+
+  // Exibir os resultados
+  const resultadosDiv = document.getElementById('resultados');
+  resultadosDiv.innerHTML = resultados.length
+    ? resultados.map(filme => `
+        <div class="filme">
+          <img src="${filme.imagem}" alt="${filme.titulo}" />
+          <h3>${filme.titulo}</h3>
+          <p>Gênero: ${filme.genero}</p>
+          <p>Duração: ${filme.duracao}</p>
+          <p>Classificação: ${filme.classificacao}</p>
+        </div>
+      `).join('')
+    : "<p>Nenhum filme encontrado.</p>";
+}
+
+// Foco automático no campo de busca
+document.getElementById('searchInput').focus();
+
+
 
 </script>

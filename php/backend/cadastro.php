@@ -4,7 +4,17 @@ session_start();  // Inicia a sessão para usar variáveis de sessão
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-include('../backend/conexao.php');
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "theotter";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Falha na conexão: " . $conn->connect_error);
+}
+
 // Verifica se o método é POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -35,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($errors)) {
         $_SESSION['status'] = 'error';
         $_SESSION['message'] = implode('<br>', $errors);
-        header("Location: ../frontend/cadastro.php");
+        header("Location: ../frontend/cadastro_page.php");
         exit;
     }
 
@@ -56,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($errors)) {
         $_SESSION['status'] = 'error';
         $_SESSION['message'] = implode('<br>', $errors);
-        header("Location: ../frontend/cadastro.php");
+        header("Location: ../frontend/cadastro_page.php");
         exit;
     }
 
@@ -74,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Redireciona para a página de cadastro
-    header("Location: ../frontend/cadastro.php");
+    header("Location: ../frontend/cadastro_page.php");
     exit;
 }
 ?>

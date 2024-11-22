@@ -37,7 +37,7 @@ include_once('../head.php');
                             ?>
                         </div>
 
-                    <form  id="signupForm" action="/THE-OTTER/php/backend/cadastro.php" method="POST" onsubmit="return validarCampos()">
+                    <form  id="signupForm" action="cadastro.php" method="POST" onsubmit="return validarCampos()">
                             <h5 class="section-title">PREENCHA COM SEUS DADOS:</h5>
                             <div class="form-group mt-2 mb-1">
                                 <input type="text" class="form-control text-input" name="nome" id="nome" placeholder="Nome completo*" required>

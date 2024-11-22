@@ -548,3 +548,17 @@ html {
   scrollbar-width: thin; /* Barra fina */
   scrollbar-color: #e3ccbc #e3ccbc; /* Cor do polegar e do fundo */
 }
+
+#student-document {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.9em;
+  color: #e3ccbc;
+}
+
+#document-upload {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.8em;
+  color: #e3ccbc;
+
+}
+

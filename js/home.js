@@ -11,22 +11,21 @@ document.getElementById('film-close').addEventListener('click', () => {
 
 function fetchMovieDetails(id) {
     const movies = {
-        1: { id: 1, title: "Gladiador II", description: "Duração: 2h40min", poster: "../../images/gladia.jpeg", room: "Sala 1" },
-        2: { id: 2, title: "Wicked - Parte 1", description: "Duração: 1h50min", poster: "../../images/wi.jpg", room: "Sala 2" },
-        3: { id: 3, title: "Terrifier 3", description: "Duração: 2h40min", poster: "../../images/terrifier.jpg", room: "Sala 1" },
-        4: { id: 4, title: "Moana 2", description: "Duração: 2h20min", poster: "../../images/moana1.jpeg", room: "Sala 1" },
-        5: { id: 5, title: "Mufasa", description: "Duração: 2h40min", poster: "../../images/mufasa1.jpg", room: "Sala 1" },
-        6: { id: 6, title: "Sonic 3", description: "Duração: 1h45min", poster: "../../images/sonic.jpg", room: "Sala 1" },
-        7: { id: 7, title: "Nosferatu", description: "Duração: 1h49min", poster: "../../images/nosferatu.jpg", room: "Sala 2" },
-        8: { id: 8, title: "Kraven", description: "Duração: 3h07min", poster: "../../images/kraven.jpg", room: "Sala 2" },
-        9: { id: 9, title: "Gladiador II", description: "Duração: 2h40min", poster: "../../images/gladia.jpeg", room: "Sala 1" },
-        10: { id: 10, title: "Indiana Jones e a Relíquia Perdida", description: "Duração: 2h15min", poster: "../../images/indiana_jones.jpg", room: "Sala 2" },
-        11: { id: 11, title: "Star Wars: A Nova Era", description: "Duração: 3h00min", poster: "../../images/star_wars.jpg", room: "Sala 1" },
-        12: { id: 12, title: "A Bela e a Fera: A Nova Versão", description: "Duração: 1h45min", poster: "../../images/bela_e_a_fera.jpg", room: "Sala 2" },
-        13: { id: 13, title: "Os Vingadores: Reunião Final", description: "Duração: 2h50min", poster: "../../images/vingadores.jpg", room: "Sala 2" },
-        14: { id: 14, title: "Jurassic World: Renascimento", description: "Duração: 2h20min", poster: "../../images/jurassic_world.webp", room: "Sala 1" },
-        15: { id: 15, title: "Detetive Chinatown 3", description: "Duração: 1h50min", poster: "../../images/detetive_chinatown.png", room: "Sala 2" },
-        16: { id: 16, title: "Avatar 2", description: "Duração: 2h50min", poster: "../../images/avatar.webp", room: "Sala 1" },
+        0: { id: 0, title: "Gladiador II", description: "Duração: 2h40min", poster: "../../images/gladia.jpg", room: "Sala 1" },
+        1: { id: 1, title: "Wicked - Parte 1", description: "Duração: 1h50min", poster: "../../images/wic.jpeg", room: "Sala 2" },
+        2: { id: 2, title: "Terrifier 3", description: "Duração: 2h40min", poster: "../../images/terrifier.jpg", room: "Sala 1" },
+        3: { id: 3, title: "Moana 2", description: "Duração: 2h20min", poster: "../../images/moana1.jpeg", room: "Sala 1" },
+        4: { id: 4, title: "Mufasa", description: "Duração: 2h40min", poster: "../../images/mufasa1.jpg", room: "Sala 1" },
+        5: { id: 5, title: "Sonic 3", description: "Duração: 1h45min", poster: "../../images/sonic.jpg", room: "Sala 1" },
+        6: { id: 6, title: "Nosferatu", description: "Duração: 1h49min", poster: "../../images/nosferatu.jpg", room: "Sala 2" },
+        7: { id: 7, title: "Kraven", description: "Duração: 3h07min", poster: "../../images/kraven.jpg", room: "Sala 2" },
+        8: { id: 8, title: "Mission: Impossible - The Final Reckoning", description: "Duração: 2h30min", poster: "../../images/mission_impossible.jpg", room: "Sala 1" },
+        9: { id: 9, title: "Thunderbolts", description: "Duração: 2h20min", poster: "../../images/thunderbolts.jpg", room: "Sala 2" },
+        10: { id: 10, title: "Jurassic World Rebirth", description: "Duração: 2h25min", poster: "../../images/jurassic_world_rebirth.jpg", room: "Sala 1" },
+        11: { id: 11, title: "The Fantastic Four: First Steps",  description: "Duração: 2h15min", poster: "../../images/fantastic_four.jpg", room: "Sala 2" },
+        12: { id: 12, title: "Superman", description: "Duração: 2h35min", poster: "../../images/superman.jpg", room: "Sala 2"  },
+        13: { id: 13, title: "Captain America: Brave New World", description: "Duração: 2h40min", poster: "../../images/captain_america.jpg", room: "Sala 1" },
+        14: { id: 14, title: "Tron: Ares", description: "Duração: 2h10min", poster: "../../images/tron_ares.jpg", room: "Sala 2" }
     };
 
     const movie = movies[id];
@@ -54,6 +53,14 @@ function fetchMovieDetails(id) {
     document.getElementById('confirm-session').addEventListener('click', (e) => {
         e.preventDefault();
 
+        // Verificar se o usuário está autenticado
+        const token = getCookie('token_autenticacao'); // A função `getCookie` pode ser implementada para pegar o cookie de autenticação
+        if (!token) {
+            alert('Você precisa estar logado para continuar.');
+            window.location.href = 'login_page.php'; // Redireciona para a página de login
+            return;
+        }
+
         const ticketType = document.querySelector('input[name="ticketType"]:checked');
         const sessionTime = document.querySelector('input[name="sessionTime"]:checked');
         const sessionDate = document.querySelector('input[name="sessionDate"]:checked');
@@ -80,6 +87,14 @@ function fetchMovieDetails(id) {
     });
 }
 
+// Função para pegar o cookie
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
 function generateDateOptions() {
     const dateOptions = document.getElementById('date-options');
     dateOptions.innerHTML = '';
@@ -92,8 +107,6 @@ function generateDateOptions() {
         dateOptions.appendChild(option);
     }
 }
-
-
 
 const slider = document.querySelector('.film-items');
 const nextButton = document.querySelector('.next');
@@ -138,11 +151,8 @@ function openModal() {
 closeButton.onclick = closeModal;
 
 // Quando o usuário clicar fora do modal, fecha o modal
-window.onclick = function(event) {
+window.onclick = (event) => {
     if (event.target === modal) {
         closeModal();
     }
-}
-
-// Quando o botão de abrir for clicado, abre o modal
-openButton.onclick = openModal;
+};
