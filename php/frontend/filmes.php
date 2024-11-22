@@ -1,14 +1,6 @@
 <?php
 $filmes = [
     [
-        'id' => 0,
-        'titulo' => 'gladiador II',
-        'duracao' => '2h40min',
-        'imagem' => '../../images/gladia.jpg',
-        'classificacao' => '18',
-        'genero' => 'Ação - Drama'
-    ],
-    [
         'id' => 1,
         'titulo' => 'Wicked - Parte 1',
         'duracao' => '1h50min',
@@ -136,15 +128,15 @@ $carouselItems = [
         'subtitleColor' => 'color:#fff;',
     ],
     [
-        'image' => '../../images/dragao.png',
-        'title' => 'A Menina e o Dragão',
-        'textColor' => 'color:#B72020;',
+        'image' => '../../images/wicked.jpeg',
+        'title' => 'Wicked - Parte 1',
+        'textColor' => 'color:#24862F;',
         'buttonClass' => 'idade-L',
         'buttonText' => 'L',
-        'subtitleColor' => 'color:#FFAE44;',
+        'subtitleColor' => 'color:#DE2F86;',
     ],
     [
-        'image' => '../../images/coringa.png',
+        'image' => '../../images/coringa.jpg',
         'title' => 'Coringa: Delírio a Dois',
         'textColor' => 'color:#30C52B;',
         'buttonClass' => 'idade-18',
@@ -152,7 +144,7 @@ $carouselItems = [
         'subtitleColor' => 'color:#B72020;',
     ],
     [
-        'image' => '../../images/gladiador.png',
+        'image' => '../../images/gladiador.jpg',
         'title' => 'Gladiador II',
         'textColor' => 'color:#AD0C0C;',
         'buttonClass' => 'idade-18',
@@ -160,19 +152,17 @@ $carouselItems = [
         'subtitleColor' => 'color:#fff;',
     ],
     [
-        'image' => '../../images/moana.png',
+        'image' => '../../images/moana.jpeg',
         'title' => 'Moana 2',
         'textColor' => 'color:#34365d;',
         'buttonClass' => 'idade-L',
         'buttonText' => 'L',
         'subtitleColor' => 'color:#fff;',
     ],
+
 ];
 
 
 
 ?>
 
-<script>
-    const filmes = <?php echo json_encode($filmes); ?>;
-</script>

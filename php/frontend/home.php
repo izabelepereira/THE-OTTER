@@ -43,8 +43,9 @@ include 'filmes.php'; // Ajuste conforme o diretório atual
 include 'carrossel.php'; // Ajuste conforme o diretório atual
 
 // Carrossel inicial
-gerarCarrossel(array_slice($filmes, 0, 7));
+gerarCarrossel(array_slice($filmes, 0, 10));
 ?>
+
 
 <div class="container">
     <img id="snackImage" src="../../images/programacao.png" alt="Imagem" class="snack-image">

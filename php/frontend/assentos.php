@@ -77,7 +77,7 @@ $posterPath = isset($_GET['poster']) ? $_GET['poster'] : '../../images/default_p
 <form class="form-inline justify-content-center" onsubmit="event.preventDefault(); addToCart();">
         <button type="submit" class="btn"
             style="background-color: #021c2d; color: #1a4a67; border: none; padding: 15px 30px; font-size: 20px; font-weight: bold;">
-            Prosseguir
+            PROSSEGUIR
         </button>
     </form>
 </footer>

@@ -69,7 +69,7 @@ include_once '../navbar1.php'; // Inclui o arquivo de navegação
         </div>
 
         <!-- Mensagem sobre o Snack Bar -->
-        <div class="snack-info">S
+        <div class="snack-info">
             <p>Os produtos do Snack serão retirados através do CPF do cliente. Informe o número ao balcão e recolha seu pedido.</p>
         </div>
 

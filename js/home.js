@@ -11,10 +11,9 @@ document.getElementById('film-close').addEventListener('click', () => {
 
 function fetchMovieDetails(id) {
     const movies = {
-        0: { id: 0, title: "Gladiador II", description: "Duração: 2h40min", poster: "../../images/gladia.jpg", room: "Sala 1" },
-        1: { id: 1, title: "Wicked - Parte 1", description: "Duração: 1h50min", poster: "../../images/wic.jpeg", room: "Sala 2" },
+        1: { id: 1, title: "Wicked - Parte 1", description: "Duração: 1h50min", poster: "../../images/wic.jpg", room: "Sala 2" },
         2: { id: 2, title: "Terrifier 3", description: "Duração: 2h40min", poster: "../../images/terrifier.jpg", room: "Sala 1" },
-        3: { id: 3, title: "Moana 2", description: "Duração: 2h20min", poster: "../../images/moana1.jpeg", room: "Sala 1" },
+        3: { id: 3, title: "Moana 2", description: "Duração: 2h20min", poster: "../../images/moana1.jpg", room: "Sala 1" },
         4: { id: 4, title: "Mufasa", description: "Duração: 2h40min", poster: "../../images/mufasa1.jpg", room: "Sala 1" },
         5: { id: 5, title: "Sonic 3", description: "Duração: 1h45min", poster: "../../images/sonic.jpg", room: "Sala 1" },
         6: { id: 6, title: "Nosferatu", description: "Duração: 1h49min", poster: "../../images/nosferatu.jpg", room: "Sala 2" },
