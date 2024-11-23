@@ -41,7 +41,7 @@ include '../navbar1.php';
         <h2 class="text-center" style="color: #e3cbbc;"></h2>
         <div class="row">
             <?php
-            $sqlCarrinho = "SELECT c.id, c.movie_id, c.movie_name, c.price, c.poster_path, c.seats, c.room_number, c.data_adicionado, c.sessionTime, p.id AS produto_id, p.nome AS produto_nome, p.preco AS produto_preco, p.imagem AS produto_imagem, c.quantidade
+            $sqlCarrinho = "SELECT c.id, c.movie_id, c.movie_name, c.sessionTime, c.room_number, c.seats, c.price, c.poster_path, c.data_adicionado, c.sessionTime, p.id AS produto_id, p.nome AS produto_nome, p.preco AS produto_preco, p.imagem AS produto_imagem, c.quantidade
                             FROM carrinho c
                             LEFT JOIN produtos p ON c.produto_id = p.id
                             WHERE c.usuario_id = ?";
@@ -68,7 +68,7 @@ include '../navbar1.php';
                         echo '<p class="card-text"><strong>Assento:</strong> ' . htmlspecialchars($produto['seats']) . '</p>';
                         echo '<p class="card-text"><strong>Sala: </strong> ' . htmlspecialchars($produto['room_number']) . '</p>';
                         $sessionTime = htmlspecialchars($produto['sessionTime']); // Garantir segurança contra XSS
-                        echo '<p class="card-text"><strong> Horário: </strong>' . ($sessionTime != 'Não definido' ? $sessionTime : 'Horário não definido.') . '</p>';
+                        echo '<p class="card-text"><strong> Horário: </strong>' . htmlspecialchars($produto['sessionTime'])  . '</p>';
                         echo '<p class="card-text"><strong>Exibição:</strong> ' . $dataAdicionadoFormatada . '</p>';
                         echo "<button class='btn btn-danger btn-sm mt-2' onclick=\"removeFromCart(" . $produto['id'] . ", 'ingresso')\"><i class='fa fa-trash'></i> </button>";
                         echo '</div>';

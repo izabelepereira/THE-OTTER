@@ -1,90 +1,56 @@
 <?php
-session_start();  // Inicia a sessão para usar variáveis de sessão
+session_start();
+include('conexao.php'); // Conexão com o banco de dados
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "theotter";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
-}
-
-// Verifica se o método é POST
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    file_put_contents('debug.log', print_r($_POST, true), FILE_APPEND);
-    // Coleta os dados do formulário
-    $nomeCompleto = trim($_POST['nome']);
-    $genero = $_POST['genero'] ?? null;
-    $apelido = $_POST['apelido'] ?? null;
-    $cpf = preg_replace('/[^0-9]/', '', $_POST['cpf']); // Remove caracteres não numéricos
-    $dataNascimento = $_POST['dataNascimento'] ?? null;
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Captura os dados do formulário
+    $nome = $_POST['nome'];
+    $genero = $_POST['genero'];
+    $apelido = $_POST['apelido'];
+    $cpf = $_POST['cpf'];
+    $dataNascimento = $_POST['dataNascimento'];
     $usarMesmoCPF = isset($_POST['usarMesmoCPF']) ? 1 : 0;
-    $email = trim($_POST['email']);
-    $telefone = preg_replace('/[^0-9]/', '', $_POST['telefone']); // Remove caracteres não numéricos
+    $email = $_POST['email'];
+    $telefone = $_POST['telefone'];
     $senha = $_POST['senha'];
-    $senhaconfirm = $_POST['senhaconfirm'] ?? '';
+    $senhaConfirm = $_POST['senhaconfirm'];
 
-    // Validação dos campos
-    $errors = [];
-    if (empty($nomeCompleto)) $errors[] = "O nome completo é obrigatório.";
-    if (empty($cpf)) $errors[] = "O CPF é obrigatório.";
-    if (empty($dataNascimento)) $errors[] = "A data de nascimento é obrigatória.";
-    if (empty($email)) $errors[] = "O e-mail é obrigatório.";
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Formato de e-mail inválido.";
-    if (empty($telefone)) $errors[] = "O telefone é obrigatório.";
-    if (empty($senha) || $senha != $senhaconfirm) $errors[] = "As senhas não coincidem.";
-
-    // Se houver erros, armazena na sessão e redireciona
-    if (!empty($errors)) {
+    // Verificação da senha
+    if ($senha !== $senhaConfirm) {
         $_SESSION['status'] = 'error';
-        $_SESSION['message'] = implode('<br>', $errors);
-        header("Location: ../frontend/cadastro_page.php");
-        exit;
+        $_SESSION['message'] = 'As senhas não coincidem!';
+        header('Location: ../frontend/cadastro_page.php'); // Redireciona para a página de cadastro
+        exit();
     }
 
-    // Verificar se o CPF ou e-mail já existe
-    $stmt = $conn->prepare("SELECT cpf, email FROM usuarios WHERE cpf = ? OR email = ?");
-    $stmt->bind_param("ss", $cpf, $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    // Hash da senha antes de armazenar no banco
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            if ($row['cpf'] === $cpf) $errors[] = "Este CPF já está cadastrado.";
-            if ($row['email'] === $email) $errors[] = "Este e-mail já está cadastrado.";
+    // Preparar a query para inserir os dados no banco
+    $sql = "INSERT INTO usuarios (nome_completo, genero, apelido, cpf, data_nascimento, usar_mesmo_cpf, email, telefone, senha)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("sssssssss", $nome, $genero, $apelido, $cpf, $dataNascimento, $usarMesmoCPF, $email, $telefone, $senhaHash);
+
+        // Verifique se a execução da query foi bem-sucedida
+        if ($stmt->execute()) {
+            $_SESSION['status'] = 'success';
+            $_SESSION['message'] = 'Cadastro realizado com sucesso!';
+            header('Location: ../frontend/login_page.php'); // Redireciona para a página de login
+        } else {
+            $_SESSION['status'] = 'error';
+            $_SESSION['message'] = 'Erro ao cadastrar no banco de dados!';
+            header('Location: ../frontend/cadastro_page.php'); // Redireciona para a página de cadastro
         }
-    }
 
-    // Se houver erros, armazena na sessão e redireciona
-    if (!empty($errors)) {
-        $_SESSION['status'] = 'error';
-        $_SESSION['message'] = implode('<br>', $errors);
-        header("Location: ../frontend/cadastro_page.php");
-        exit;
-    }
-
-    // Caso não haja erros, inserir os dados no banco
-    $stmt = $conn->prepare("INSERT INTO usuarios (nome_completo, genero, apelido, cpf, data_nascimento, usar_mesmo_cpf, email, telefone, senha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $hashedSenha = password_hash($senha, PASSWORD_DEFAULT);
-    $stmt->bind_param("sssssssss", $nomeCompleto, $genero, $apelido, $cpf, $dataNascimento, $usarMesmoCPF, $email, $telefone, $hashedSenha);
-
-    if ($stmt->execute()) {
-        $_SESSION['status'] = 'success';
-        $_SESSION['message'] = 'Cadastro realizado com sucesso!';
+        $stmt->close();
     } else {
         $_SESSION['status'] = 'error';
-        $_SESSION['message'] = 'Erro ao realizar o cadastro.';
+        $_SESSION['message'] = 'Erro na preparação da query!';
+        header('Location: ../frontend/cadastro_page.php'); // Redireciona para a página de cadastro
     }
 
-    // Redireciona para a página de cadastro
-    header("Location: ../frontend/cadastro_page.php");
-    exit;
+    $conn->close();
 }
 ?>

@@ -20,24 +20,24 @@ include_once('../head.php');
                     <div class="card-body">
                         <h2 class="header-title">CRIE SUA CONTA PARA GANHAR DESCONTOS!</h2>
 
-                        <!-- Exibição de mensagens de erro e sucesso -->
-                        <div id="messages">
-                            <?php
-                            // Exibe mensagens de erro ou sucesso da sessão
-                            if (isset($_SESSION['status'])) {
-                                if ($_SESSION['status'] == 'success') {
-                                    echo '<div class="alert alert-success">' . $_SESSION['message'] . '</div>';
-                                } elseif ($_SESSION['status'] == 'error') {
-                                    echo '<div class="alert alert-danger">' . $_SESSION['message'] . '</div>';
-                                }
-                                // Limpa as variáveis de sessão após mostrar a mensagem
-                                unset($_SESSION['status']);
-                                unset($_SESSION['message']);
+                    <!-- Exibição de mensagens de erro e sucesso -->
+                    <div id="messages">
+                        <?php
+                        // Exibe mensagens de erro ou sucesso da sessão
+                        if (isset($_SESSION['status'])) {
+                            if ($_SESSION['status'] == 'success') {
+                                echo '<div class="alert alert-success">' . $_SESSION['message'] . '</div>';
+                            } elseif ($_SESSION['status'] == 'error') {
+                                echo '<div class="alert alert-danger">' . $_SESSION['message'] . '</div>';
                             }
-                            ?>
-                        </div>
+                            // Limpa as variáveis de sessão após mostrar a mensagem
+                            unset($_SESSION['status']);
+                            unset($_SESSION['message']);
+                        }
+                        ?>
+                    </div>
 
-                    <form  id="signupForm" action="cadastro.php" method="POST" onsubmit="return validarCampos()">
+                        <form id="signupForm" action="../backend/cadastro.php" method="POST">
                             <h5 class="section-title">PREENCHA COM SEUS DADOS:</h5>
                             <div class="form-group mt-2 mb-1">
                                 <input type="text" class="form-control text-input" name="nome" id="nome" placeholder="Nome completo*" required>
@@ -93,13 +93,13 @@ include_once('../head.php');
                             </div>
 
                             <footer class="fixed-bottom footer">
-                            <form class="form-inline justify-content-center">
-                                <button type="submit" form="signupForm" class="btn btn-cadastrar">
-                                    CADASTRAR
-                                </button>
-                            </form>
-                        </footer>
-                    </form>
+                                <form class="form-inline justify-content-center">
+                                    <button type="submit" form="signupForm" class="btn btn-cadastrar">
+                                        CADASTRAR
+                                    </button>
+                                </form>
+                            </footer>
+                        </form>
                     </div>
                 </div>
             </div>

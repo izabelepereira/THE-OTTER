@@ -17,7 +17,7 @@ include '../navbar1.php';
 $movieId = isset($_GET['movieId']) ? $_GET['movieId'] : 'Desconhecido';
 $movieName = isset($_GET['movieTitle']) ? $_GET['movieTitle'] : 'Filme Desconhecido';
 $moviePrice = isset($_GET['ticketPrice']) ? $_GET['ticketPrice'] : '0';
-$showTime = isset($_GET['sessionTime']) ? $_GET['sessionTime'] : 'Não definido';
+$sessionTime = isset($_GET['sessionTime']) ? $_GET['sessionTime'] : 'Não definido';
 $selectedSeatsString = isset($_GET['seats']) ? $_GET['seats'] : '';
 $roomNumber = isset($_GET['room']) ? $_GET['room'] : 'Sala Desconhecida';
 $posterPath = isset($_GET['poster']) ? $_GET['poster'] : '../../images/default_poster.jpg';
@@ -213,7 +213,7 @@ function addToCart() {
     const movieId = '<?php echo htmlspecialchars($movieId); ?>';  // Verifique se o movieId está correto
     const movieName = '<?php echo htmlspecialchars($movieName); ?>';
     const moviePrice = '<?php echo htmlspecialchars($moviePrice); ?>';
-    const showTime = '<?php echo htmlspecialchars($showTime); ?>';
+    const showTime = '<?php echo htmlspecialchars($sessionTime); ?>';
     const roomNumber = '<?php echo htmlspecialchars($roomNumber); ?>';
     const posterPath = '<?php echo htmlspecialchars($posterPath); ?>';
 
