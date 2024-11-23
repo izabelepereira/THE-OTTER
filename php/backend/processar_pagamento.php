@@ -24,6 +24,17 @@ $stmt->bind_result($usuario_id, $nome_completo);
 $stmt->fetch();
 $stmt->close();
 
+// Verificar se o carrinho já está bloqueado
+$stmtCarrinhoStatus = $conn->prepare("SELECT status FROM carrinho WHERE usuario_id = ? AND status = 'bloqueado'");
+$stmtCarrinhoStatus->bind_param("i", $usuario_id);
+$stmtCarrinhoStatus->execute();
+$stmtCarrinhoStatus->store_result();
+if ($stmtCarrinhoStatus->num_rows > 0) {
+    echo json_encode(["success" => false, "message" => "O carrinho já foi pago e está bloqueado. Não é possível realizar o pagamento novamente."]);
+    exit();
+}
+$stmtCarrinhoStatus->close();
+
 // Verificar se os dados necessários foram enviados
 if (isset($_POST['valor_total']) && isset($_POST['metodo_pagamento'])) {
     // Validar e formatar o valor total
@@ -61,6 +72,12 @@ if (isset($_POST['valor_total']) && isset($_POST['metodo_pagamento'])) {
                 $itensCarrinho[] = $row;
             }
             $_SESSION['itensCarrinho'] = $itensCarrinho;
+
+            // Imobilizar o carrinho (atualizar status para 'bloqueado')
+            $stmtUpdateCarrinho = $conn->prepare("UPDATE carrinho SET status = 'bloqueado' WHERE usuario_id = ? AND status = 'ativo'");
+            $stmtUpdateCarrinho->bind_param("i", $usuario_id);
+            $stmtUpdateCarrinho->execute();
+            $stmtUpdateCarrinho->close();
 
             // Retornar sucesso e a URL para redirecionamento
             echo json_encode([
