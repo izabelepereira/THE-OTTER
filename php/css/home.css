@@ -22,6 +22,7 @@
     text-transform: uppercase;
     margin-bottom: 10px; /* Margem abaixo do h5 */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 10; /* Garante que o texto fique sobre outros elementos */
 }
 
 .assista-text {
@@ -43,6 +44,11 @@
     background-color: transparent !important; /* Cor de fundo das setas */
     border-radius: 50%; /* Tornar as setas redondas */
   }
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon:hover {
+    background-color: transparent !important; /* Cor de fundo das setas */
+    border-radius: 50%; /* Tornar as setas redondas */
+  }
   
   .carousel-control-prev,
   .carousel-control-next {
@@ -51,7 +57,6 @@
   
   .carousel-control-prev {
     left: 1%; /* Posição da seta esquerda */
-    color:  #e3cbbc;
   }
   
   .carousel-control-next {
@@ -113,7 +118,7 @@
 }
 
 .nav-button.next {
-    right: -2px; /* Ajuste este valor conforme necessário */
+    right: 2%; /* Ajuste este valor conforme necessário */
 }
 
 /* Estilo do grupo de sessões */
@@ -315,6 +320,9 @@ input[type="radio"]:checked {
   box-shadow: none;
 }
 
+.film-card h4:hover {
+  background-color: transparent;
+}
 .film-card {
   padding: 10px;
 }
@@ -522,10 +530,7 @@ input[type="radio"]:checked {
   }
   
   
-  .section-divider {
-    border-top: 2px solid #e3cbbc;
-    margin: 30px 0;
-}
+
 
 ::-webkit-scrollbar {
   width: 8px;   /* Largura da barra de rolagem */
@@ -559,4 +564,115 @@ html {
   color: #e3ccbc;
 
 }
+
+/* Estilos para telas pequenas (celulares) */
+@media (max-width: 767px) {
+  .film-card {
+    flex: 0 0 calc(45% - 10px); /* Ajusta o card para ocupar 45% da largura, permitindo 2 cards por linha */
+    margin: 0 5px; /* Margem entre os cards */
+    margin-bottom: 10%;
+
+  }
+
+  .img-container {
+    height: 35vh; /* Ajusta a altura da imagem no contêiner */
+  }
+
+  .film-card h3 {
+    font-size: 0.9rem; /* Reduz o tamanho do título dentro do card */
+  }
+
+  .film-card p {
+    font-size: 0.8rem; /* Ajusta o tamanho do texto no card */
+  }
+
+  .film-card h4 {
+    font-size: 0.6rem; /* Ajusta o tamanho da legenda */
+  }
+
+    carousel-caption-text {
+      font-size: 1.8em; /* Reduz o tamanho do texto em telas pequenas */
+      width: 80%; /* Ajusta a largura do texto */
+      left: 10%; /* Garante que o texto não saia da tela */
+    }
+
+  .assista-text {
+      font-size: 1.2em; /* Reduz o tamanho do h1 em telas pequenas */
+      width: 80%; /* Ajusta a largura do texto */
+      left: 10%; /* Garante que o texto não saia da tela */
+  }
+
+  .carousel-caption {
+      position: relative; /* Garante que o texto fique visível na tela */
+      z-index: 10; /* Garante que o texto fique acima da imagem */
+      padding: 20px; /* Adiciona um pouco de padding para garantir que o texto não fique muito colado nas bordas */
+}
+
+.nav-button.prev {
+  left: 75%; /* Ajuste este valor conforme necessário */
+}
+
+.nav-button.next {
+  right: 2%; /* Ajuste este valor conforme necessário */
+}
+
+
+.footer-image-container {
+  display: flex; /* Usa flexbox para alinhar os itens */
+  justify-content: center; /* Centraliza a imagem */
+  align-items: center; /* Centraliza verticalmente */
+  width: 100%; /* Ajusta a largura da imagem para 100% da tela */
+  margin-bottom: 4%;
+}
+
+.footer-image-right {
+  width: 90%; /* Ajusta a largura da imagem para 100% da tela */
+  height: auto;
+}
+
+.button-container {
+  top: 5%; /* Ajusta a posição vertical dos botões */
+  left: 80%; /* Centraliza os botões horizontalmente */
+  transform: translateX(-50%); /* Garante centralização correta */
+}
+
+button {
+  font-size: 0.4em; /* Ajusta o tamanho da fonte do botão */
+  padding: 4px 8px; /* Ajusta o tamanho do botão */
+}
+
+
+}
+/* Ajustes para telas grandes */
+@media (min-width: 1200px) {
+  .carousel-caption-text {
+      font-size: 3em; /* Aumenta o tamanho do texto em telas grandes */
+  }
+
+  .assista-text {
+      font-size: 2em; /* Aumenta o tamanho do h1 em telas grandes */
+  }
+}
+
+/* Personalização das setas */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: transparent !important; /* Cor de fundo das setas */
+  border-radius: 50%; /* Tornar as setas redondas */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 10%; /* Ajuste a largura das setas */
+}
+
+.carousel-control-prev {
+  left: 1%; /* Posição da seta esquerda */
+  color:  #e3cbbc;
+}
+
+.carousel-control-next {
+  right: 1%; /* Posição da seta direita */
+}
+
 

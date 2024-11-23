@@ -57,15 +57,31 @@ $filmes = [
         'genero' => 'Ação - Suspense'
     ],
     [
-        'id' => 8,
-        'titulo' => 'Mission: Impossible - The Final Reckoning',
-        'duracao' => '2h30min',
-        'imagem' => '../../images/mission_impossible.jpg',
-        'classificacao' => '12',
-        'genero' => 'Ação'
+        'id' => 9,
+        'titulo' => 'Venom: A Última Rodada',
+        'duracao' => '2h00min',
+        'imagem' => '../../images/venom.png',
+        'classificacao' => '14',
+        'genero' => 'Ação - Suspense'
     ],
     [
-        'id' => 9,
+        'id' => 10,
+        'titulo' => 'Sorria 2',
+        'duracao' => '1h30min',
+        'imagem' => '../../images/smile.jpg',
+        'classificacao' => 'L',
+        'genero' => 'Comédia'
+    ],
+    [
+        'id' => 11,
+        'titulo' => 'Coringa: Delírio a Dois',
+        'duracao' => '2h20min',
+        'imagem' => '../../images/coringa2.jpg',
+        'classificacao' => '16',
+        'genero' => 'Drama - Thriller'
+    ],
+    [
+        'id' => 12,
         'titulo' => 'Thunderbolts',
         'duracao' => '2h20min',
         'imagem' => '../../images/thunderbolts.jpg',
@@ -73,7 +89,7 @@ $filmes = [
         'genero' => 'Ação'
     ],
     [
-        'id' => 10,
+        'id' => 13,
         'titulo' => 'Jurassic World Rebirth',
         'duracao' => '2h25min',
         'imagem' => '../../images/jurassic_world_rebirth.jpg',
@@ -81,7 +97,7 @@ $filmes = [
         'genero' => 'Aventura'
     ],
     [
-        'id' => 11,
+        'id' => 14,
         'titulo' => 'The Fantastic Four: First Steps',
         'duracao' => '2h15min',
         'imagem' => '../../images/fantastic_four.jpg',
@@ -89,7 +105,7 @@ $filmes = [
         'genero' => 'Ação - Fantasia'
     ],
     [
-        'id' => 12,
+        'id' => 15,
         'titulo' => 'Superman',
         'duracao' => '2h35min',
         'imagem' => '../../images/superman.jpg',
@@ -97,7 +113,7 @@ $filmes = [
         'genero' => 'Ação - Fantasia'
     ],
     [
-        'id' => 13,
+        'id' => 16,
         'titulo' => 'Captain America: Brave New World',
         'duracao' => '2h40min',
         'imagem' => '../../images/captain_america.jpg',
@@ -105,7 +121,7 @@ $filmes = [
         'genero' => 'Ação - Fantasia'
     ],
     [
-        'id' => 14,
+        'id' => 17,
         'titulo' => 'Tron: Ares',
         'duracao' => '2h10min',
         'imagem' => '../../images/tron_ares.jpg',

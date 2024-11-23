@@ -43,7 +43,8 @@ include 'filmes.php'; // Ajuste conforme o diretório atual
 include 'carrossel.php'; // Ajuste conforme o diretório atual
 
 // Carrossel inicial
-gerarCarrossel(array_slice($filmes, 0, 10));
+gerarCarrossel(array_slice($filmes, 0, 10), true);
+
 ?>
 
 
@@ -60,7 +61,7 @@ gerarCarrossel(array_slice($filmes, 0, 10));
 </div> 
 
 <?php
-gerarCarrossel(array_slice($filmes, 8, 14));
+gerarCarrossel(array_slice($filmes, 10, 17));
 ?>
 
 <!-- Modal para Detalhes do Filme -->

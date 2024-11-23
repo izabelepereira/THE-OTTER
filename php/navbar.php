@@ -181,11 +181,6 @@
           </button>
         </div>
       </div>
-      <!-- Links à esquerda -->
-      <div style="position: absolute; bottom: 1%; left: 10%; display: flex; flex-direction: column; align-items: flex-start;">
-        <a href="home.php" style="color: #e3cbbc; text-decoration: none; margin-bottom: 5px; font-family: 'League Spartan', sans-serif;">Início</a>
-        <a href="#" style="color: #e3cbbc; text-decoration: none; font-family: 'League Spartan', sans-serif;" onclick="alert('Você pode entrar em contato pelo e-mail: theotter@gmail.com');">Fale conosco!</a>
-      </div>
     </div>
   </div>
 </div>

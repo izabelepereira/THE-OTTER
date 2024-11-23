@@ -18,13 +18,15 @@ function fetchMovieDetails(id) {
         5: { id: 5, title: "Sonic 3", description: "Duração: 1h45min", poster: "../../images/sonic.jpg", room: "Sala 1" },
         6: { id: 6, title: "Nosferatu", description: "Duração: 1h49min", poster: "../../images/nosferatu.jpg", room: "Sala 2" },
         7: { id: 7, title: "Kraven", description: "Duração: 3h07min", poster: "../../images/kraven.jpg", room: "Sala 2" },
-        8: { id: 8, title: "Mission: Impossible - The Final Reckoning", description: "Duração: 2h30min", poster: "../../images/mission_impossible.jpg", room: "Sala 1" },
-        9: { id: 9, title: "Thunderbolts", description: "Duração: 2h20min", poster: "../../images/thunderbolts.jpg", room: "Sala 2" },
-        10: { id: 10, title: "Jurassic World Rebirth", description: "Duração: 2h25min", poster: "../../images/jurassic_world_rebirth.jpg", room: "Sala 1" },
-        11: { id: 11, title: "The Fantastic Four: First Steps",  description: "Duração: 2h15min", poster: "../../images/fantastic_four.jpg", room: "Sala 2" },
-        12: { id: 12, title: "Superman", description: "Duração: 2h35min", poster: "../../images/superman.jpg", room: "Sala 2"  },
-        13: { id: 13, title: "Captain America: Brave New World", description: "Duração: 2h40min", poster: "../../images/captain_america.jpg", room: "Sala 1" },
-        14: { id: 14, title: "Tron: Ares", description: "Duração: 2h10min", poster: "../../images/tron_ares.jpg", room: "Sala 2" }
+        9: { id: 9, title: "Venom: A Última Rodada", description: "Duração: 2h00min", poster: "../../images/venom.png", room: "Sala 2" },
+        10: { id: 10, title: "Sorria 2", description: "Duração: 1h30min", poster: "../../images/smile.jpg", room: "Sala 1" },
+        11: { id: 11, title: "Coringa: Delírio a Dois",  description: "Duração: 2h20min", poster: "../../images/coringa2.jpg", room: "Sala 2" },
+        12: { id: 12, title: "Thunderbolts", description: "Duração: 2h20min", poster: "../../images/thunderbolts.jpg", room: "Sala 2"  },
+        13: { id: 13, title: "Jurassic World Rebirth", description: "Duração: 2h25min", poster: "../../images/jurassic_world_rebirth.jpg", room: "Sala 1" },
+        14: { id: 14, title: "The Fantastic Four: First Steps", description: "Duração: 2h15min", poster: "../../images/fantastic_four.jpg", room: "Sala 1" },
+        15: { id: 14, title: "Superman", description: "Duração: 2h35min", poster: "../../images/superman.jpg", room: "Sala 2" },
+        16: { id: 14, title: "Captain America: Brave New World", description: "Duração: 2h40min", poster: "../../images/captain_america.jpg", room: "Sala 2" },
+        17: { id: 14, title: "Tron: Ares", description: "Duração: 2h10min", poster: "../../images/tron_ares.jpg", room: "Sala 1" }
     };
 
     const movie = movies[id];

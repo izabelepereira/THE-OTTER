@@ -1,8 +1,12 @@
 <?php
-function gerarCarrossel($filmesCarrossel) {
+function gerarCarrossel($filmesCarrossel, $exibirSetas = false) {
     echo '<div class="film-slider">';
-    // Botão de navegação anterior
-    echo '<button class="nav-button prev"><i class="bi bi-caret-left-square-fill"></i></button>';
+
+    // Exibe a seta anterior apenas se $exibirSetas for true
+    if ($exibirSetas) {
+        echo '<button class="nav-button prev"><i class="bi bi-caret-left-square-fill"></i></button>';
+    }
+
     echo '<div class="film-items">';
 
     foreach ($filmesCarrossel as $filmes) {
@@ -27,8 +31,12 @@ function gerarCarrossel($filmesCarrossel) {
     }
 
     echo '</div>';
-    // Botão de navegação próximo
-    echo '<button class="nav-button next"><i class="bi bi-caret-right-square-fill"></i></button>';
+
+    // Exibe a seta próxima apenas se $exibirSetas for true
+    if ($exibirSetas) {
+        echo '<button class="nav-button next"><i class="bi bi-caret-right-square-fill"></i></button>';
+    }
+
     echo '</div>';
 }
 ?>
