@@ -38,17 +38,23 @@
 }
 
 
-  /* Personalização das setas */
-  .carousel-control-prev-icon,
-  .carousel-control-next-icon {
-    background-color: transparent !important; /* Cor de fundo das setas */
-    border-radius: 50%; /* Tornar as setas redondas */
-  }
-  .carousel-control-prev-icon,
-  .carousel-control-next-icon:hover {
-    background-color: transparent !important; /* Cor de fundo das setas */
-    border-radius: 50%; /* Tornar as setas redondas */
-  }
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: transparent !important; /* Remove fundo */
+    border: none !important; /* Remove bordas */
+    box-shadow: none !important; /* Remove sombras */
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover,
+.carousel-control-prev-icon:focus,
+.carousel-control-next-icon:focus {
+    background-color: transparent !important; /* Remove qualquer fundo no hover ou focus */
+    box-shadow: none !important; /* Remove sombras */
+    border: none !important; /* Remove bordas */
+}
+
+  
   
   .carousel-control-prev,
   .carousel-control-next {
@@ -85,7 +91,7 @@
   overflow: hidden;
   transition: background-color 0.2s; /* Efeito de transição ao passar o mouse */
   position: relative;
-  margin-bottom: 4%;
+  margin-bottom: 5%;
 }
 
 .film-card:hover {

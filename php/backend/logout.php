@@ -1,7 +1,16 @@
 <?php
 session_start();
-$_SESSION = [];
+
+// Destruir todas as sessões
+session_unset();
 session_destroy();
-header("Location: login.html");
+
+// Limpar cookies de autenticação (se usados)
+if (isset($_COOKIE['token_autenticacao'])) {
+    setcookie('token_autenticacao', '', time() - 3600, '/');
+}
+
+// Redirecionar para a página de login ou inicial
+header("Location: ../frontend/login_page.php");
 exit();
 ?>

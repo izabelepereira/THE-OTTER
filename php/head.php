@@ -41,6 +41,7 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/yearSelect/index.js"></script>
+    <link rel="icon" type="image/x-icon" href="../../images/icon.png">
 
 
 </head>
