@@ -32,7 +32,7 @@ $posterPath = isset($_GET['poster']) ? $_GET['poster'] : '../../images/default_p
     <div class="info-texto">
         <h4>Filme: <span class="info-url"><?php echo htmlspecialchars($movieName); ?></span></h4>
         <p>Preço do Ingresso: <span class="info-url">R$ <?php echo htmlspecialchars($moviePrice); ?></span></p>
-        <p>Horário: <span class="info-url"><?php echo htmlspecialchars($showTime); ?></span></p>
+        <p>Horário: <span class="info-url"><?php echo htmlspecialchars($sessionTime); ?></span></p>
         <p>Sala: <span class="info-url"><?php echo htmlspecialchars($roomNumber); ?></span></p>
         <p>Assentos Selecionados: <span id="seats-list"><?php echo htmlspecialchars($selectedSeatsString); ?></span></p>
     </div>
@@ -210,14 +210,22 @@ function addToCart() {
         return;
     }
 
-    const movieId = '<?php echo htmlspecialchars($movieId); ?>';  // Verifique se o movieId está correto
+    console.log("Assentos selecionados: ", selectedSeatsString);
+
+    const movieId = '<?php echo htmlspecialchars($movieId); ?>';
     const movieName = '<?php echo htmlspecialchars($movieName); ?>';
     const moviePrice = '<?php echo htmlspecialchars($moviePrice); ?>';
     const showTime = '<?php echo htmlspecialchars($sessionTime); ?>';
     const roomNumber = '<?php echo htmlspecialchars($roomNumber); ?>';
     const posterPath = '<?php echo htmlspecialchars($posterPath); ?>';
 
-    // Enviar dados via POST
+    // Garantir que todos os dados estão sendo passados corretamente
+    console.log("Id do filme:" + movieId);
+    console.log("Preço do filme:" + moviePrice);
+    console.log("Hora do filme:" + showTime);
+    console.log("Número da sala do filme:" + roomNumber);
+    console.log("Imagem do filme:" + posterPath);
+
     fetch('../backend/addToCart.php', {
         method: 'POST',
         headers: {
@@ -227,7 +235,7 @@ function addToCart() {
             'movieId': movieId,
             'movieName': movieName,
             'moviePrice': moviePrice,
-            'showTime': showTime,
+            'sessionTime': showTime,
             'roomNumber': roomNumber,
             'seats': selectedSeatsString,
             'posterPath': posterPath
@@ -236,18 +244,16 @@ function addToCart() {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            // Redireciona para o carrinho após sucesso
             window.location.href = 'ver_carrinho.php';
         } else {
             alert(data.message || 'Erro ao adicionar ao carrinho');
         }
     })
-    .catch(error => {
-        console.error('Erro ao se comunicar com o servidor. Tente novamente mais tarde.');
-    });
+    .catch(error => console.error('Erro ao se comunicar com o servidor. Tente novamente mais tarde.'));
 }
 
-// Criando os assentos ao carregar a página
+ // Criando os assentos ao carregar a página
+
 createSeats('group1', 1, 82, 6, 0);      // Grupo 1: Assentos 1 a 82, letras A a N à esquerda
 createSeats('group2', 83, 148, 11, 0);   // Grupo 2: Assentos 83 a 148, sem letras
 createSeats('group3', 231, 82, 6, 0);    // Grupo 3: Assentos 231 a 312, letras A a N à direita

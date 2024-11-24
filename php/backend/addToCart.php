@@ -24,9 +24,19 @@ if (isset($_COOKIE['token_autenticacao'])) {
         $stmt->bind_result($usuario_id);
         $stmt->fetch();
         $stmt->close();
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Usuário não autenticado']);
+        exit;
+    }
+} else {
+    echo json_encode(['success' => false, 'message' => 'Usuário não autenticado']);
+    exit;
+}
 
 // Verificar se os dados foram recebidos corretamente via POST
 if (!isset($_POST['movieId']) || !isset($_POST['movieName']) || !isset($_POST['sessionTime']) || !isset($_POST['roomNumber']) || !isset($_POST['seats']) || !isset($_POST['moviePrice']) || !isset($_POST['posterPath'])) {
+    // Verificar os dados enviados no POST
+    error_log("Dados recebidos: " . print_r($_POST, true));  // Depurar os dados recebidos no POST
     echo json_encode(['success' => false, 'message' => 'Dados faltando']);
     exit;
 }
@@ -44,20 +54,20 @@ $posterPath = $_POST['posterPath'];
 error_log("Dados recebidos: movieId=$movieId, movieName=$movieName, moviePrice=$moviePrice, sessionTime=$sessionTime, roomNumber=$roomNumber, seats=$seats, posterPath=$posterPath");
 
 // Preparar e executar a consulta SQL para inserir no carrinho
-$sql = "INSERT INTO carrinho (usuario_id, movie_id, movie_name, sessionTime, room_number, seats, price, poster_path, data_adicionado) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, NOW())";
+$sql = "INSERT INTO carrinho (usuario_id, movie_id, movie_name, sessionTime, room_number, seats, price, poster_path, data_adicionado, quantidade, status) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), 1, 'ativo')";  // Adicionando valores padrão para 'quantidade' e 'status'
 
 $stmt = $conn->prepare($sql);
 if ($stmt === false) {
     error_log("Erro na preparação da consulta SQL: " . $conn->error);
-    echo json_encode(['success' => false, 'message' => 'Erro ao preparar a consulta']);
+    echo json_encode(['success' => false, 'message' => 'Erro ao preparar a consulta', 'errorDetails' => $conn->error]);
     exit;
 }
 
 // Vincula os parâmetros
-if (!$stmt->bind_param("iisssss", $usuario_id, $movieId, $movieName, $sessionTime, $roomNumber, $seats, $moviePrice, $posterPath)) {
+if (!$stmt->bind_param("iissssss", $usuario_id, $movieId, $movieName, $sessionTime, $roomNumber, $seats, $moviePrice, $posterPath)) {
     error_log("Erro ao vincular parâmetros: " . $stmt->error);
-    echo json_encode(['success' => false, 'message' => 'Erro ao vincular parâmetros']);
+    echo json_encode(['success' => false, 'message' => 'Erro ao vincular parâmetros', 'errorDetails' => $stmt->error]);
     exit;
 }
 
@@ -66,9 +76,8 @@ if ($stmt->execute()) {
     echo json_encode(['success' => true, 'message' => 'Filme adicionado ao carrinho']);
 } else {
     error_log("Erro ao executar consulta SQL: " . $stmt->error);
-    echo json_encode(['success' => false, 'message' => 'Erro ao adicionar ao carrinho']);
+    echo json_encode(['success' => false, 'message' => 'Erro ao adicionar ao carrinho', 'errorDetails' => $stmt->error]);
 }
 
 $stmt->close();
-
 ?>
