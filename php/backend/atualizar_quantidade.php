@@ -51,22 +51,29 @@ if ($result->num_rows > 0) {
     $item = $result->fetch_assoc();
     $novaQuantidade = $item['quantidade'] + $quantidadeAlterada;
 
-    // Evitar quantidade negativa ou zero
     if ($novaQuantidade <= 0) {
-        echo json_encode(['success' => false, 'message' => 'Quantidade mínima é 1.']);
-        exit();
-    }
-
-    // Atualizar a quantidade do produto no carrinho
-    $sqlUpdate = "UPDATE carrinho SET quantidade = ? WHERE usuario_id = ? AND produto_id = ?";
-    $stmtUpdate = $conn->prepare($sqlUpdate);
-    $stmtUpdate->bind_param("iii", $novaQuantidade, $usuario_id, $produto_id);
-    if ($stmtUpdate->execute()) {
-        echo json_encode(['success' => true, 'message' => 'Quantidade atualizada com sucesso!']);
+        // Remover o produto do carrinho
+        $sqlDelete = "DELETE FROM carrinho WHERE usuario_id = ? AND produto_id = ?";
+        $stmtDelete = $conn->prepare($sqlDelete);
+        $stmtDelete->bind_param("ii", $usuario_id, $produto_id);
+        if ($stmtDelete->execute()) {
+            echo json_encode(['success' => true, 'message' => 'Item removido do carrinho.']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Erro ao remover o item do carrinho.']);
+        }
+        $stmtDelete->close();
     } else {
-        echo json_encode(['success' => false, 'message' => 'Erro ao atualizar quantidade.']);
+        // Atualizar a quantidade do produto no carrinho
+        $sqlUpdate = "UPDATE carrinho SET quantidade = ? WHERE usuario_id = ? AND produto_id = ?";
+        $stmtUpdate = $conn->prepare($sqlUpdate);
+        $stmtUpdate->bind_param("iii", $novaQuantidade, $usuario_id, $produto_id);
+        if ($stmtUpdate->execute()) {
+            echo json_encode(['success' => true, 'message' => 'Quantidade atualizada com sucesso!']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Erro ao atualizar quantidade.']);
+        }
+        $stmtUpdate->close();
     }
-    $stmtUpdate->close();
 } else {
     echo json_encode(['success' => false, 'message' => 'Produto não encontrado no carrinho.']);
 }

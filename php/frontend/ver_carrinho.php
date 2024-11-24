@@ -94,17 +94,16 @@ include '../navbar1.php';
                     if ($produto['produto_id'] != NULL) {
                         $temSnack = true;
                         echo '<div class="col-md-4 col-sm-6 col-12 item-carrinho">';
-                        echo '<div class="card">';
+                        echo '<div class="card-product" style="background-color: #001d2f; border-radius: 15px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); display: flex; flex-direction: row; min-height: unset; margin: 1px 0; width: 100%; color: #e3cbbc; font-family: League Spartan; height: 10%;">';
                         echo '<img src="' . htmlspecialchars($produto['produto_imagem']) . '" class="card-img-left" alt="' . htmlspecialchars($produto['produto_nome']) . '">';
-                        echo '<div class="card-body">';
+                        echo '<div class="card-body" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center;>';
                         echo '<h5 class="card-title" style="color: #e3cbbc; margin-bottom: 10%;">' . htmlspecialchars($produto['produto_nome']) . '</h5>';
                         echo '<p class="card-text" style="color: #e3cbbc; font-weight: bold; font-size: 1.7em; margin-bottom: 25%;">R$ ' . number_format($produto['produto_preco'], 2, ',', '.') . '</p>';
                         
-                        echo '<div class="d-flex align-items-center mb-2 diva" style="margin-left: 35%;">';
+                        echo '<div class="d-flex align-items-center mb-2" style="margin-left: 35%;">';
                         echo '<button class="btn btn-secondary btn-sm" onclick="atualizarQuantidade(' . $produto['produto_id'] . ', -1)">-</button>';
                         echo '<p class="card-text m-0 mx-2" style="color: #e3cbbc; font-size: 1.2em; font-weight: bold;">' . $produto['quantidade'] . '</p>';
                         echo '<button class="btn btn-secondary btn-sm" onclick="atualizarQuantidade(' . $produto['produto_id'] . ', 1)">+</button>';
-                        echo '<button class="btn btn-danger btn-sm ms-2" onclick="removeFromCart(' . $produto['produto_id'] . ', \'snack\')"><i class="fa fa-trash"></i></button>';
                         echo '</div>';
                         
                         echo '</div></div></div>';
@@ -114,13 +113,13 @@ include '../navbar1.php';
                 }
 
                 if (!$temSnack) {
-                    echo '<p class="text-center" style="color: #e3cbbc;">Adicione seus snacks agora!</p>';
-                    echo '<a href="snack.php" class="btn btn-primary">Ver Snacks</a>';
+                    echo '<p class="text-center" style="color: #e3cbbc; font-family:League Spartan">Adicione seus snacks agora!</p>';
+                    echo '<a href="snack.php" class="btn btn-snack">Ver Snacks</a>';
                 }
 
                 echo '</div>';
             } else {
-                echo '<p class="text-center" style="color: #e3cbbc;">Seu carrinho está vazio.</p>';
+                echo '<p class="text-center" style="color: #e3cbbc; font-family:League Spartan;">Seu carrinho está vazio.</p>';
             }
             ?>
         </div>
