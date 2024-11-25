@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24/11/2024 às 22:00
+-- Tempo de geração: 25/11/2024 às 02:14
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -20,10 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `theotter`
 --
-
-CREATE DATABASE theotter;
-
-USE theotter;
 
 -- --------------------------------------------------------
 
@@ -75,7 +71,9 @@ INSERT INTO `carrinho` (`id`, `usuario_id`, `movie_id`, `movie_name`, `sessionTi
 (210, 2, 0, '', NULL, '', '', 0.00, NULL, '2024-11-24 06:45:40', 1, 33, NULL, NULL, NULL, 'ativo'),
 (211, 2, 0, '', NULL, '', '', 0.00, NULL, '2024-11-24 06:45:45', 1, 30, NULL, NULL, NULL, 'ativo'),
 (212, 2, 0, '', NULL, '', '', 0.00, NULL, '2024-11-24 06:45:47', 1, 27, NULL, NULL, NULL, 'ativo'),
-(213, 2, 0, '', NULL, '', '', 0.00, NULL, '2024-11-24 16:21:58', 1, 15, NULL, NULL, NULL, 'ativo');
+(213, 2, 0, '', NULL, '', '', 0.00, NULL, '2024-11-24 16:21:58', 1, 15, NULL, NULL, NULL, 'ativo'),
+(214, 38, 1, 'Wicked - Parte 1', '19h - Dublado', 'Sala 2', '188', 30.00, '../../images/wic.jpg', '2024-11-25 01:10:57', 1, NULL, NULL, NULL, NULL, 'bloqueado'),
+(215, 38, 0, '', NULL, '', '', 0.00, NULL, '2024-11-25 01:11:02', 1, 11, NULL, NULL, NULL, 'bloqueado');
 
 -- --------------------------------------------------------
 
@@ -166,7 +164,8 @@ INSERT INTO `pagamento` (`id`, `usuario_id`, `total`, `metodo_pagamento`, `data_
 (68, 2, 580.08, 'pix', '2024-11-23 19:21:46'),
 (69, 2, 583.07, 'pix', '2024-11-23 19:24:21'),
 (70, 2, 583.07, 'pix', '2024-11-23 19:24:22'),
-(71, 2, 583.07, 'pix', '2024-11-23 19:24:29');
+(71, 2, 583.07, 'pix', '2024-11-23 19:24:29'),
+(72, 38, 32.99, 'pix', '2024-11-25 01:11:12');
 
 -- --------------------------------------------------------
 
@@ -346,7 +345,8 @@ INSERT INTO `pedidos_reembolso` (`id`, `usuario_id`, `tipo_reembolso`, `status`,
 (160, 2, 'Reembolso do Ingresso, aviso prévio', 'Aprovado', '2024-11-15 05:36:00'),
 (161, 2, 'Reembolso do Ingresso e produtos do Snack Bar, aviso prévio', 'Aprovado', '2024-11-19 23:27:24'),
 (162, 2, 'Reembolso do Ingresso e produtos do Snack Bar, aviso prévio', 'Aprovado', '2024-11-19 23:27:39'),
-(163, 2, 'Qualquer reembolso mas sem pedido com antecedência', 'Negado', '2024-11-19 23:29:15');
+(163, 2, 'Qualquer reembolso mas sem pedido com antecedência', 'Negado', '2024-11-19 23:29:15'),
+(164, 38, 'Reembolso do Ingresso e produtos do Snack Bar, aviso prévio', 'Aprovado', '2024-11-25 01:12:45');
 
 -- --------------------------------------------------------
 
@@ -441,21 +441,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nome_completo`, `genero`, `apelido`, `cpf`, `data_nascimento`, `usar_mesmo_cpf`, `email`, `telefone`, `senha`, `token_autenticacao`) VALUES
-(2, 'izabele pereira', 'Feminino', 'izinha', '70218358920', '0000-00-00', 0, 'izabele2304@gmail.com', '991972304', '$2y$10$LQYx/PTUQvaF0cpuAScyoeUqWu7GWRykgUWbeq3vOPQ400l6Awm1i', '6529414a32670ce219d8c369af8507d5'),
-(13, 'william', 'Masculino', 'will', '123.456.789-10', '0000-00-00', 0, 'will@gmail.com', '(16) 99789-5632', '$2y$10$6wmXl/uYFvV1JE5PeQqs6O.8JqEnzWg1jwU7eFM.gFQ.nu5OJQo.a', '4d28800011fa9b5a84f213d1b1a0fea0'),
-(14, 'eita', 'Masculino', 'eita', '46235656565', '0000-00-00', 1, 'eita@gmail.com', '54654545465', '$2y$10$EsAPozLzfzRPAQRGs0q4kOfKHkHLa5tdyLUdtEObcGDL1h9k65qXa', NULL),
-(15, 'iza', 'Masculino', 'izinha', '46546545465', '0000-00-00', 0, 'iza@gmail.com', '65645646546', '$2y$10$rkp.ZrQYQ.fph6ckNvn/UupiMFNvXrMpnkCriP2kQ35yE1IOeYUyu', NULL),
-(16, 'oi', 'Feminino', 'ana', '65446546545', '0000-00-00', 0, 'cu@gmail.com', '66546545645', '$2y$10$dMNFbf5/XqoLaJv9Nsir1eiWl61KskW34YXd3xHCcO7cF/dVI.FvW', NULL),
-(17, 'ida', 'Feminino', 'idinha', '45645645645', '0000-00-00', 0, 'ida@gmail.com', '22112132132', '$2y$10$.8yFbGO7EOjXv17tvRvgz.5HoYOX1wZrSqox4bbN.bkpWb0wFL4gu', NULL),
-(18, 'julia', 'Feminino', 'ju', '45986523698', '0000-00-00', 1, 'ju@gmail.com', '54654654564', '$2y$10$tuXmuWbce/JdSHOTA25kgO/2bKbYdsvcIqVEeYAF7vm/Mk5aiICy2', NULL),
-(19, 'enzo', 'Feminino', 'enzo', '32215664546', '0000-00-00', 1, 'enzo@gmail.com', '62661651651', '$2y$10$QfneqzzRlsTDGdzZzN8Y9e09gLEid3dHLjtDbIsrpyeCYthnF98PK', NULL),
-(20, 'diogo', 'Masculino', 'dido', '51632894923', '0000-00-00', 0, 'di@gmail.com', '16988897523', '$2y$10$NQ.PzvWYb/P0TsWpeMrI7eN06pkJvWHH7FA3dPiOLW.Dr981./ZeK', NULL),
-(21, 'aa', 'Masculino', 'aaa', '44444444444', '0000-00-00', 0, 'w@gmail.com', '55555555555', '$2y$10$zzi9DImJoSABXQuIOW8xq./RSk9q81c/Emar95gp2zkDQEK9dh/4S', 'a0ef56227175da8cf807a6f1dacffb34'),
-(26, 'q', 'Feminino', 'q', '222.222.222-22', '0000-00-00', 0, 'b@gmail.com', '(33) 33333-3333', '$2y$10$KAFniyp66euz4fvWztKOeuDd0Q/thnDY9IyR.wUNec/WdH4dqlPri', NULL),
-(28, 'q', 'Feminino', 'q', '111.111.111-11', '0000-00-00', 0, 'c@gmail.com', '(33) 33333-3333', '$2y$10$2V69N/XR4z4BEf69rgZyK.pyJHd7GPrjI/cqQtaR4aBXsFo8jGjiu', NULL),
-(29, 'q', 'Feminino', 'q', '555.555.555-55', '0000-00-00', 0, 'd@gmail.com', '(33) 33333-3333', '$2y$10$APTq9OekYNbWfHF06YRQxu13O.pxp6kulaI44sNDKlyJZVe412yXy', '9510eb432c953f0d1319caf3ea512b90'),
-(30, 'q', 'Feminino', 'q', '777.777.777-77', '0000-00-00', 0, 'e@gmail.com', '(33) 33333-3333', '$2y$10$O7PrgOdAtQcbzOmXKriq.Oc1BfV38nanap/OFtEmCuDR55RIQKRjW', NULL),
-(37, 'diogo gay', 'Outro', 'diogo', '568.742.398-99', '0000-00-00', 0, 'diogo@gmail.com', '(16) 33359-8745', '$2y$10$Dk7qDEQhDAsEbMLwfTy1s.OU7ErKYDcwjD2dURpSU3zcmyQel0lCC', 'c8e152f1ab7c4d8fdcc5132031ddeeb9');
+(2, 'izabele pereira', 'Feminino', 'izinha', '70218358920', '0000-00-00', 0, 'izabele2304@gmail.com', '991972304', '$2y$10$LQYx/PTUQvaF0cpuAScyoeUqWu7GWRykgUWbeq3vOPQ400l6Awm1i', '7e5b78b2f496d5168a7c8ead045cd5fd'),
+(38, 'Amanda', 'Feminino', 'Amanda', '898.897.978-97', '0000-00-00', 0, 'amanda@gmail.com', '(16) 99989-8989', '$2y$10$18/hcuxxptI6VYn616wsy.Us.52.GNU5jEcHJx86rNBSPBtPloRCq', 'a79721a509d87a102c5dd02176764bba');
 
 --
 -- Índices para tabelas despejadas
@@ -505,19 +492,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `carrinho`
 --
 ALTER TABLE `carrinho`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=214;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=216;
 
 --
 -- AUTO_INCREMENT de tabela `pagamento`
 --
 ALTER TABLE `pagamento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos_reembolso`
 --
 ALTER TABLE `pedidos_reembolso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
@@ -529,7 +516,7 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- Restrições para tabelas despejadas
